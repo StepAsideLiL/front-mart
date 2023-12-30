@@ -3,6 +3,8 @@ import { ModeToggle } from "@/components/templates/mode-toggle";
 import LinkingLogo from "@/components/uis/linking-logo";
 import Navlink from "./navlink";
 import { Separator } from "../ui/separator";
+import { Button } from "../ui/button";
+import AvatarMenu from "./avatar-menu";
 
 const Navbar = () => {
   return (
@@ -15,7 +17,17 @@ const Navbar = () => {
         <Navlink />
       </nav>
 
-      <ModeToggle />
+      <div className="flex items-center gap-3 h-8">
+        <ModeToggle />
+
+        <Separator orientation="vertical" />
+
+        <Button variant={"outline"}>Login</Button>
+
+        <Button>Sign Up</Button>
+
+        <AvatarMenu />
+      </div>
     </header>
   );
 };
