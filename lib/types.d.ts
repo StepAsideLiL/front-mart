@@ -3,10 +3,10 @@ export type Cd = {
 };
 
 export type Cn = {
-  classname?: string;
+  className?: string;
 };
 
 export type CdCn = {
   children?: React.ReactNode;
-  classname?: string;
+  className?: string;
 };
