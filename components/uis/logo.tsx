@@ -1,5 +1,4 @@
 import { dotGothic16 } from "@/lib/fonts";
-import { Cn } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { Store } from "lucide-react";
 import Link from "next/link";

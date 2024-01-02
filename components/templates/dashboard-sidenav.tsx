@@ -5,8 +5,6 @@ import { Gift, LayoutDashboard, ListOrdered, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { Separator } from "@/components/ui/separator";
-import LinkingLogo from "@/components/uis/linking-logo";
 
 const menus = [
   {
