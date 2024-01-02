@@ -10,8 +10,8 @@ const links = [
     href: "/shop",
   },
   {
-    title: "hello",
-    href: "/hello",
+    title: "Dashboard",
+    href: "/dashboard",
   },
 ];
 
