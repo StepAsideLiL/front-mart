@@ -1,7 +1,8 @@
+import Main from "@/components/uis/main";
 import React from "react";
 
 const ProductsPage = () => {
-  return <div>ProductsPage</div>;
+  return <>ProductsPage</>;
 };
 
 export default ProductsPage;
