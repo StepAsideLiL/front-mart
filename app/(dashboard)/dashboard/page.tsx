@@ -3,9 +3,7 @@ import { Separator } from "@/components/ui/separator";
 const DashboardPage = () => {
   return (
     <main>
-      <div className="h-14">{/* <LinkingLogo /> */}</div>
-
-      <Separator />
+      <div className="h-14">hello</div>
     </main>
   );
 };

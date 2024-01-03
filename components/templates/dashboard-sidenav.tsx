@@ -5,6 +5,8 @@ import { Gift, LayoutDashboard, ListOrdered, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import Logo from "../uis/logo";
+import { Separator } from "../ui/separator";
 
 const menus = [
   {
@@ -33,17 +35,25 @@ const DashboardSidenav = () => {
   const pathname = usePathname();
 
   return (
-    <aside className="p-1 flex flex-col gap-1">
-      {menus.map((menu) => (
-        <ActiveLink
-          key={menu.href}
-          href={menu.href}
-          active={pathname === menu.href ? true : false}
-        >
-          <span>{menu.icon}</span>
-          <span>{menu.title}</span>
-        </ActiveLink>
-      ))}
+    <aside className="border min-h-screen my-1 p-1 rounded">
+      <div className="h-14 flex items-center justify-start">
+        <Logo variant="name-link" />
+      </div>
+
+      <Separator orientation="horizontal" />
+
+      <nav className="p-1 flex flex-col gap-1">
+        {menus.map((menu) => (
+          <ActiveLink
+            key={menu.href}
+            href={menu.href}
+            active={pathname === menu.href ? true : false}
+          >
+            <span>{menu.icon}</span>
+            <span>{menu.title}</span>
+          </ActiveLink>
+        ))}
+      </nav>
     </aside>
   );
 };
