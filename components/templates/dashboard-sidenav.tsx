@@ -1,12 +1,19 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Gift, LayoutDashboard, ListOrdered, User } from "lucide-react";
+import { Gift, LayoutDashboard, ListOrdered, Menu, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import Logo from "../uis/logo";
+import Logo from "@/components/uis/logo";
 import { Separator } from "../ui/separator";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Cn } from "@/lib/types";
 
 const menus = [
   {
@@ -32,29 +39,39 @@ const menus = [
 ];
 
 const DashboardSidenav = () => {
-  const pathname = usePathname();
-
   return (
-    <aside className="border min-h-screen my-1 p-1 rounded">
-      <div className="h-14 flex items-center justify-start">
+    <aside className="py-5">
+      <div className="h-14 hidden md:flex items-center justify-start">
         <Logo variant="name-link" />
       </div>
 
-      <Separator orientation="horizontal" />
+      <div className="md:hidden flex items-center gap-1 h-5">
+        <SidenavSheet />
+        <Separator orientation="vertical" />
+        <Logo variant="link" />
+      </div>
 
-      <nav className="p-1 flex flex-col gap-1">
-        {menus.map((menu) => (
-          <ActiveLink
-            key={menu.href}
-            href={menu.href}
-            active={pathname === menu.href ? true : false}
-          >
-            <span>{menu.icon}</span>
-            <span>{menu.title}</span>
-          </ActiveLink>
-        ))}
-      </nav>
+      <SideMenus className="hidden md:flex" />
     </aside>
+  );
+};
+
+const SideMenus = ({ className }: Cn) => {
+  const pathname = usePathname();
+
+  return (
+    <nav className={cn("p-1 flex-col gap-1 flex", className)}>
+      {menus.map((menu) => (
+        <ActiveLink
+          key={menu.href}
+          href={menu.href}
+          active={pathname === menu.href ? true : false}
+        >
+          <span>{menu.icon}</span>
+          <span>{menu.title}</span>
+        </ActiveLink>
+      ))}
+    </nav>
   );
 };
 
@@ -77,6 +94,24 @@ const ActiveLink = ({
     >
       {children}
     </Link>
+  );
+};
+
+const SidenavSheet = () => {
+  return (
+    <Sheet>
+      <SheetTrigger>
+        <Menu size={"24px"} />
+      </SheetTrigger>
+
+      <SheetContent side={"left"} className="">
+        <SheetHeader className="h-14 flex items-center justify-start">
+          <Logo variant="name-link" />
+        </SheetHeader>
+
+        <SideMenus />
+      </SheetContent>
+    </Sheet>
   );
 };
 
