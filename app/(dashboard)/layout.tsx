@@ -9,27 +9,13 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         <DashboardSidenav />
 
         <div className="block md:hidden">
-          <Breadcrumbs
-            homeElement={"Home"}
-            separator={<span> / </span>}
-            activeClasses="font-bold"
-            containerClasses="flex py-5"
-            listClasses="hover:underline mx-2"
-            capitalizeLinks
-          />
+          <Breadcrumbs />
         </div>
       </div>
 
-      <Main variant={"dashboard"}>
+      <Main variant={"dashboard"} className="flex-1">
         <div className="md:block hidden">
-          <Breadcrumbs
-            homeElement={"Home"}
-            separator={<span> / </span>}
-            activeClasses="font-bold"
-            containerClasses="flex py-5"
-            listClasses="hover:underline mx-2"
-            capitalizeLinks
-          />
+          <Breadcrumbs />
         </div>
 
         {children}
