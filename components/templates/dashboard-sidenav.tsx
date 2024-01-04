@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { Gift, LayoutDashboard, ListOrdered, Menu, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import Logo from "@/components/uis/logo";
 import { Separator } from "../ui/separator";
 import {
@@ -98,18 +98,24 @@ const ActiveLink = ({
 };
 
 const SidenavSheet = () => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger>
         <Menu size={"24px"} />
       </SheetTrigger>
 
       <SheetContent side={"left"} className="">
         <SheetHeader className="h-14 flex items-center justify-start">
-          <Logo variant="name-link" />
+          <div onClick={() => setOpen(false)}>
+            <Logo variant="name-link" />
+          </div>
         </SheetHeader>
 
-        <SideMenus />
+        <div onClick={() => setOpen(false)}>
+          <SideMenus />
+        </div>
       </SheetContent>
     </Sheet>
   );

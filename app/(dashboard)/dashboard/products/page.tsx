@@ -15,7 +15,7 @@ const ProductsPage = () => {
         <DashboardTitle>Products</DashboardTitle>
 
         <Button asChild variant={"outline"} size={"icon"}>
-          <Link href={""}>
+          <Link href={"/dashboard/products/"}>
             <Plus />
           </Link>
         </Button>
