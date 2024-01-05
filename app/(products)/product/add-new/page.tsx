@@ -1,3 +1,4 @@
+import AddProductForm from "@/components/forms/add-product";
 import Main from "@/components/uis/main";
 import Title from "@/components/uis/title";
 import React from "react";
@@ -9,7 +10,9 @@ const AddNewProductPage = () => {
         <Title>Add New</Title>
       </section>
 
-      <section>hello</section>
+      <section>
+        <AddProductForm />
+      </section>
     </Main>
   );
 };
