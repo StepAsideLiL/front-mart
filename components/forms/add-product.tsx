@@ -28,21 +28,15 @@ const formSchema = z.object({
   description: z.string().optional(),
 });
 
-const AddProductForm = ({
-  productTitle,
-  price,
-  discount,
-  quickOverview,
-  description,
-}: AddNewFormData) => {
+const AddProductForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      productTitle: productTitle ? productTitle : "",
-      price: price ? price.toString() : undefined,
-      discount: discount ? discount.toString() : undefined,
-      quickOverview: quickOverview ? quickOverview : "",
-      description: description ? description : "",
+      productTitle: "",
+      price: undefined,
+      discount: undefined,
+      quickOverview: "",
+      description: "",
     },
   });
 
