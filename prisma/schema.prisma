@@ -14,35 +14,21 @@ model User {
   id String @id @unique @default(uuid())
 
   username String
-
-  product Product[]
 }
 
 model Product {
   id String @id @unique @default(uuid())
 
-  userId String?
-  User   User?   @relation(fields: [userId], references: [id])
-
-  title          String
-  price          String
-  description    String  @default("")
-  imageSrc       String  @default("")
-  imageId        String  @default("")
-  image          Image[]
-  isFeatured     Boolean @default(false)
-  discountAmount String  @default("0")
+  title         String
+  price         Float
+  discount      Float?   @default(0)
+  description   String?  @default("")
+  quickOverview String?  @default("")
+  imageSrc      String?  @default("")
+  imageId       String?  @default("")
+  images        Json?
+  isFeatured    Boolean? @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-model Image {
-  id String @id @unique @default(uuid())
-
-  productId String?
-  Product   Product? @relation(fields: [productId], references: [id])
-
-  imageSrc String?
-  imageId  String?
 }
