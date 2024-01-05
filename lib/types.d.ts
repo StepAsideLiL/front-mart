@@ -10,3 +10,11 @@ export type CdCn = {
   children?: React.ReactNode;
   className?: string;
 };
+
+export type AddNewFormData = {
+  productTitle: string;
+  price: number;
+  discount: number;
+  quickOverview?: string;
+  description?: string;
+};
