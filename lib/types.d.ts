@@ -14,7 +14,7 @@ export type CdCn = {
 export type AddNewFormData = {
   productTitle: string;
   price: number;
-  discount: number;
+  discount?: number;
   quickOverview?: string;
   description?: string;
 };
