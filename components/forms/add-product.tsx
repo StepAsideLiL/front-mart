@@ -14,9 +14,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import Image from "next/image";
 import { Textarea } from "../ui/textarea";
-import { AddNewFormData } from "@/lib/types";
+import { AddNewFormData, CloundinayImage } from "@/lib/types";
+import { useState } from "react";
+import { CldUploadWidget, CldImage } from "next-cloudinary";
 
 const formSchema = z.object({
   productTitle: z
@@ -29,6 +30,8 @@ const formSchema = z.object({
 });
 
 const AddProductForm = () => {
+  const [imageSrc, setIamgeSrc] = useState("");
+  const [imageId, setIamgeId] = useState("");
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -45,6 +48,8 @@ const AddProductForm = () => {
       ...values,
       price: parseFloat(values.price),
       discount: parseFloat(values.discount ? values.discount : "0"),
+      imageSrc: imageSrc,
+      imageId: imageId,
     };
     console.log(formData);
   }
@@ -152,9 +157,38 @@ const AddProductForm = () => {
           </div>
 
           <div className="w-full">
-            {/* <Image src={} /> */}
+            <CldUploadWidget
+              uploadPreset="qaljd9iw"
+              options={{
+                sources: ["local", "url", "unsplash"],
+              }}
+              // @ts-expect-error
+              onSuccess={(result: CloundinayImage, { widget }) => {
+                console.log(result.info.secure_url);
+                console.log(result.info.public_id);
+                setIamgeId(result.info.public_id);
+                setIamgeSrc(result.info.secure_url);
+                // widget.close();
+              }}
+            >
+              {({ open }) => {
+                return (
+                  <Button type="button" onClick={() => open()}>
+                    {imageId === "" ? "Upload a product image" : "Change image"}
+                  </Button>
+                );
+              }}
+            </CldUploadWidget>
 
-            <div>hello</div>
+            {imageId && (
+              <CldImage
+                width={"500"}
+                height={"500"}
+                src={imageId}
+                sizes="100vw"
+                alt="Photo of the product"
+              />
+            )}
           </div>
         </section>
 
