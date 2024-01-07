@@ -18,7 +18,7 @@ const Logo = ({
 
   if (variant === "name") {
     return (
-      <div className="flex items-center gap-1">
+      <div className="flex items-start justify-center gap-2">
         <LogoIcon />
         <Sitename />
       </div>
@@ -27,7 +27,7 @@ const Logo = ({
 
   if (variant === "name-link") {
     return (
-      <Link href={"/"} className="flex items-center gap-1">
+      <Link href={"/"} className="flex items-start justify-center gap-2">
         <LogoIcon />
         <Sitename />
       </Link>
@@ -43,7 +43,7 @@ const LogoIcon = () => {
 
 const Sitename = () => {
   return (
-    <h1 className={cn("text-4xl font-semibold", dotGothic16.className)}>
+    <h1 className={cn("text-3xl font-semibold", dotGothic16.className)}>
       Front Mart
     </h1>
   );
