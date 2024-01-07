@@ -93,13 +93,13 @@ const AddProductForm = () => {
               )}
             />
 
-            {/* Product Overview */}
+            {/* Product Quick Overview */}
             <FormField
               control={form.control}
               name="quickOverview"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Quick Overview</FormLabel>
+                  <FormLabel>Quick Overview (Optional)</FormLabel>
                   <FormControl>
                     <Textarea
                       placeholder="Write something short about the product..."
@@ -121,7 +121,7 @@ const AddProductForm = () => {
               name="discount"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Product Discount</FormLabel>
+                  <FormLabel>Product Discount (Optional)</FormLabel>
                   <FormControl>
                     <Input type="number" placeholder="40%" {...field} />
                   </FormControl>
@@ -139,7 +139,7 @@ const AddProductForm = () => {
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Product Description</FormLabel>
+                  <FormLabel>Product Description (Optional)</FormLabel>
                   <FormControl>
                     <Textarea
                       placeholder="Write something about the product..."
