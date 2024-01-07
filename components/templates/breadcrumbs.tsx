@@ -12,7 +12,7 @@ const Breadcrumbs = () => {
   return (
     <div>
       <ul className="flex py-5 text-sm">
-        <li className={"hover:underline mx-2"}>
+        <li className={"hover:underline mr-2"}>
           <Link href={"/"}>Home</Link>
         </li>
         {pathNames.length > 0 && <span> / </span>}
