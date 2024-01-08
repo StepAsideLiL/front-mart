@@ -209,7 +209,6 @@ const AddProductForm = () => {
                 </FormItem>
               )}
             />
-            <div className="w-full flex justify-between items-center gap-2"></div>
 
             {imageId && (
               <CldImage
