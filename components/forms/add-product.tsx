@@ -59,6 +59,7 @@ const AddProductForm = () => {
       imageSrc: imageSrc,
       imageId: imageId,
     };
+
     addProduct(formData);
   }
 
@@ -165,6 +166,7 @@ const AddProductForm = () => {
           </div>
 
           <div className="w-full flex flex-col items-center gap-2">
+            {/* Product Image */}
             <FormField
               control={form.control}
               name="imageId"
@@ -235,7 +237,7 @@ const AddProductForm = () => {
           </div>
         </section>
 
-        <Button type="submit">Add New</Button>
+        <Button type="submit">Add New Product</Button>
       </form>
     </Form>
   );
