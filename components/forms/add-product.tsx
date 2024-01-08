@@ -18,6 +18,7 @@ import { Textarea } from "../ui/textarea";
 import { AddNewFormData, CloundinayImage } from "@/lib/types";
 import { useState } from "react";
 import { CldUploadWidget, CldImage } from "next-cloudinary";
+import Image from "next/image";
 
 const formSchema = z.object({
   productTitle: z
@@ -156,29 +157,39 @@ const AddProductForm = () => {
             />
           </div>
 
-          <div className="w-full">
-            <CldUploadWidget
-              uploadPreset="qaljd9iw"
-              options={{
-                sources: ["local", "url", "unsplash"],
-              }}
-              // @ts-expect-error
-              onSuccess={(result: CloundinayImage, { widget }) => {
-                console.log(result.info.secure_url);
-                console.log(result.info.public_id);
-                setIamgeId(result.info.public_id);
-                setIamgeSrc(result.info.secure_url);
-                // widget.close();
-              }}
-            >
-              {({ open }) => {
-                return (
-                  <Button type="button" onClick={() => open()}>
-                    {imageId === "" ? "Upload a product image" : "Change image"}
-                  </Button>
-                );
-              }}
-            </CldUploadWidget>
+          <div className="w-full flex flex-col items-center gap-2">
+            <div className="w-full flex justify-between items-center gap-2">
+              <p className="text-sm font-medium">Product Image</p>
+
+              <CldUploadWidget
+                uploadPreset="qaljd9iw"
+                options={{
+                  sources: ["local", "url"],
+                }}
+                // @ts-expect-error
+                onSuccess={(result: CloundinayImage, { widget }) => {
+                  console.log(result.info.secure_url);
+                  console.log(result.info.public_id);
+                  setIamgeId(result.info.public_id);
+                  setIamgeSrc(result.info.secure_url);
+                  widget.close();
+                }}
+              >
+                {({ open }) => {
+                  return (
+                    <Button
+                      variant={"secondary"}
+                      type="button"
+                      onClick={() => open()}
+                    >
+                      {imageId === ""
+                        ? "Upload a product image"
+                        : "Change image"}
+                    </Button>
+                  );
+                }}
+              </CldUploadWidget>
+            </div>
 
             {imageId && (
               <CldImage
@@ -189,6 +200,18 @@ const AddProductForm = () => {
                 alt="Photo of the product"
               />
             )}
+
+            {imageId !== "" || (
+              <Image
+                src={"/images/placeholder-image.webp"}
+                alt="Product placeholder image"
+                width={1200}
+                height={800}
+                className="w-full"
+              />
+            )}
+
+            <p>Image of the product</p>
           </div>
         </section>
 
