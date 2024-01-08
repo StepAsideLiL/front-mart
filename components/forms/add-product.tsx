@@ -25,6 +25,7 @@ const formSchema = z.object({
     .string()
     .min(1, { message: "Product title can not be empty." }),
   price: z.string().min(1, { message: "Product price can not be empty." }),
+  imageId: z.string().min(1, { message: "Set a product image" }),
   discount: z.string().optional(),
   quickOverview: z.string().optional(),
   description: z.string().optional(),
@@ -41,6 +42,11 @@ const AddProductForm = () => {
       discount: undefined,
       quickOverview: "",
       description: "",
+    },
+    values: {
+      productTitle: "",
+      price: "",
+      imageId: imageId,
     },
   });
 
@@ -158,36 +164,52 @@ const AddProductForm = () => {
           </div>
 
           <div className="w-full flex flex-col items-center gap-2">
-            <div className="w-full flex justify-between items-center gap-2">
-              <p className="text-sm font-medium">Product Image</p>
+            <FormField
+              control={form.control}
+              name="imageId"
+              render={({ field }) => (
+                <FormItem className="w-full">
+                  <FormLabel className="w-full flex justify-between items-center gap-2">
+                    <p className="text-sm font-medium">Product Image</p>
 
-              <CldUploadWidget
-                uploadPreset="qaljd9iw"
-                options={{
-                  sources: ["local", "url"],
-                }}
-                // @ts-expect-error
-                onSuccess={(result: CloundinayImage, { widget }) => {
-                  setIamgeId(result.info.public_id);
-                  setIamgeSrc(result.info.secure_url);
-                  widget.close();
-                }}
-              >
-                {({ open }) => {
-                  return (
-                    <Button
-                      variant={"secondary"}
-                      type="button"
-                      onClick={() => open()}
+                    <CldUploadWidget
+                      uploadPreset="qaljd9iw"
+                      options={{
+                        sources: ["local", "url"],
+                      }}
+                      // @ts-expect-error
+                      onSuccess={(result: CloundinayImage, { widget }) => {
+                        setIamgeId(result.info.public_id);
+                        setIamgeSrc(result.info.secure_url);
+                        widget.close();
+                      }}
                     >
-                      {imageId === ""
-                        ? "Upload a product image"
-                        : "Change image"}
-                    </Button>
-                  );
-                }}
-              </CldUploadWidget>
-            </div>
+                      {({ open }) => {
+                        return (
+                          <Button
+                            variant={"secondary"}
+                            type="button"
+                            onClick={() => open()}
+                          >
+                            {imageId === ""
+                              ? "Upload a product image"
+                              : "Change image"}
+                          </Button>
+                        );
+                      }}
+                    </CldUploadWidget>
+                  </FormLabel>
+                  <FormControl>
+                    <Input type="hidden" placeholder="Product" {...field} />
+                  </FormControl>
+                  <FormDescription>
+                    Put appropriate title for the product.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <div className="w-full flex justify-between items-center gap-2"></div>
 
             {imageId && (
               <CldImage
