@@ -168,8 +168,6 @@ const AddProductForm = () => {
                 }}
                 // @ts-expect-error
                 onSuccess={(result: CloundinayImage, { widget }) => {
-                  console.log(result.info.secure_url);
-                  console.log(result.info.public_id);
                   setIamgeId(result.info.public_id);
                   setIamgeSrc(result.info.secure_url);
                   widget.close();
