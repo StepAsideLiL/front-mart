@@ -6,6 +6,7 @@ const titleVariants = cva("", {
     variant: {
       default: "font-medium text-xl",
       xl: "font-medium text-xl",
+      xl2: "font-medium text-2xl",
     },
   },
   defaultVariants: {
