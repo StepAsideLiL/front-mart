@@ -3,6 +3,12 @@ import CloudinaryImage from "@/components/uis/cloudinary-image";
 import Title from "@/components/uis/title";
 import { getProductById } from "@/lib/data";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const ProductDetails = async ({ id }: { id: string }) => {
   const product = await getProductById(id);
@@ -49,7 +55,14 @@ const ProductDetails = async ({ id }: { id: string }) => {
         </section>
       </section>
 
-      <section className="py-2">{product?.description}</section>
+      <section className="py-2">
+        <Accordion type="single" collapsible>
+          <AccordionItem value="item-1">
+            <AccordionTrigger>Product Description</AccordionTrigger>
+            <AccordionContent>{product?.description}</AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </section>
     </section>
   );
 };
