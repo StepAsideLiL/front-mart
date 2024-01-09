@@ -13,7 +13,7 @@ const AllProduct = async () => {
       {products.map((product) => (
         <Card key={product.id}>
           <div className="relative flex justify-center group">
-            <Link href={``}>
+            <Link href={`/shop/${product.id}`}>
               <CloudinaryImage
                 width="600"
                 height="600"
@@ -29,7 +29,7 @@ const AllProduct = async () => {
 
           <CardHeader>
             <CardTitle className="text-base">
-              <Link href={``} className="hover:underline">
+              <Link href={`/shop/${product.id}`} className="hover:underline">
                 {product.title}
               </Link>
             </CardTitle>
