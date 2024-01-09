@@ -1,25 +1,59 @@
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CloudinaryImage from "@/components/uis/cloudinary-image";
 import { getProducts } from "@/lib/data";
+import { calculateDiscountedPrice, cn } from "@/lib/utils";
+import Link from "next/link";
 
 const AllProduct = async () => {
   const products = await getProducts();
 
   return (
-    <div className="grid grid-cols-3 gap-2">
+    <div className="grid lg:grid-cols-4 grid-cols-2 gap-2">
       {products.map((product) => (
         <Card key={product.id}>
-          <CloudinaryImage
-            width="600"
-            height="600"
-            src={product.imageId || ""}
-            sizes="100vw"
-            alt={`Photo of ${product.title}`}
-          />
+          <div className="relative flex justify-center group">
+            <Link href={``}>
+              <CloudinaryImage
+                width="600"
+                height="600"
+                src={product.imageId || ""}
+                sizes="100vw"
+                alt={`Photo of ${product.title}`}
+              />
+            </Link>
+            <Button className="rounded-3xl absolute bottom-3 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity">
+              Quick View
+            </Button>
+          </div>
 
           <CardHeader>
-            <CardTitle>{product.title}</CardTitle>
+            <CardTitle className="text-base">
+              <Link href={``} className="hover:underline">
+                {product.title}
+              </Link>
+            </CardTitle>
           </CardHeader>
+
+          <CardContent>
+            <p className="text-sm">
+              <span
+                className={cn(
+                  product.discount !== 0 && "line-through text-muted-foreground"
+                )}
+              >
+                ${product.price}
+              </span>{" "}
+              {product.discount !== 0 && (
+                <>
+                  <span>
+                    ${calculateDiscountedPrice(product.price, product.discount)}
+                  </span>{" "}
+                  <span className="text-red-500">{product.discount}% off</span>
+                </>
+              )}
+            </p>
+          </CardContent>
         </Card>
       ))}
     </div>
