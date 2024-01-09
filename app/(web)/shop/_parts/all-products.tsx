@@ -40,7 +40,8 @@ const AllProduct = async () => {
               <span
                 className={cn(
                   "text-base font-medium",
-                  product.discount !== 0 && "line-through text-muted-foreground"
+                  product.discount !== 0 &&
+                    "text-sm font-normal line-through text-muted-foreground"
                 )}
               >
                 ${product.price}
