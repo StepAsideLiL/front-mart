@@ -4,6 +4,7 @@ import CloudinaryImage from "@/components/uis/cloudinary-image";
 import { getProducts } from "@/lib/data";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import Link from "next/link";
+import QuickView from "./quick-view";
 
 const AllProduct = async () => {
   const products = await getProducts();
@@ -22,9 +23,10 @@ const AllProduct = async () => {
                 alt={`Photo of ${product.title}`}
               />
             </Link>
-            <Button className="rounded-3xl absolute bottom-3 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity">
+            {/* <Button className="rounded-3xl absolute bottom-3 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity">
               Quick View
-            </Button>
+            </Button> */}
+            <QuickView />
           </div>
 
           <CardHeader>
