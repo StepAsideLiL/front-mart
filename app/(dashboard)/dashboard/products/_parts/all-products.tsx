@@ -43,7 +43,7 @@ const AllProducts = async () => {
               )}
             </CardContent>
 
-            <div className="lg:col-span-2 col-span-12 lg:p-6 pb-6 px-6 flex gap-2">
+            <div className="lg:col-span-2 col-span-12 lg:p-6 pb-6 px-6 flex gap-2 lg:justify-end justify-start">
               <Button size={"icon"} variant={"secondary"} asChild>
                 <Link href={``}>
                   <span className="sr-only">Edit</span>
