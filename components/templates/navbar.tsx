@@ -5,6 +5,7 @@ import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
 import AvatarMenu from "./avatar-menu";
 import Logo from "@/components/uis/logo";
+import SigninMenu from "./signin-menu";
 
 const Navbar = () => {
   return (
@@ -22,9 +23,7 @@ const Navbar = () => {
 
         <Separator orientation="vertical" />
 
-        <Button variant={"outline"}>Login</Button>
-
-        <Button>Sign Up</Button>
+        <SigninMenu />
 
         <AvatarMenu />
       </div>
