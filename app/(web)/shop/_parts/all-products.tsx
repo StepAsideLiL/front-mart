@@ -39,6 +39,7 @@ const AllProduct = async () => {
             <p className="text-sm">
               <span
                 className={cn(
+                  "text-base font-medium",
                   product.discount !== 0 && "line-through text-muted-foreground"
                 )}
               >
@@ -46,7 +47,7 @@ const AllProduct = async () => {
               </span>{" "}
               {product.discount !== 0 && (
                 <>
-                  <span>
+                  <span className="text-base font-medium">
                     ${calculateDiscountedPrice(product.price, product.discount)}
                   </span>{" "}
                   <span className="text-red-500">{product.discount}% off</span>
