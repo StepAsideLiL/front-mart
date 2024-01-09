@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card";
 import { getProducts } from "@/lib/data";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
-import { Delete, Edit, Trash } from "lucide-react";
+import { Edit, Trash } from "lucide-react";
 import Link from "next/link";
 
 const AllProducts = async () => {
