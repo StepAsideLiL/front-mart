@@ -1,11 +1,10 @@
-import React from "react";
 import { ModeToggle } from "@/components/templates/mode-toggle";
 import Navlink from "./navlink";
 import { Separator } from "../ui/separator";
-import { Button } from "../ui/button";
 import AvatarMenu from "./avatar-menu";
 import Logo from "@/components/uis/logo";
 import SigninMenu from "./signin-menu";
+import Cart from "./cart";
 
 const Navbar = () => {
   return (
@@ -24,6 +23,8 @@ const Navbar = () => {
         <Separator orientation="vertical" />
 
         <SigninMenu />
+
+        <Cart />
 
         <AvatarMenu />
       </div>
