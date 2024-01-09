@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CloudinaryImage from "@/components/uis/cloudinary-image";
 import { getProducts } from "@/lib/data";
@@ -23,10 +22,7 @@ const AllProduct = async () => {
                 alt={`Photo of ${product.title}`}
               />
             </Link>
-            {/* <Button className="rounded-3xl absolute bottom-3 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity">
-              Quick View
-            </Button> */}
-            <QuickView />
+            <QuickView id={product.id} />
           </div>
 
           <CardHeader>

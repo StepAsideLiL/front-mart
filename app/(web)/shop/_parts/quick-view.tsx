@@ -7,7 +7,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-const QuickView = () => {
+const QuickView = ({ id }: { id: string }) => {
   return (
     <Sheet>
       <SheetTrigger
