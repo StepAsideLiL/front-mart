@@ -56,12 +56,14 @@ const ProductDetails = async ({ id }: { id: string }) => {
       </section>
 
       <section className="py-2">
-        <Accordion type="single" collapsible>
-          <AccordionItem value="item-1">
-            <AccordionTrigger>Product Description</AccordionTrigger>
-            <AccordionContent>{product?.description}</AccordionContent>
-          </AccordionItem>
-        </Accordion>
+        {product?.description && (
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger>Product Description</AccordionTrigger>
+              <AccordionContent>{product?.description}</AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        )}
       </section>
     </section>
   );
