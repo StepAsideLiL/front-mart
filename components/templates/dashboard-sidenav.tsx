@@ -1,7 +1,14 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Gift, LayoutDashboard, ListOrdered, Menu, User } from "lucide-react";
+import {
+  Gift,
+  LayoutDashboard,
+  ListOrdered,
+  Menu,
+  Store,
+  User,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
@@ -15,7 +22,7 @@ import {
 } from "@/components/ui/sheet";
 import { Cn } from "@/lib/types";
 
-const menus = [
+const menus1 = [
   {
     title: "Dashboard",
     href: "/dashboard",
@@ -35,6 +42,14 @@ const menus = [
     title: "Orders",
     href: "/dashboard/orders",
     icon: <ListOrdered strokeWidth={"1px"} width={"20px"} />,
+  },
+];
+
+const menus2 = [
+  {
+    title: "Shop",
+    href: "/shop",
+    icon: <Store strokeWidth={"1px"} width={"20px"} />,
   },
 ];
 
@@ -61,7 +76,20 @@ const SideMenus = ({ className }: Cn) => {
 
   return (
     <nav className={cn("p-1 flex-col gap-1 flex", className)}>
-      {menus.map((menu) => (
+      {menus1.map((menu) => (
+        <ActiveLink
+          key={menu.href}
+          href={menu.href}
+          active={pathname === menu.href ? true : false}
+        >
+          <span>{menu.icon}</span>
+          <span>{menu.title}</span>
+        </ActiveLink>
+      ))}
+
+      <Separator orientation="horizontal" />
+
+      {menus2.map((menu) => (
         <ActiveLink
           key={menu.href}
           href={menu.href}
