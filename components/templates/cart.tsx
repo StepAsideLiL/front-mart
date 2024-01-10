@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Sheet,
   SheetContent,
@@ -8,13 +6,14 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ShoppingCart } from "lucide-react";
-import CartContent from "./cart-content";
+import { CartItemCount, CartContent } from "./cart-content";
 
 const Cart = () => {
   return (
     <Sheet>
-      <SheetTrigger>
+      <SheetTrigger className="flex gap-0.5">
         <ShoppingCart />
+        <CartItemCount />
       </SheetTrigger>
 
       <SheetContent className="space-y-2">
