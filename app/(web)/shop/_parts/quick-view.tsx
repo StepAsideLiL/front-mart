@@ -5,6 +5,7 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import AddCartBtn from "@/components/uis/add-cart-btn";
 import CloudinaryImage from "@/components/uis/cloudinary-image";
 import Title from "@/components/uis/title";
 import { getProductById } from "@/lib/data";
@@ -37,6 +38,14 @@ const QuickView = ({ id }: { id: string }) => {
 
 const Product = async ({ id }: { id: string }) => {
   const product = await getProductById(id);
+
+  const cartInfo = {
+    id: product!.id,
+    title: product!.title,
+    price: product!.price,
+    discount: product!.discount,
+    imageId: product!.imageId,
+  };
 
   return (
     <div className="p-6 space-y-3">
@@ -73,10 +82,10 @@ const Product = async ({ id }: { id: string }) => {
 
       {product?.quickOverview && <p>{product?.quickOverview}</p>}
 
-      <Button className="w-fit inline-block">
+      <AddCartBtn cartInfo={cartInfo} className="inline-block">
         Add to Cart $
         {calculateDiscountedPrice(product!.price, product!.discount)}
-      </Button>
+      </AddCartBtn>
 
       <Link href={`/shop/${id}`} className="hover:underline text-sm block">
         View Full Product Details
