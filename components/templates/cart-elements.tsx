@@ -24,7 +24,7 @@ export const CartItemCount = () => {
     }
   }, [localCart.length, setCartCount]);
 
-  if (localCart.length === 0) {
+  if (cartCount === 0) {
     return null;
   }
 
