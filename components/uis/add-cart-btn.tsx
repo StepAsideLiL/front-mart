@@ -18,6 +18,21 @@ const AddCartBtn = ({
 }) => {
   const addToCart = () => {
     console.log(cartInfo);
+
+    if (typeof window !== "undefined" && window.localStorage) {
+      const localCartStr = localStorage.getItem("cart");
+
+      if (!localCartStr) {
+        localStorage.setItem("cart", stringifyJson([cartInfo]));
+      } else {
+        const localCart = parseJson(localCartStr);
+        console.log(localCart);
+        if (!localCart.some((obj) => obj.id === cartInfo.id)) {
+          localCart.push(cartInfo);
+          localStorage.setItem("cart", stringifyJson(localCart));
+        }
+      }
+    }
   };
 
   return <Button onClick={() => addToCart()}>{children}</Button>;
