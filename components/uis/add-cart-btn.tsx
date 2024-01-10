@@ -2,10 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import { parseJson, stringifyJson } from "@/lib/local-storage";
+import { cn } from "@/lib/utils";
 
 const AddCartBtn = ({
   children,
   cartInfo,
+  className,
 }: {
   children: React.ReactNode;
   cartInfo: {
@@ -15,6 +17,7 @@ const AddCartBtn = ({
     discount: number | null;
     imageId: string | null;
   };
+  className?: string;
 }) => {
   const addToCart = () => {
     console.log(cartInfo);
@@ -35,7 +38,11 @@ const AddCartBtn = ({
     }
   };
 
-  return <Button onClick={() => addToCart()}>{children}</Button>;
+  return (
+    <Button onClick={() => addToCart()} className={cn(className)}>
+      {children}
+    </Button>
+  );
 };
 
 export default AddCartBtn;
