@@ -7,15 +7,17 @@ const CloudinaryImage = ({
   width = "600",
   height = "600",
   src,
-  sizes = "100vw",
   alt,
+  sizes = "100vw",
+  crop = "thumb",
   className = "",
 }: {
   width?: number | `${number}` | undefined;
   height?: number | `${number}` | undefined;
   src: string;
-  sizes?: string;
   alt: string;
+  sizes?: string;
+  crop?: string;
   className?: string;
 }) => {
   return (
@@ -23,9 +25,9 @@ const CloudinaryImage = ({
       width={width}
       height={height}
       src={src}
-      sizes={sizes}
       alt={alt}
-      crop="thumb"
+      sizes={sizes}
+      crop={crop}
       className={cn(className)}
     />
   );
