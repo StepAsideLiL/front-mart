@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import CloudinaryImage from "@/components/uis/cloudinary-image";
 import Title from "@/components/uis/title";
 import { getProductById } from "@/lib/data";
@@ -9,9 +8,18 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import AddCartBtn from "@/components/uis/add-cart-btn";
 
 const ProductDetails = async ({ id }: { id: string }) => {
   const product = await getProductById(id);
+
+  const cartInfo = {
+    id: product!.id,
+    title: product!.title,
+    price: product!.price,
+    discount: product!.discount,
+    imageId: product!.imageId,
+  };
 
   return (
     <section className="space-y-6">
@@ -48,10 +56,10 @@ const ProductDetails = async ({ id }: { id: string }) => {
 
           {product?.quickOverview && <p>{product?.quickOverview}</p>}
 
-          <Button>
+          <AddCartBtn cartInfo={cartInfo}>
             Add to Cart $
             {calculateDiscountedPrice(product!.price, product!.discount)}
-          </Button>
+          </AddCartBtn>
         </section>
       </section>
 
