@@ -28,3 +28,11 @@ export type CloundinayImage = {
     public_id: string;
   };
 };
+
+export type CartData = {
+  id: string;
+  title: string;
+  price: number;
+  discount: number | null;
+  imageId: string | null;
+}[];
