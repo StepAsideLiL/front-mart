@@ -6,7 +6,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ShoppingCart } from "lucide-react";
-import { CartItemCount, CartContent } from "./cart-content";
+import { CartItemCount, CartContent } from "./cart-elements";
 
 const Cart = () => {
   return (
@@ -16,7 +16,7 @@ const Cart = () => {
         <CartItemCount />
       </SheetTrigger>
 
-      <SheetContent className="space-y-2">
+      <SheetContent className="space-y-2 overflow-auto lg:max-w-xl w-full">
         <SheetHeader>
           <SheetTitle>Shopping Cart</SheetTitle>
         </SheetHeader>
