@@ -7,16 +7,22 @@ import CloudinaryImage from "../uis/cloudinary-image";
 import { Card, CardHeader, CardTitle } from "../ui/card";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
+import { useCartStore } from "@/lib/store/cart-store";
 
 export const CartItemCount = () => {
   const [localCart, setLocalCart] = useState<CartData>([]);
+  const [cartCount, setCartCount] = useCartStore((s) => [
+    s.cartCount,
+    s.setCartCount,
+  ]);
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.localStorage) {
       const localCartStr = localStorage.getItem("cart") || "[]";
       setLocalCart(parseJson(localCartStr));
+      setCartCount(localCart.length);
     }
-  }, []);
+  }, [localCart.length, setCartCount]);
 
   if (localCart.length === 0) {
     return null;
@@ -24,7 +30,7 @@ export const CartItemCount = () => {
 
   return (
     <Badge variant={"outline"} className="py-1">
-      {localCart.length}
+      {cartCount}
     </Badge>
   );
 };
