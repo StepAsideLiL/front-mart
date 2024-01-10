@@ -20,8 +20,6 @@ const AddCartBtn = ({
   className?: string;
 }) => {
   const addToCart = () => {
-    console.log(cartInfo);
-
     if (typeof window !== "undefined" && window.localStorage) {
       const localCartStr = localStorage.getItem("cart");
 
