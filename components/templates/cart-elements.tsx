@@ -1,13 +1,15 @@
 "use client";
 
 import { parseJson } from "@/lib/local-storage";
-import { Badge } from "../ui/badge";
+import { Badge } from "@/components/ui/badge";
 import { CartData } from "@/lib/types";
-import CloudinaryImage from "../uis/cloudinary-image";
-import { Card, CardHeader, CardTitle } from "../ui/card";
+import CloudinaryImage from "@/components/uis/cloudinary-image";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { useCartStore } from "@/lib/store/cart-store";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export const CartItemCount = () => {
   const [localCart, setLocalCart] = useState<CartData>([]);
@@ -37,16 +39,29 @@ export const CartItemCount = () => {
 
 export const CartContent = () => {
   const [localCart, setLocalCart] = useState<CartData>([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.localStorage) {
       const localCartStr = localStorage.getItem("cart") || "[]";
       setLocalCart(parseJson(localCartStr));
+      let price = 0;
+      localCart.map((product) => {
+        if (product!.discount === 0) {
+          price = price + product!.price;
+        } else {
+          price =
+            price + calculateDiscountedPrice(product!.price, product!.discount);
+        }
+      });
+      setTotalPrice(price);
     }
-  }, []);
+  }, [localCart]);
+
+  console.log("totalPrice", totalPrice);
 
   return (
-    <div className="space-y-2">
+    <section className="space-y-2">
       {localCart.map((product) => (
         <Card key={product.id} className="grid grid-cols-12 gap-2">
           <CloudinaryImage
@@ -84,6 +99,25 @@ export const CartContent = () => {
           </CardHeader>
         </Card>
       ))}
-    </div>
+
+      <div className="border-t-2 p-3 space-y-3">
+        <div className="flex justify-between items-center gap-2">
+          <div>
+            Total{" "}
+            <span className="text-muted-foreground text-sm">
+              {localCart.length} Item
+            </span>
+          </div>
+
+          <div>${totalPrice}</div>
+        </div>
+
+        <div>
+          <Button size={"lg"} className="w-full" asChild>
+            <Link href={``}>Checkout</Link>
+          </Button>
+        </div>
+      </div>
+    </section>
   );
 };
