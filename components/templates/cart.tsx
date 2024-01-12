@@ -8,7 +8,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ShoppingCart } from "lucide-react";
-import { parseJson } from "@/lib/local-storage";
+import { parseJson, stringifyJson } from "@/lib/local-storage";
 import { Badge } from "@/components/ui/badge";
 import { CartData } from "@/lib/types";
 import CloudinaryImage from "@/components/uis/cloudinary-image";
@@ -56,6 +56,16 @@ const Cart = () => {
       setProductIds(JSON.stringify(productIds));
     }
   }, [localCart]);
+
+  const removeProduct = (id: string) => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      console.log(id);
+      const newProducts = localCart.filter((product) => product.id !== id);
+      setLocalCart(newProducts);
+      localStorage.setItem("cart", stringifyJson(newProducts));
+      setCartCount(localCart.length);
+    }
+  };
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -115,6 +125,14 @@ const Cart = () => {
                     </>
                   )}
                 </div>
+
+                <Button
+                  variant={"outline"}
+                  className="w-fit"
+                  onClick={() => removeProduct(product.id)}
+                >
+                  Remove
+                </Button>
               </CardHeader>
             </Card>
           ))}
