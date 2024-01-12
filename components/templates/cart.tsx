@@ -36,7 +36,7 @@ const Cart = () => {
       setLocalCart(parseJson(localCartStr));
       setCartCount(localCart.length);
     }
-  }, [localCart.length, setCartCount]);
+  }, [cartCount, localCart.length, setCartCount]);
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.localStorage) {
