@@ -13,11 +13,7 @@ const RemoveBtn = ({ id }: { id: string }) => {
   const products: ProductCart = JSON.parse(searchParams.get("cart") || "");
 
   const removeProduct = () => {
-    console.log(id);
-    console.log(searchParams.get("cart"));
-
     const newProducts = products.filter((product) => product.id !== id);
-    console.log(newProducts);
     replace(`/checkout?cart=${JSON.stringify(newProducts)}`);
     if (newProducts.length === 0) {
       redirect("/shop");
