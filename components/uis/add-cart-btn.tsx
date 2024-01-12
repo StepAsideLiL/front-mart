@@ -31,7 +31,7 @@ const AddCartBtn = ({
         setCartCount(1);
       } else {
         const localCart = parseJson(localCartStr);
-        console.log(localCart);
+        // console.log(localCart);
         if (!localCart.some((obj) => obj.id === cartInfo.id)) {
           localCart.push(cartInfo);
           localStorage.setItem("cart", stringifyJson(localCart));
