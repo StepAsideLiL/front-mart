@@ -59,7 +59,6 @@ const Cart = () => {
 
   const removeProduct = (id: string) => {
     if (typeof window !== "undefined" && window.localStorage) {
-      console.log(id);
       const newProducts = localCart.filter((product) => product.id !== id);
       setLocalCart(newProducts);
       localStorage.setItem("cart", stringifyJson(newProducts));
@@ -127,7 +126,7 @@ const Cart = () => {
                 </div>
 
                 <Button
-                  variant={"outline"}
+                  variant={"destructive"}
                   className="w-fit"
                   onClick={() => removeProduct(product.id)}
                 >
