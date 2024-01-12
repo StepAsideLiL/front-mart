@@ -1,10 +1,16 @@
+import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import CloudinaryImage from "@/components/uis/cloudinary-image";
 import { getProductById } from "@/lib/data";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
+import RemoveBtn from "./remove-btn";
 
 const ProductCard = async ({ id }: { id: string }) => {
   const product = await getProductById(id);
+
+  const removeProduct = (id: string) => {
+    console.log("hello");
+  };
 
   return (
     <Card className="grid grid-cols-12 gap-2 max-w-md">
@@ -15,7 +21,7 @@ const ProductCard = async ({ id }: { id: string }) => {
         className="col-span-4"
       />
 
-      <CardHeader className="col-span-8 p-0 py-2">
+      <CardHeader className="col-span-8 p-2">
         <CardTitle className="text-lg">{product?.title}</CardTitle>
         <div>
           <span
@@ -37,7 +43,7 @@ const ProductCard = async ({ id }: { id: string }) => {
           )}
         </div>
 
-        <div>hello</div>
+        <RemoveBtn id={product!.id} />
       </CardHeader>
     </Card>
   );
