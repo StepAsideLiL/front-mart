@@ -8,10 +8,6 @@ import RemoveBtn from "./remove-btn";
 const ProductCard = async ({ id }: { id: string }) => {
   const product = await getProductById(id);
 
-  const removeProduct = (id: string) => {
-    console.log("hello");
-  };
-
   return (
     <Card className="grid grid-cols-12 gap-2 max-w-md">
       <CloudinaryImage
