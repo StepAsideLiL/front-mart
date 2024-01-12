@@ -16,10 +16,8 @@ const CheckoutPage = ({ searchParams }: { searchParams: { cart: string } }) => {
         <Title>Checkout</Title>
       </section>
 
-      <section>CheckoutPage {searchParams.cart}</section>
-
       <section>
-        <Suspense>
+        <Suspense fallback={"loading..."}>
           <div className="space-y-5">
             {products.map((product) => (
               <ProductCard key={product.id} id={product.id} />
