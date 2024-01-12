@@ -1,6 +1,7 @@
 import prisma from "@/lib/prismadb";
 import { calculateDiscountedPrice } from "./utils";
 
+// Get all the products
 export const getProducts = async () => {
   try {
     const products = await prisma.product.findMany();
@@ -12,6 +13,7 @@ export const getProducts = async () => {
   }
 };
 
+// Get product info by id
 export const getProductById = async (id: string) => {
   try {
     const product = await prisma.product.findUnique({
