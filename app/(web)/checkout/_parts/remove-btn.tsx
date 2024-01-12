@@ -18,8 +18,10 @@ const RemoveBtn = ({ id }: { id: string }) => {
 
     const newProducts = products.filter((product) => product.id !== id);
     console.log(newProducts);
-
     replace(`/checkout?cart=${JSON.stringify(newProducts)}`);
+    if (newProducts.length === 0) {
+      redirect("/shop");
+    }
     redirect(`/checkout?cart=${JSON.stringify(newProducts)}`);
   };
 
