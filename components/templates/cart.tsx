@@ -74,6 +74,11 @@ const Cart = () => {
         </SheetHeader>
 
         <section className="space-y-2">
+          {cartCount === 0 && (
+            <h1 className="text-center text-xl text-muted-foreground">
+              Cart is empty
+            </h1>
+          )}
           {localCart.map((product) => (
             <Card key={product.id} className="grid grid-cols-12 gap-2">
               <CloudinaryImage
@@ -114,29 +119,31 @@ const Cart = () => {
             </Card>
           ))}
 
-          <div className="border-t-2 p-3 space-y-3">
-            <div className="flex justify-between items-center gap-2">
-              <div>
-                Total{" "}
-                <span className="text-muted-foreground text-sm">
-                  {localCart.length} Item
-                </span>
+          {cartCount !== 0 && (
+            <div className="border-t-2 p-3 space-y-3">
+              <div className="flex justify-between items-center gap-2">
+                <div>
+                  Total{" "}
+                  <span className="text-muted-foreground text-sm">
+                    {localCart.length} Item
+                  </span>
+                </div>
+
+                <div>${totalPrice}</div>
               </div>
 
-              <div>${totalPrice}</div>
+              <div>
+                <Button
+                  size={"lg"}
+                  className="w-full"
+                  asChild
+                  onClick={() => setOpen(false)}
+                >
+                  <Link href={`/checkout?cart=${productIds}`}>Checkout</Link>
+                </Button>
+              </div>
             </div>
-
-            <div>
-              <Button
-                size={"lg"}
-                className="w-full"
-                asChild
-                onClick={() => setOpen(false)}
-              >
-                <Link href={`/checkout?cart=${productIds}`}>Checkout</Link>
-              </Button>
-            </div>
-          </div>
+          )}
         </section>
       </SheetContent>
     </Sheet>
