@@ -156,7 +156,7 @@ const Cart = () => {
                   asChild
                   onClick={() => setOpen(false)}
                 >
-                  <Link href={`/checkout?cart=${productIds}`}>Checkout</Link>
+                  <Link href={`/cart?cart=${productIds}`}>Checkout</Link>
                 </Button>
               </div>
             </div>
