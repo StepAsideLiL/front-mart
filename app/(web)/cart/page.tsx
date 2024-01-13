@@ -5,10 +5,7 @@ import ProductCard from "./_parts/product-cart";
 import TotalPrice from "./_parts/total-price";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-
-type ProductCart = {
-  id: string;
-}[];
+import { ProductCart } from "@/lib/types";
 
 const CheckoutPage = ({ searchParams }: { searchParams: { cart: string } }) => {
   const products: ProductCart = JSON.parse(searchParams.cart);
