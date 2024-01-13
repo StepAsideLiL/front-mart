@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import ProductCard from "./_parts/product-cart";
 import TotalPrice from "./_parts/total-price";
 import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
 
 type ProductCart = {
   id: string;
@@ -28,7 +29,10 @@ const CheckoutPage = ({ searchParams }: { searchParams: { cart: string } }) => {
         </section>
 
         <section className="w-full">
-          <h1 className="text-xl font-medium">Total</h1>
+          <section className="flex items-center gap-2">
+            <h1 className="text-xl font-medium">Total</h1>
+            <Badge variant={"outline"}>{products.length}</Badge>
+          </section>
 
           <div className="py-2">
             <Separator orientation="horizontal" />
