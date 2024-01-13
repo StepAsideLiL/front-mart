@@ -30,8 +30,8 @@ const RemoveBtn = ({ id }: { id: string }) => {
       replace("/shop");
       redirect("/shop");
     } else {
-      replace(`/checkout?cart=${JSON.stringify(newProducts)}`);
-      redirect(`/checkout?cart=${JSON.stringify(newProducts)}`);
+      replace(`/cart?cart=${JSON.stringify(newProducts)}`);
+      redirect(`/cart?cart=${JSON.stringify(newProducts)}`);
     }
   };
 
