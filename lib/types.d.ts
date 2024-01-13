@@ -36,3 +36,7 @@ export type CartData = {
   discount: number | null;
   imageId: string | null;
 }[];
+
+export type ProductCart = {
+  id: string;
+}[];
