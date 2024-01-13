@@ -1,5 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import { calculateCartPrice } from "@/lib/data";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const TotalPrice = async ({
   products,
@@ -29,6 +31,14 @@ const TotalPrice = async ({
       <div className="flex justify-between text-lg">
         <span>Total</span>
         <span>${(price + delivaryCharge).toFixed(2)}</span>
+      </div>
+
+      <div className="pt-3">
+        <Button className="w-full" asChild>
+          <Link href={`/checkout?cart=${JSON.stringify(products)}`}>
+            Checkout
+          </Link>
+        </Button>
       </div>
     </div>
   );
