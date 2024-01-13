@@ -18,7 +18,7 @@ const CheckoutPage = ({ searchParams }: { searchParams: { cart: string } }) => {
 
       <section className="w-full flex flex-col-reverse md:flex-row gap-5 justify-between">
         <section className="w-full">
-          <CheckoutForm />
+          <CheckoutForm products={products} />
         </section>
 
         <section className="w-full">
