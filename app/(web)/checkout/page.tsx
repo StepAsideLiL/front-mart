@@ -5,6 +5,7 @@ import TotalPrice from "./_parts/total-price";
 import Title from "@/components/uis/title";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import CheckoutForm from "./_parts/checkout-form";
 
 const CheckoutPage = ({ searchParams }: { searchParams: { cart: string } }) => {
   const products: ProductCart = JSON.parse(searchParams.cart);
@@ -15,8 +16,10 @@ const CheckoutPage = ({ searchParams }: { searchParams: { cart: string } }) => {
         <Title variant={"xl2"}>Checkout</Title>
       </section>
 
-      <section className="w-full flex flex-col md:flex-row gap-5 justify-between">
-        <section className="w-full">form</section>
+      <section className="w-full flex flex-col-reverse md:flex-row gap-5 justify-between">
+        <section className="w-full">
+          <CheckoutForm />
+        </section>
 
         <section className="w-full">
           <section className="flex items-center gap-2">
