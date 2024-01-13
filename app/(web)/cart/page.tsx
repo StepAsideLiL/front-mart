@@ -15,7 +15,7 @@ const CheckoutPage = ({ searchParams }: { searchParams: { cart: string } }) => {
   return (
     <Main variant={"container"}>
       <section>
-        <Title variant={"xl2"}>Checkout</Title>
+        <Title variant={"xl2"}>Cart</Title>
       </section>
 
       <section className="w-full flex flex-col md:flex-row gap-5 justify-between">
