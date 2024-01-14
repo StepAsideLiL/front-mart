@@ -40,3 +40,14 @@ export type CartData = {
 export type ProductCart = {
   id: string;
 }[];
+
+export type PlaceOrder = {
+  name: string;
+  address: string;
+  zipCode: string;
+  city: string;
+  country: string;
+  products: {
+    id: string;
+  }[];
+};
