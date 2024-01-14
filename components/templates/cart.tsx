@@ -146,7 +146,7 @@ const Cart = () => {
                   </span>
                 </div>
 
-                <div>${totalPrice}</div>
+                <div>${totalPrice.toFixed(2)}</div>
               </div>
 
               <div>
