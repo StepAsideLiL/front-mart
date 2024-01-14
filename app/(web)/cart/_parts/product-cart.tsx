@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import CloudinaryImage from "@/components/uis/cloudinary-image";
 import { getProductById } from "@/lib/data";
