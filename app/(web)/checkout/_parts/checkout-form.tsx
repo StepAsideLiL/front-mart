@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { placeOrder } from "./place-order";
+import { useState } from "react";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name can not be empty" }),
@@ -31,6 +32,8 @@ const CheckoutForm = ({
     id: string;
   }[];
 }) => {
+  const [disableBtn, setDisableBtn] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -49,6 +52,7 @@ const CheckoutForm = ({
       products: products,
     };
     console.log(formData);
+    setDisableBtn(true);
     placeOrder(formData);
   }
 
@@ -139,7 +143,9 @@ const CheckoutForm = ({
           )}
         />
 
-        <Button type="submit">Save and Continue</Button>
+        <Button type="submit" disabled={disableBtn}>
+          Save and Continue
+        </Button>
       </form>
     </Form>
   );
