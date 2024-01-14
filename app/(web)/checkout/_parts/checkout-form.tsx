@@ -104,7 +104,7 @@ const CheckoutForm = ({
           name="country"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>City</FormLabel>
+              <FormLabel>Country</FormLabel>
               <FormControl>
                 <Input placeholder="NY, USA" {...field} />
               </FormControl>
