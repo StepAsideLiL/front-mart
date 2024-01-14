@@ -13,9 +13,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { placeOrder } from "./place-order";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name can not be empty" }),
+  email: z.string().min(1, { message: "Email can not be empty" }),
   address: z.string().min(1, { message: "Address can not be empty" }),
   zipCode: z.string().min(1, { message: "Zip code can not be empty" }),
   city: z.string().min(1, { message: "City can not be empty" }),
@@ -33,11 +35,21 @@ const CheckoutForm = ({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
+      email: "",
+      address: "",
+      zipCode: "",
+      city: "",
+      country: "",
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    const formData = {
+      ...values,
+      products: products,
+    };
+    console.log(formData);
+    placeOrder(formData);
   }
 
   return (
@@ -51,6 +63,20 @@ const CheckoutForm = ({
               <FormLabel>Name</FormLabel>
               <FormControl>
                 <Input placeholder="John Doe" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input type="email" placeholder="johndoe@mail.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -104,7 +130,7 @@ const CheckoutForm = ({
           name="country"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Country</FormLabel>
+              <FormLabel>State and(or) Country</FormLabel>
               <FormControl>
                 <Input placeholder="NY, USA" {...field} />
               </FormControl>
