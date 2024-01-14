@@ -7,10 +7,8 @@ const OrderIdPage = ({ params }: { params: { orderId: string } }) => {
   return (
     <Main variant={"container"}>
       <section>
-        <Title variant={"xl2"}>Order Info</Title>
+        <Title variant={"xl2"}>Order Id: {params.orderId}</Title>
       </section>
-
-      <section>OrderIdPage {params.orderId}</section>
 
       <section>
         <Suspense>
