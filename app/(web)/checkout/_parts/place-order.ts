@@ -18,7 +18,7 @@ export const placeOrder = async (data: PlaceOrder) => {
         zipCode: zipCode,
         city: city,
         country: country,
-        products: { hello: "wordl" },
+        products: products,
       },
     });
 
