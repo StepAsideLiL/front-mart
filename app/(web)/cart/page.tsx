@@ -28,7 +28,7 @@ const CheckoutPage = ({ searchParams }: { searchParams: { cart: string } }) => {
         <section className="w-full">
           <section className="flex items-center gap-2">
             <h1 className="text-xl font-medium">Total</h1>
-            <Badge variant={"outline"}>{products.length}</Badge>
+            <Badge variant={"outline"}>{products.length} item(s)</Badge>
           </section>
 
           <div className="py-2">
