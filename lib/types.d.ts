@@ -43,6 +43,7 @@ export type ProductCart = {
 
 export type PlaceOrder = {
   name: string;
+  email: string;
   address: string;
   zipCode: string;
   city: string;
