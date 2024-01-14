@@ -32,3 +32,28 @@ model Product {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+enum OrderStatus {
+  pending
+  processing
+  shipped
+  delivered
+  canceled
+}
+
+model Order {
+  id String @id @unique @default(uuid())
+
+  name     String
+  email    String
+  address  String
+  zipCode  String
+  city     String
+  country  String
+  products Json
+
+  orderStatus OrderStatus @default(pending)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
