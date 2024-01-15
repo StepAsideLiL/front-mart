@@ -15,7 +15,7 @@ const AllProducts = async () => {
   const products = await getProducts();
 
   return (
-    <ul className="space-y-3">
+    <div className="space-y-3">
       {products.map((product) => (
         <Card key={product.id} className="grid grid-cols-12">
           <CardHeader className="lg:col-span-6 col-span-7">
@@ -57,7 +57,7 @@ const AllProducts = async () => {
           </div>
         </Card>
       ))}
-    </ul>
+    </div>
   );
 };
 
