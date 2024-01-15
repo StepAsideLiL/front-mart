@@ -11,6 +11,14 @@ const OrderDeshboardInfo = async ({ orderId }: { orderId: string }) => {
   return (
     <>
       <section className="space-y-4">
+        <h2 className="text-lg">Product Info</h2>
+
+        <Suspense fallback={"loading..."}>
+          <ProductsInfo products={order!.products as ProductCart} />
+        </Suspense>
+      </section>
+
+      <section className="space-y-4">
         <h2 className="text-lg">Order Info</h2>
 
         <section className="text-muted-foreground divide-y-2">
@@ -37,14 +45,6 @@ const OrderDeshboardInfo = async ({ orderId }: { orderId: string }) => {
             <span className="text-foreground col-span-8">{order?.country}</span>
           </p>
         </section>
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="text-lg">Product Info</h2>
-
-        <Suspense fallback={"loading..."}>
-          <ProductsInfo products={order!.products as ProductCart} />
-        </Suspense>
       </section>
     </>
   );
