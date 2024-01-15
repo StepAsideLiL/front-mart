@@ -40,7 +40,7 @@ const AllOrders = async () => {
 
             <div className="lg:col-span-2 col-span-12 lg:p-6 pb-6 px-6 flex gap-2 lg:justify-end justify-start">
               <Button size={"icon"} variant={"secondary"} asChild>
-                <Link href={`/deshboard/orders/${order!.id}`}>
+                <Link href={`/dashboard/orders/${order!.id}`}>
                   <span className="sr-only">Edit</span>
                   <Edit />
                 </Link>
