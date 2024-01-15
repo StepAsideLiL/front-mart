@@ -57,6 +57,18 @@ export const calculateCartPrice = async (products: { id: string }[]) => {
   }
 };
 
+// Get all orders
+export const getOrders = async () => {
+  try {
+    const orders = await prisma.order.findMany();
+
+    return orders;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Could not fetch all orders.");
+  }
+};
+
 // Get order by id.
 export const getOrderById = async (orderId: string) => {
   try {
