@@ -17,7 +17,7 @@ const EditProductPage = ({ params }: { params: { productId: string } }) => {
         </Suspense>
       </section>
 
-      <section className="p-10 border space-y-10">
+      <section className="p-10 border space-y-5">
         <p className="text-destructive font-medium">
           Remove product from the database
         </p>
