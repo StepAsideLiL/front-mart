@@ -38,9 +38,6 @@ const ResponsiveDialogBox = ({
   const [open, setOpen] = useState(false);
   const isDesktop = useMedia("(min-width: 640px)");
 
-  console.log(isDesktop);
-
-  // return <Button variant={"destructive"}>Remove Product</Button>;
   if (isDesktop) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
