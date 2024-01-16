@@ -19,7 +19,7 @@ import { CloundinayImage, UpdateProductFormData } from "@/lib/types";
 import { useState } from "react";
 import { CldUploadWidget, CldImage } from "next-cloudinary";
 import Image from "next/image";
-import { updateProduct } from "./update-product";
+import { updateProduct } from "./actions";
 
 const formSchema = z.object({
   productTitle: z
