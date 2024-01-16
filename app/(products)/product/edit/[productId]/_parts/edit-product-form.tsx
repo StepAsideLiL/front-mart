@@ -1,6 +1,5 @@
 "use client";
 
-import { Prisma } from "@prisma/client";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -16,10 +15,11 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { AddNewFormData, CloundinayImage } from "@/lib/types";
+import { CloundinayImage, UpdateProductFormData } from "@/lib/types";
 import { useState } from "react";
 import { CldUploadWidget, CldImage } from "next-cloudinary";
 import Image from "next/image";
+import { updateProduct } from "./update-product";
 
 const formSchema = z.object({
   productTitle: z
@@ -44,7 +44,6 @@ const EditProductForm = ({
     quickOverview: string | null;
     imageSrc: string | null;
     imageId: string | null;
-    images: Prisma.JsonValue;
     createdAt: Date;
     updatedAt: Date;
   } | null;
@@ -68,16 +67,19 @@ const EditProductForm = ({
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const formData: AddNewFormData = {
+    const formData: UpdateProductFormData = {
+      id: product!.id,
       ...values,
-      price: parseFloat(values.price),
-      discount: parseFloat(values.discount ? values.discount : "0"),
+      price: Number(parseFloat(values.price).toFixed(2)),
+      discount: Number(
+        parseFloat(values.discount ? values.discount : "0").toFixed(2)
+      ),
       imageSrc: imageSrc ? imageSrc : "",
       imageId: imageId ? imageId : "",
     };
     console.log(formData);
 
-    // addProduct(formData);
+    updateProduct(formData);
   }
 
   return (
