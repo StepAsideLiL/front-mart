@@ -54,11 +54,6 @@ const AllProducts = async () => {
                 <Edit />
               </Link>
             </Button>
-
-            <Button size={"icon"} variant={"destructive"}>
-              <span className="sr-only">Delete</span>
-              <Trash />
-            </Button>
           </div>
         </Card>
       ))}
