@@ -5,7 +5,7 @@ const EditProductPage = () => {
   return (
     <Main variant={"xl"}>
       <section>
-        <Title>Edit</Title>
+        <Title variant={"xl2"}>Edit</Title>
       </section>
 
       <section>Edit</section>
