@@ -30,8 +30,8 @@ const ResponsiveDialogBox = ({
   cancelBtn = <Button variant="outline">Cancel</Button>,
 }: {
   triggerBtn: React.ReactNode;
-  title?: string;
-  description?: string;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
   content: React.ReactNode;
   cancelBtn?: React.ReactNode;
 }) => {
