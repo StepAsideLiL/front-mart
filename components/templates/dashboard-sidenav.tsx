@@ -34,14 +34,14 @@ const menus1 = [
     icon: <Gift strokeWidth={"1px"} width={"20px"} />,
   },
   {
-    title: "Users",
-    href: "/dashboard/users",
-    icon: <User strokeWidth={"1px"} width={"20px"} />,
-  },
-  {
     title: "Orders",
     href: "/dashboard/orders",
     icon: <ListOrdered strokeWidth={"1px"} width={"20px"} />,
+  },
+  {
+    title: "Users",
+    href: "/dashboard/users",
+    icon: <User strokeWidth={"1px"} width={"20px"} />,
   },
 ];
 
