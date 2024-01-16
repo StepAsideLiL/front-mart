@@ -151,7 +151,12 @@ const EditProductForm = ({
                 <FormItem>
                   <FormLabel>Product Discount (Optional)</FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="40%" {...field} />
+                    <Input
+                      type="number"
+                      placeholder="40%"
+                      {...field}
+                      max={100}
+                    />
                   </FormControl>
                   <FormDescription>
                     Product discount amount in percentage.
