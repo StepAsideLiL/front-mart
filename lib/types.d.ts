@@ -21,6 +21,17 @@ export type AddNewFormData = {
   description?: string;
 };
 
+export type UpdateProductFormData = {
+  id: string;
+  productTitle: string;
+  price: number;
+  imageSrc: string;
+  imageId: string;
+  discount?: number;
+  quickOverview?: string;
+  description?: string;
+};
+
 export type CloundinayImage = {
   event?: string | undefined;
   info: {
