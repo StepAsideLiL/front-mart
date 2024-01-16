@@ -66,7 +66,7 @@ const AddProductForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <section className="flex gap-5 w-full">
+        <section className="flex flex-col-reverse md:flex-row gap-5 w-full">
           <div className="w-full space-y-3">
             {/* Product Title */}
             <FormField
