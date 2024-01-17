@@ -3,6 +3,8 @@ import Title from "@/components/uis/title";
 import React, { Suspense } from "react";
 import AllProduct from "./_parts/all-products";
 
+export const revalidate = 10 * 60;
+
 const ShopPage = () => {
   return (
     <Main variant={"container"}>
