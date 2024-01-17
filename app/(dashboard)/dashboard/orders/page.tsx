@@ -1,6 +1,6 @@
 import Title from "@/components/uis/title";
 import { Suspense } from "react";
-import AllOrders from "./_parts/all-orders";
+import AllOrdersTable from "./_parts/all-orders-table";
 
 const OrdersPage = () => {
   return (
@@ -11,7 +11,7 @@ const OrdersPage = () => {
 
       <section>
         <Suspense fallback={"loading..."}>
-          <AllOrders />
+          <AllOrdersTable />
         </Suspense>
       </section>
     </>
