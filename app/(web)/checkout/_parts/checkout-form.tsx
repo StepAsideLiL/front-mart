@@ -15,6 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { placeOrder } from "./place-order";
 import { useState } from "react";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name can not be empty" }),
@@ -32,7 +33,7 @@ const CheckoutForm = ({
     id: string;
   }[];
 }) => {
-  const [disableBtn, setDisableBtn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -51,8 +52,8 @@ const CheckoutForm = ({
       ...values,
       products: products,
     };
-    console.log(formData);
-    setDisableBtn(true);
+
+    setIsLoading(true);
     placeOrder(formData);
   }
 
@@ -143,8 +144,15 @@ const CheckoutForm = ({
           )}
         />
 
-        <Button type="submit" disabled={disableBtn}>
-          Save and Continue
+        <Button type="submit" disabled={isLoading}>
+          {isLoading ? (
+            <>
+              <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+              Saving...
+            </>
+          ) : (
+            <>Save and Continue</>
+          )}
         </Button>
       </form>
     </Form>
