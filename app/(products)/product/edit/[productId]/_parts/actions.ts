@@ -38,7 +38,7 @@ export const updateProduct = async (data: UpdateProductFormData) => {
     throw new Error("Failed to update product in database.");
   }
 
-  revalidatePath("/dashboard/products");
+  revalidatePath("/", "layout");
   redirect("/dashboard/products");
 };
 
@@ -55,6 +55,6 @@ export const deleteProduct = async (productId: string) => {
     throw new Error("Failed to delete product in database.");
   }
 
-  revalidatePath("/dashboard/products");
+  revalidatePath("/", "layout");
   redirect("/dashboard/products");
 };

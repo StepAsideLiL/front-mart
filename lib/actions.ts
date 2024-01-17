@@ -33,8 +33,7 @@ export const addProduct = async (data: AddNewFormData) => {
     throw new Error("Failed to add product in database.");
   }
 
-  revalidatePath("/shop");
-  revalidatePath("/dashboard/products");
+  revalidatePath("/", "layout");
   redirect("/dashboard/products");
 };
 
