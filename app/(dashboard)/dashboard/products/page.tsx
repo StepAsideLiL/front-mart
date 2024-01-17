@@ -13,11 +13,12 @@ export const metadata: Metadata = {
 const ProductsPage = () => {
   return (
     <>
-      <section className="flex items-center justify-between">
+      <section className="flex items-center gap-10">
         <Title variant={"xl"}>Products</Title>
 
         <Button asChild variant={"outline"} size={"icon"}>
           <Link href={"/product/add-new"}>
+            <span className="sr-only">Add Product</span>
             <Plus />
           </Link>
         </Button>
