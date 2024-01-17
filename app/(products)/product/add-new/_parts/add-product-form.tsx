@@ -20,6 +20,7 @@ import { useState } from "react";
 import { CldUploadWidget, CldImage } from "next-cloudinary";
 import Image from "next/image";
 import { addProduct } from "@/lib/actions";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 const formSchema = z.object({
   productTitle: z
@@ -33,6 +34,8 @@ const formSchema = z.object({
 });
 
 const AddProductForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const [imageSrc, setIamgeSrc] = useState("");
   const [imageId, setIamgeId] = useState("");
   const form = useForm<z.infer<typeof formSchema>>({
@@ -60,6 +63,7 @@ const AddProductForm = () => {
       imageId: imageId,
     };
 
+    setIsLoading(true);
     addProduct(formData);
   }
 
@@ -242,7 +246,16 @@ const AddProductForm = () => {
           </div>
         </section>
 
-        <Button type="submit">Add New Product</Button>
+        <Button type="submit" disabled={isLoading}>
+          {isLoading ? (
+            <>
+              <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+              Adding...
+            </>
+          ) : (
+            <>Add New Product</>
+          )}
+        </Button>
       </form>
     </Form>
   );
