@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -61,7 +60,7 @@ const AllProductsTabel = async () => {
                 </>
               )}
             </TableCell>
-            <TableCell>
+            <TableCell className="text-right">
               <Button size={"icon"} variant={"secondary"} asChild>
                 <Link href={`/product/edit/${product.id}`}>
                   <span className="sr-only">Edit</span>
