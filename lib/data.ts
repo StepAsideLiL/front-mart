@@ -4,7 +4,11 @@ import { calculateDiscountedPrice } from "./utils";
 // Get all the products
 export const getProducts = async () => {
   try {
-    const products = await prisma.product.findMany();
+    const products = await prisma.product.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
 
     return products;
   } catch (err) {
