@@ -24,9 +24,7 @@ const AllProductsTabel = async () => {
           <TableHead>Title</TableHead>
           <TableHead className="text-right w-36">Price</TableHead>
           <TableHead className="w-36">Discount (%)</TableHead>
-          <TableHead className="text-right w-36">
-            Price (after discount)
-          </TableHead>
+          <TableHead className="text-right w-36">Discount Price</TableHead>
           <TableHead></TableHead>
         </TableRow>
       </TableHeader>
