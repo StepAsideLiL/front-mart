@@ -13,12 +13,16 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { deleteProduct } from "./actions";
+import { useState } from "react";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 const formSchema = z.object({
   keyword: z.string().min(1, { message: "Field can not be empty." }),
 });
 
 const DeleteForm = ({ productId }: { productId: string }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -28,6 +32,7 @@ const DeleteForm = ({ productId }: { productId: string }) => {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     if (values.keyword === "delete") {
+      setIsLoading(true);
       deleteProduct(productId);
     }
   }
@@ -47,8 +52,15 @@ const DeleteForm = ({ productId }: { productId: string }) => {
             </FormItem>
           )}
         />
-        <Button type="submit" variant={"destructive"}>
-          Remove
+        <Button type="submit" variant={"destructive"} disabled={isLoading}>
+          {isLoading ? (
+            <>
+              <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+              Removing...
+            </>
+          ) : (
+            <>Remove</>
+          )}
         </Button>
       </form>
     </Form>
