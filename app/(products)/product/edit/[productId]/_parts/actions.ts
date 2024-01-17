@@ -39,7 +39,7 @@ export const updateProduct = async (data: UpdateProductFormData) => {
   }
 
   revalidatePath("/", "layout");
-  redirect("/dashboard/products");
+  redirect(`/shop/${id}`);
 };
 
 // Delete product from the database.
