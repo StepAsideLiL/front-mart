@@ -22,9 +22,11 @@ const AllProductsTabel = async () => {
         <TableRow>
           <TableHead className="w-14"></TableHead>
           <TableHead>Title</TableHead>
-          <TableHead>Price</TableHead>
-          <TableHead>Discount</TableHead>
-          <TableHead>Price (after discount)</TableHead>
+          <TableHead className="text-right w-36">Price</TableHead>
+          <TableHead className="w-36">Discount (%)</TableHead>
+          <TableHead className="text-right w-36">
+            Price (after discount)
+          </TableHead>
           <TableHead></TableHead>
         </TableRow>
       </TableHeader>
@@ -43,10 +45,28 @@ const AllProductsTabel = async () => {
                 {product!.title}
               </Link>
             </TableCell>
-            <TableCell>${product!.price}</TableCell>
-            <TableCell>{product!.discount}%</TableCell>
+            <TableCell className="text-right">
+              <span
+                className={cn(
+                  "text-foreground font-semibold",
+                  product!.discount !== 0 &&
+                    "text-muted-foreground font-normal line-through"
+                )}
+              >
+                ${product!.price}
+              </span>
+            </TableCell>
             <TableCell>
-              ${calculateDiscountedPrice(product!.price, product!.discount)}
+              {product!.discount === 0 || (
+                <span className="text-green-500">{product!.discount}%</span>
+              )}
+            </TableCell>
+            <TableCell className="text-right">
+              {product!.discount === 0 || (
+                <span className="font-semibold">
+                  ${calculateDiscountedPrice(product!.price, product!.discount)}
+                </span>
+              )}
             </TableCell>
             <TableCell className="text-right">
               <Button size={"icon"} variant={"secondary"} asChild>
