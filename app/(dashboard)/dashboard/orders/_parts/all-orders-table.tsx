@@ -41,10 +41,15 @@ const AllOrdersTable = async () => {
               <TableCell>{order!.orderStatus}</TableCell>
               <TableCell>${(totalPrice + 25).toFixed(2)}</TableCell>
               <TableCell className="text-right">
-                <Button size={"icon"} variant={"secondary"} asChild>
-                  <Link href={`/dashboard/orders/${order!.id}`}>
+                <Button
+                  size={"default"}
+                  variant={"secondary"}
+                  className="w-8 h-8 p-2"
+                  asChild
+                >
+                  <Link href={`/product/edit/${order.id}`}>
                     <span className="sr-only">Edit</span>
-                    <Edit />
+                    <Edit size={"16px"} />
                   </Link>
                 </Button>
               </TableCell>

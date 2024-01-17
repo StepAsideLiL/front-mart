@@ -34,11 +34,13 @@ const AllProductsTabel = async () => {
       <TableBody>
         {products.map((product) => (
           <TableRow key={product.id}>
-            <TableCell className="w-14">
-              <CloudinaryImage
-                src={product!.imageId || ""}
-                alt={`Photo of the ${product!.title}`}
-              />
+            <TableCell className="w-14 p-1">
+              <Link href={`/shop/${product!.id}`} className="hover:underline">
+                <CloudinaryImage
+                  src={product!.imageId || ""}
+                  alt={`Photo of the ${product!.title}`}
+                />
+              </Link>
             </TableCell>
             <TableCell>
               <Link href={`/shop/${product!.id}`} className="hover:underline">
@@ -69,10 +71,15 @@ const AllProductsTabel = async () => {
               )}
             </TableCell>
             <TableCell className="text-right">
-              <Button size={"icon"} variant={"secondary"} asChild>
+              <Button
+                size={"default"}
+                variant={"secondary"}
+                className="w-8 h-8 p-2"
+                asChild
+              >
                 <Link href={`/product/edit/${product.id}`}>
                   <span className="sr-only">Edit</span>
-                  <Edit />
+                  <Edit size={"16px"} />
                 </Link>
               </Button>
             </TableCell>
