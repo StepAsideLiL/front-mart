@@ -1,6 +1,6 @@
-import AddProductForm from "@/components/forms/add-product";
 import Main from "@/components/uis/main";
 import Title from "@/components/uis/title";
+import AddProductForm from "./_parts/add-product-form";
 
 const AddNewProductPage = () => {
   return (
