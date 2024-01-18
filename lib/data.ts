@@ -1,8 +1,27 @@
 import prisma from "@/lib/prismadb";
 import { calculateDiscountedPrice } from "./utils";
+import { unstable_noStore } from "next/cache";
 
 // Get all the products
 export const getProducts = async () => {
+  unstable_noStore();
+
+  try {
+    const products = await prisma.product.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    return products;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Could not fetch the products.");
+  }
+};
+
+// Get the products for shop page.
+export const getProductsForShopPage = async () => {
   try {
     const products = await prisma.product.findMany({
       orderBy: {

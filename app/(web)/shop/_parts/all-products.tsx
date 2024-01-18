@@ -1,12 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CloudinaryImage from "@/components/uis/cloudinary-image";
-import { getProducts } from "@/lib/data";
+import { getProductsForShopPage } from "@/lib/data";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import Link from "next/link";
 import QuickView from "./quick-view";
 
 const AllProduct = async () => {
-  const products = await getProducts();
+  const products = await getProductsForShopPage();
 
   return (
     <div className="grid lg:grid-cols-4 grid-cols-2 gap-2">
