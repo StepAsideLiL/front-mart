@@ -4,7 +4,7 @@ import { unstable_noStore } from "next/cache";
 
 // Get all the products
 export const getProducts = async () => {
-  unstable_noStore();
+  // unstable_noStore();
 
   try {
     const products = await prisma.product.findMany({
