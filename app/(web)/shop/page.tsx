@@ -3,7 +3,7 @@ import Title from "@/components/uis/title";
 import { Suspense } from "react";
 import AllProduct from "./_parts/all-products";
 
-export const revalidate = 10 * 60;
+export const revalidate = 600;
 
 const ShopPage = () => {
   return (
