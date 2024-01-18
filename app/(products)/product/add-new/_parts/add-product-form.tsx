@@ -19,8 +19,8 @@ import { AddNewFormData, CloundinayImage } from "@/lib/types";
 import { useState } from "react";
 import { CldUploadWidget, CldImage } from "next-cloudinary";
 import Image from "next/image";
-import { addProduct } from "@/lib/actions";
 import { ReloadIcon } from "@radix-ui/react-icons";
+import { addProduct } from "./actions";
 
 const formSchema = z.object({
   productTitle: z
