@@ -6,6 +6,8 @@ import { Suspense } from "react";
 import Title from "@/components/uis/title";
 import AllProductsTabel from "./_parts/all-products-table";
 
+export const revalidate = 600;
+
 export const metadata: Metadata = {
   title: "Dashboard: Products",
 };
