@@ -72,13 +72,13 @@ const AvatarMenu = ({ user }: { user: UserInfo }) => {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger>
-        <UserAvatar />
+        <UserAvatar src={user?.imageUrl || ""} name={user!.name} />
       </SheetTrigger>
 
       <SheetContent className="space-y-2">
         <SheetHeader>
           <div className="flex gap-1">
-            <UserAvatar />
+            <UserAvatar src={user?.imageUrl || ""} name={user!.name} />
 
             <div className="text-sm">
               <h1 className="font-semibold">{user?.name}</h1>

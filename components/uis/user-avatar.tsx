@@ -1,10 +1,10 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-const UserAvatar = () => {
+const UserAvatar = async ({ src, name }: { src: string; name: string }) => {
   return (
     <Avatar>
-      <AvatarImage src="" />
-      <AvatarFallback>RK</AvatarFallback>
+      <AvatarImage src={src} />
+      <AvatarFallback>{name[0].toUpperCase()}</AvatarFallback>
     </Avatar>
   );
 };
