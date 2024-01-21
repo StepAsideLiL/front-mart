@@ -9,12 +9,20 @@ import {
 } from "@/components/ui/sheet";
 import { useState } from "react";
 import UserAvatar from "@/components/uis/user-avatar";
-import { Gift, LayoutDashboard, ListOrdered } from "lucide-react";
+import {
+  BookHeart,
+  CircleUser,
+  Gift,
+  LayoutDashboard,
+  ListOrdered,
+  PackagePlus,
+} from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Separator } from "@radix-ui/react-separator";
+import { Separator } from "@/components/ui/separator";
+import { UserInfo } from "@/lib/user";
 
-const menus1 = [
+const dashboardMenu1 = [
   {
     title: "Dashboard",
     href: "/dashboard",
@@ -32,7 +40,33 @@ const menus1 = [
   },
 ];
 
-const AvatarMenu = () => {
+const dashboardMenu2 = [
+  {
+    title: "Add Product",
+    href: "/product/add-new",
+    icon: <PackagePlus strokeWidth={"1px"} width={"20px"} />,
+  },
+];
+
+const userMenu1 = [
+  {
+    title: "Profile",
+    href: "/user",
+    icon: <CircleUser strokeWidth={"1px"} width={"20px"} />,
+  },
+  {
+    title: "Orders",
+    href: "/user/orders",
+    icon: <ListOrdered strokeWidth={"1px"} width={"20px"} />,
+  },
+  {
+    title: "Wishlist",
+    href: "/user/wishlist",
+    icon: <BookHeart strokeWidth={"1px"} width={"20px"} />,
+  },
+];
+
+const AvatarMenu = ({ user }: { user: UserInfo }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -47,24 +81,58 @@ const AvatarMenu = () => {
             <UserAvatar />
 
             <div className="text-sm">
-              <h1 className="font-semibold">name</h1>
-              <p className="text-foreground">username</p>
+              <h1 className="font-semibold">{user?.name}</h1>
+              <p className="text-foreground">{user?.username}</p>
             </div>
           </div>
 
-          <SheetDescription>bio</SheetDescription>
+          <SheetDescription>{user?.bio}</SheetDescription>
         </SheetHeader>
 
-        <nav className="p-1 flex-col gap-1 flex">
-          {menus1.map((menu) => (
-            <ActiveLink key={menu.href} href={menu.href}>
-              <span>{menu.icon}</span>
-              <span>{menu.title}</span>
-            </ActiveLink>
-          ))}
+        <div>
+          {/* Admin Menu */}
+          {user?.role === "admin" && (
+            <div className="p-1">
+              <h1 className="p-2 text-lg font-semibold">Dashboard Menu</h1>
 
-          <Separator orientation="horizontal" />
-        </nav>
+              <nav className="flex-col gap-1 flex">
+                {dashboardMenu1.map((menu) => (
+                  <ActiveLink key={menu.href} href={menu.href}>
+                    <span>{menu.icon}</span>
+                    <span>{menu.title}</span>
+                  </ActiveLink>
+                ))}
+              </nav>
+
+              <div className="py-1">
+                <Separator orientation="horizontal" />
+              </div>
+
+              <nav className="flex-col gap-1 flex">
+                {dashboardMenu2.map((menu) => (
+                  <ActiveLink key={menu.href} href={menu.href}>
+                    <span>{menu.icon}</span>
+                    <span>{menu.title}</span>
+                  </ActiveLink>
+                ))}
+              </nav>
+            </div>
+          )}
+
+          {/* User Menu */}
+          <div className="p-1">
+            <h1 className="p-2 text-lg font-semibold">User Menu</h1>
+
+            <nav className="flex-col gap-1 flex">
+              {userMenu1.map((menu) => (
+                <ActiveLink key={menu.href} href={menu.href}>
+                  <span>{menu.icon}</span>
+                  <span>{menu.title}</span>
+                </ActiveLink>
+              ))}
+            </nav>
+          </div>
+        </div>
       </SheetContent>
     </Sheet>
   );
