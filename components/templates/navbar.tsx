@@ -1,10 +1,9 @@
 import { ModeToggle } from "@/components/templates/mode-toggle";
 import Navlink from "./navlink";
-import { Separator } from "../ui/separator";
-import AvatarMenu from "./avatar-menu";
+import { Separator } from "@/components/ui/separator";
 import Logo from "@/components/uis/logo";
-import SigninMenu from "./signin-menu";
 import Cart from "./cart";
+import LoginAndUserAvatar from "./login-avatar";
 
 const Navbar = () => {
   return (
@@ -22,11 +21,9 @@ const Navbar = () => {
 
         <Separator orientation="vertical" />
 
-        <SigninMenu />
-
         <Cart />
 
-        <AvatarMenu />
+        <LoginAndUserAvatar />
       </div>
     </header>
   );
