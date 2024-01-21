@@ -70,11 +70,9 @@ const Cart = () => {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger className="flex gap-0.5">
         <ShoppingCart />
-        {cartCount === 0 || (
-          <Badge variant={"outline"} className="py-1">
-            {cartCount}
-          </Badge>
-        )}
+        <Badge variant={"outline"} className="py-1">
+          {cartCount}
+        </Badge>
       </SheetTrigger>
 
       <SheetContent className="space-y-2 overflow-auto lg:max-w-xl w-full">
