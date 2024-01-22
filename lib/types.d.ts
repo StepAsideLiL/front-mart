@@ -67,5 +67,5 @@ export type PlaceOrder = {
 
 export type UpdateOrderStatusFormData = {
   orderId: string;
-  orderStatus: "pending" | "processing" | "shipped" | "delivered" | "canceled";
+  orderStatus: string;
 };
