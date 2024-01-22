@@ -29,7 +29,7 @@ const ProductsInfo = async ({ products }: { products: ProductCart }) => {
           <Separator orientation="horizontal" />
         </div>
 
-        <div className="flex justify-between text-2xl">
+        <div className="flex justify-between text-2xl font-medium">
           <span>Total</span>
           <span>${(price + delivaryCharge).toFixed(2)}</span>
         </div>
