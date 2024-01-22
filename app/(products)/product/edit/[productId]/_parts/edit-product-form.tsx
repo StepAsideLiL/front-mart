@@ -21,6 +21,7 @@ import { CldUploadWidget, CldImage } from "next-cloudinary";
 import Image from "next/image";
 import { updateProduct } from "./actions";
 import { ReloadIcon } from "@radix-ui/react-icons";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const formSchema = z.object({
   productTitle: z
@@ -31,6 +32,7 @@ const formSchema = z.object({
   discount: z.string().optional(),
   quickOverview: z.string().optional(),
   description: z.string().optional(),
+  isFeatured: z.boolean().default(false).optional(),
 });
 
 const EditProductForm = ({
@@ -45,8 +47,7 @@ const EditProductForm = ({
     quickOverview: string | null;
     imageSrc: string | null;
     imageId: string | null;
-    createdAt: Date;
-    updatedAt: Date;
+    isFeatured: boolean | null;
   } | null;
 }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -61,6 +62,7 @@ const EditProductForm = ({
       discount: product?.discount ? product?.discount.toString() : undefined,
       quickOverview: product?.quickOverview ? product?.quickOverview : "",
       description: product?.description ? product?.description : "",
+      isFeatured: product?.isFeatured ? product?.isFeatured : false,
     },
     values: {
       productTitle: product?.title ? product?.title : "",
@@ -192,75 +194,99 @@ const EditProductForm = ({
             />
           </div>
 
-          <div className="w-full flex flex-col items-center gap-2">
+          <div className="w-full space-y-3">
             {/* Product Image */}
+            <div className="flex flex-col items-center gap-2">
+              <FormField
+                control={form.control}
+                name="imageId"
+                render={({ field }) => (
+                  <FormItem className="w-full">
+                    <FormLabel className="w-full flex justify-between items-center gap-2">
+                      <p className="text-sm font-medium">Product Image</p>
+
+                      <CldUploadWidget
+                        uploadPreset="qaljd9iw"
+                        options={{
+                          sources: ["local", "url"],
+                        }}
+                        // @ts-expect-error
+                        onSuccess={(result: CloundinayImage, { widget }) => {
+                          setIamgeId(result.info.public_id);
+                          setIamgeSrc(result.info.secure_url);
+                          widget.close();
+                        }}
+                      >
+                        {({ open }) => {
+                          return (
+                            <Button
+                              variant={"secondary"}
+                              type="button"
+                              onClick={() => open()}
+                            >
+                              {imageId === ""
+                                ? "Upload a product image"
+                                : "Change image"}
+                            </Button>
+                          );
+                        }}
+                      </CldUploadWidget>
+                    </FormLabel>
+                    <FormControl>
+                      <Input type="hidden" placeholder="Product" {...field} />
+                    </FormControl>
+                    <FormDescription>
+                      Put appropriate title for the product.
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {imageId && (
+                <CldImage
+                  width={"500"}
+                  height={"500"}
+                  src={imageId}
+                  sizes="100vw"
+                  alt="Photo of the product"
+                />
+              )}
+
+              {imageId !== "" || (
+                <Image
+                  src={"/images/placeholder-image.webp"}
+                  alt="Product placeholder image"
+                  width={1200}
+                  height={800}
+                  className="w-full"
+                />
+              )}
+
+              <p>Image of the product</p>
+            </div>
+
+            {/* Is Featured */}
             <FormField
               control={form.control}
-              name="imageId"
+              name="isFeatured"
               render={({ field }) => (
-                <FormItem className="w-full">
-                  <FormLabel className="w-full flex justify-between items-center gap-2">
-                    <p className="text-sm font-medium">Product Image</p>
-
-                    <CldUploadWidget
-                      uploadPreset="qaljd9iw"
-                      options={{
-                        sources: ["local", "url"],
-                      }}
-                      // @ts-expect-error
-                      onSuccess={(result: CloundinayImage, { widget }) => {
-                        setIamgeId(result.info.public_id);
-                        setIamgeSrc(result.info.secure_url);
-                        widget.close();
-                      }}
-                    >
-                      {({ open }) => {
-                        return (
-                          <Button
-                            variant={"secondary"}
-                            type="button"
-                            onClick={() => open()}
-                          >
-                            {imageId === ""
-                              ? "Upload a product image"
-                              : "Change image"}
-                          </Button>
-                        );
-                      }}
-                    </CldUploadWidget>
-                  </FormLabel>
+                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
                   <FormControl>
-                    <Input type="hidden" placeholder="Product" {...field} />
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
                   </FormControl>
-                  <FormDescription>
-                    Put appropriate title for the product.
-                  </FormDescription>
-                  <FormMessage />
+                  <div className="space-y-1 leading-none">
+                    <FormLabel>Feature Product</FormLabel>
+                    <FormDescription>
+                      Check this box to set this product as &#34;Feature&#34;
+                    </FormDescription>
+                  </div>
                 </FormItem>
               )}
             />
-
-            {imageId && (
-              <CldImage
-                width={"500"}
-                height={"500"}
-                src={imageId}
-                sizes="100vw"
-                alt="Photo of the product"
-              />
-            )}
-
-            {imageId !== "" || (
-              <Image
-                src={"/images/placeholder-image.webp"}
-                alt="Product placeholder image"
-                width={1200}
-                height={800}
-                className="w-full"
-              />
-            )}
-
-            <p>Image of the product</p>
           </div>
         </section>
 

@@ -16,6 +16,7 @@ export const updateProduct = async (data: UpdateProductFormData) => {
     discount,
     quickOverview,
     description,
+    isFeatured,
   } = data;
 
   try {
@@ -31,6 +32,7 @@ export const updateProduct = async (data: UpdateProductFormData) => {
         imageId: imageId,
         quickOverview: quickOverview,
         description: description,
+        isFeatured: isFeatured,
       },
     });
   } catch (err) {

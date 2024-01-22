@@ -30,6 +30,7 @@ export type UpdateProductFormData = {
   discount?: number;
   quickOverview?: string;
   description?: string;
+  isFeatured?: boolean;
 };
 
 export type CloundinayImage = {
