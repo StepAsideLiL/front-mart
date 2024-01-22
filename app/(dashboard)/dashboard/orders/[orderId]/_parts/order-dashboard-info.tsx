@@ -26,11 +26,7 @@ const OrderDeshboardInfo = async ({ orderId }: { orderId: string }) => {
           <OrderInfoField field={"Order Placed on"} value={placedDate} />
           <OrderInfoField
             field={"Order Status"}
-            value={
-              <Badge variant={"secondary"}>
-                {order?.orderStatus.toUpperCase()}
-              </Badge>
-            }
+            value={order?.orderStatus.toUpperCase()}
           />
           <OrderInfoField field={"Delivary address"} value={order?.address} />
           <OrderInfoField field={"City"} value={order?.city} />
@@ -46,7 +42,7 @@ const OrderInfoField = ({
   value,
 }: {
   field?: string;
-  value?: React.ReactNode;
+  value?: string;
 }) => {
   return (
     <p className="grid grid-cols-12 gap-1 p-1 px-2">
