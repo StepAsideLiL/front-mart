@@ -72,7 +72,7 @@ const ResponsiveDialogBox = ({
           </DrawerHeader>
         )}
 
-        {content}
+        <div className="px-4">{content}</div>
 
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>{cancelBtn}</DrawerClose>
