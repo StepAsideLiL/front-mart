@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import { Suspense } from "react";
 import ProductsInfo from "./products-Info";
 import { ProductCart } from "@/lib/types";
-import { Badge } from "@/components/ui/badge";
+import EditOrderStatusForm from "./edit-order-status-form";
 
 const OrderDeshboardInfo = async ({ orderId }: { orderId: string }) => {
   const order = await getOrderById(orderId);
@@ -32,6 +32,15 @@ const OrderDeshboardInfo = async ({ orderId }: { orderId: string }) => {
           <OrderInfoField field={"City"} value={order?.city} />
           <OrderInfoField field={"State or Country"} value={order?.country} />
         </section>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-lg">Update Order Status</h2>
+
+        <EditOrderStatusForm
+          orderId={order!.id}
+          orderStatus={order!.orderStatus}
+        />
       </section>
     </>
   );
