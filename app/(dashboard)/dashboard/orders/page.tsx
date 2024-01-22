@@ -1,6 +1,13 @@
 import Title from "@/components/uis/title";
 import { Suspense } from "react";
 import AllOrdersTable from "./_parts/all-orders-table";
+import { Metadata } from "next";
+
+export const revalidate = 600;
+
+export const metadata: Metadata = {
+  title: "Dashboard: Orders",
+};
 
 const OrdersPage = () => {
   return (
