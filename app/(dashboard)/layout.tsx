@@ -13,7 +13,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </div>
 
-      <Main variant={"dashboard"} className="flex-1">
+      <Main variant={"dashboard"} className="flex-1 pb-10">
         <div className="md:block hidden">
           <Breadcrumbs />
         </div>
