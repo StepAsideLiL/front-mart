@@ -9,6 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import AddCartBtn from "@/components/uis/add-cart-btn";
+import { Badge } from "@/components/ui/badge";
 
 const ProductDetails = async ({ id }: { id: string }) => {
   const product = await getProductById(id);
@@ -32,7 +33,12 @@ const ProductDetails = async ({ id }: { id: string }) => {
         </section>
 
         <section className="w-full space-y-3">
-          <Title variant={"xl2"}>{product?.title}</Title>
+          <div className="flex items-center gap-2">
+            <Title variant={"xl2"}>{product?.title}</Title>
+            {product?.isFeatured && (
+              <Badge variant={"secondary"}>Featured</Badge>
+            )}
+          </div>
 
           <p className="text-sm">
             <span
