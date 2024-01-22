@@ -7,15 +7,15 @@ const ProductCard = async ({ productId }: { productId: string }) => {
   const product = await getProductById(productId);
 
   return (
-    <Card className="grid grid-cols-12 gap-2">
+    <Card className="flex">
       <CloudinaryImage
         src={product?.imageId || ""}
         alt={`Photo of ${product?.title}`}
         crop="fill"
-        className="col-span-2"
+        className="w-20"
       />
 
-      <CardHeader className="col-span-10 p-2">
+      <CardHeader className="p-2">
         <CardTitle className="text-lg">{product?.title}</CardTitle>
         <div>
           <span
