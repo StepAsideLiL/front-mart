@@ -39,7 +39,11 @@ const AllOrdersTable = async () => {
                 {format(order!.createdAt.toISOString(), "dd MMMM, yyyy")}
               </TableCell>
               <TableCell>{order!.orderStatus}</TableCell>
-              <TableCell>${(totalPrice + 25).toFixed(2)}</TableCell>
+              <TableCell>
+                <span className="font-medium">
+                  ${(totalPrice + 25).toFixed(2)}
+                </span>
+              </TableCell>
               <TableCell className="text-right">
                 <Button
                   size={"default"}
