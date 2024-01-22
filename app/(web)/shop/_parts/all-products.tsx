@@ -4,6 +4,7 @@ import { getProductsForShopPage } from "@/lib/data";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import Link from "next/link";
 import QuickView from "./quick-view";
+import { Badge } from "@/components/ui/badge";
 
 const AllProduct = async () => {
   const products = await getProductsForShopPage();
@@ -13,6 +14,11 @@ const AllProduct = async () => {
       {products.map((product) => (
         <Card key={product.id}>
           <div className="relative flex justify-center group">
+            {product.isFeatured && (
+              <Badge variant={"secondary"} className="absolute top-2 left-2">
+                Featured
+              </Badge>
+            )}
             <Link href={`/shop/${product.id}`}>
               <CloudinaryImage
                 width="600"
