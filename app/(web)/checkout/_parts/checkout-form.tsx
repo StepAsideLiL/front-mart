@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { placeOrder } from "./place-order";
 import { useState } from "react";
 import { ReloadIcon } from "@radix-ui/react-icons";
+import { useCartStore } from "@/lib/store/cart-store";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name can not be empty" }),
@@ -34,6 +35,7 @@ const CheckoutForm = ({
   }[];
 }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const setCartCount = useCartStore((s) => s.setCartCount);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -55,6 +57,11 @@ const CheckoutForm = ({
 
     setIsLoading(true);
     placeOrder(formData);
+
+    if (typeof window !== "undefined" && window.localStorage) {
+      localStorage.removeItem("cart");
+      setCartCount(0);
+    }
   }
 
   return (
