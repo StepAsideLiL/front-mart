@@ -3,6 +3,7 @@ import { format } from "date-fns";
 import { Suspense } from "react";
 import ProductsInfo from "./products-Info";
 import { ProductCart } from "@/lib/types";
+import { Badge } from "@/components/ui/badge";
 
 const OrderDeshboardInfo = async ({ orderId }: { orderId: string }) => {
   const order = await getOrderById(orderId);
@@ -22,31 +23,36 @@ const OrderDeshboardInfo = async ({ orderId }: { orderId: string }) => {
         <h2 className="text-lg">Order Info</h2>
 
         <section className="text-muted-foreground divide-y-2">
-          <p className="grid grid-cols-12 gap-1 p-1 px-2">
-            <span className="col-span-4">Order Placed on</span>{" "}
-            <span className="text-foreground col-span-8">{placedDate}</span>
-          </p>
-          <p className="grid grid-cols-12 gap-1 p-1 px-2">
-            <span className="col-span-4">Order Status</span>{" "}
-            <span className="text-foreground col-span-8">
-              {order?.orderStatus.toUpperCase()}
-            </span>
-          </p>
-          <p className="grid grid-cols-12 gap-1 p-1 px-2">
-            <span className="col-span-4">Delivary address</span>{" "}
-            <span className="text-foreground col-span-8">{order?.address}</span>
-          </p>
-          <p className="grid grid-cols-12 gap-1 p-1 px-2">
-            <span className="col-span-4">City</span>{" "}
-            <span className="text-foreground col-span-8">{order?.city}</span>
-          </p>
-          <p className="grid grid-cols-12 gap-1 p-1 px-2">
-            <span className="col-span-4">Country</span>{" "}
-            <span className="text-foreground col-span-8">{order?.country}</span>
-          </p>
+          <OrderInfoField field={"Order Placed on"} value={placedDate} />
+          <OrderInfoField
+            field={"Order Status"}
+            value={
+              <Badge variant={"secondary"}>
+                {order?.orderStatus.toUpperCase()}
+              </Badge>
+            }
+          />
+          <OrderInfoField field={"Delivary address"} value={order?.address} />
+          <OrderInfoField field={"City"} value={order?.city} />
+          <OrderInfoField field={"State or Country"} value={order?.country} />
         </section>
       </section>
     </>
+  );
+};
+
+const OrderInfoField = ({
+  field,
+  value,
+}: {
+  field?: string;
+  value?: React.ReactNode;
+}) => {
+  return (
+    <p className="grid grid-cols-12 gap-1 p-1 px-2">
+      <span className="col-span-4">{field}</span>{" "}
+      <span className="text-foreground col-span-8">{value}</span>
+    </p>
   );
 };
 
