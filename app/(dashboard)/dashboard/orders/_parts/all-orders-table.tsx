@@ -12,6 +12,7 @@ import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Edit } from "lucide-react";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
 
 const AllOrdersTable = async () => {
   const orders = await getOrders();
@@ -38,7 +39,11 @@ const AllOrdersTable = async () => {
               <TableCell>
                 {format(order!.createdAt.toISOString(), "dd MMMM, yyyy")}
               </TableCell>
-              <TableCell>{order!.orderStatus}</TableCell>
+              <TableCell>
+                <Badge variant={"secondary"}>
+                  {order!.orderStatus.toUpperCase()}
+                </Badge>
+              </TableCell>
               <TableCell>
                 <span className="font-medium">
                   ${(totalPrice + 25).toFixed(2)}
