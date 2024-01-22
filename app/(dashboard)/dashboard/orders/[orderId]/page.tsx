@@ -9,7 +9,7 @@ const OrderIdPage = ({ params }: { params: { orderId: string } }) => {
         <Title variant={"xl"}>Order Id: {params.orderId}</Title>
       </section>
 
-      <section className="space-y-5">
+      <section className="space-y-5 pb-10">
         <Suspense fallback={"loading..."}>
           <OrderDeshboardInfo orderId={params.orderId} />
         </Suspense>
