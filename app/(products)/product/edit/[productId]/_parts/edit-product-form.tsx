@@ -281,7 +281,8 @@ const EditProductForm = ({
                   <div className="space-y-1 leading-none">
                     <FormLabel>Feature Product</FormLabel>
                     <FormDescription>
-                      Check this box to set this product as &#34;Feature&#34;
+                      Check this box to set this product as a &#34;Featured
+                      Product&#34;
                     </FormDescription>
                   </div>
                 </FormItem>
