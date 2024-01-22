@@ -10,7 +10,7 @@ import {
 import CloudinaryImage from "@/components/uis/cloudinary-image";
 import { getProducts } from "@/lib/data";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
-import { Edit } from "lucide-react";
+import { Check, Edit } from "lucide-react";
 import Link from "next/link";
 
 const AllProductsTabel = async () => {
@@ -22,6 +22,7 @@ const AllProductsTabel = async () => {
         <TableRow>
           <TableHead className="w-14"></TableHead>
           <TableHead>Title</TableHead>
+          <TableHead>Featured</TableHead>
           <TableHead className="text-right w-36">Price</TableHead>
           <TableHead className="w-36">Discount (%)</TableHead>
           <TableHead className="text-right w-36">Discount Price</TableHead>
@@ -44,6 +45,9 @@ const AllProductsTabel = async () => {
               <Link href={`/shop/${product!.id}`} className="hover:underline">
                 {product!.title}
               </Link>
+            </TableCell>
+            <TableCell>
+              {product.isFeatured && <Check size={"16px"} strokeWidth={"4"} />}
             </TableCell>
             <TableCell className="text-right">
               <span
