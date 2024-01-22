@@ -1,7 +1,7 @@
 import Main from "@/components/uis/main";
 import Title from "@/components/uis/title";
 import { Suspense } from "react";
-import ProductCard from "./_parts/product-cart";
+import ProductCard from "./_parts/product-card";
 import TotalPrice from "./_parts/total-price";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
