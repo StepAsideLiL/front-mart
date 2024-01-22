@@ -56,7 +56,7 @@ const AllOrdersTable = async () => {
                   className="w-8 h-8 p-2"
                   asChild
                 >
-                  <Link href={`/product/edit/${order.id}`}>
+                  <Link href={`/dashboard/orders/${order.id}`}>
                     <span className="sr-only">Edit</span>
                     <Edit size={"16px"} />
                   </Link>
