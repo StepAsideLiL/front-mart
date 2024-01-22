@@ -64,3 +64,8 @@ export type PlaceOrder = {
     id: string;
   }[];
 };
+
+export type UpdateOrderStatusFormData = {
+  orderId: string;
+  orderStatus: "pending" | "processing" | "shipped" | "delivered" | "canceled";
+};
