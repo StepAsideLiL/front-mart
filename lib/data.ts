@@ -1,5 +1,5 @@
 import prisma from "@/lib/prismadb";
-import { calculateDiscountedPrice } from "./utils";
+import { calculateDiscountedPrice } from "@/lib/utils";
 
 // Get all the products
 export const getProducts = async () => {
