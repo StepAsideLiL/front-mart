@@ -10,6 +10,7 @@ const Overview = async () => {
     <section className="grid lg:grid-cols-4 grid-cols-2 gap-5">
       <Card>
         <CardHeader>
+          {/* Amount of pending order */}
           <CardDescription>Order Pending</CardDescription>
           <CardTitle>{12}</CardTitle>
         </CardHeader>
@@ -17,22 +18,25 @@ const Overview = async () => {
 
       <Card>
         <CardHeader>
-          <CardDescription>Total Sales this month</CardDescription>
+          {/* Total amount pending order (money) */}
+          <CardDescription>Pending Amount</CardDescription>
+          <CardTitle>${12}</CardTitle>
+        </CardHeader>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          {/* Number of product delivered in this month */}
+          <CardDescription>Delivered this month</CardDescription>
           <CardTitle>{12}</CardTitle>
         </CardHeader>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardDescription>Total Sold</CardDescription>
-          <CardTitle>{12}</CardTitle>
-        </CardHeader>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardDescription>Total User</CardDescription>
-          <CardTitle>{12}</CardTitle>
+          {/* Total earning of this month (money) */}
+          <CardDescription>Sales this month</CardDescription>
+          <CardTitle>${12}</CardTitle>
         </CardHeader>
       </Card>
     </section>
