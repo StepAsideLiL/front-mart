@@ -4,23 +4,34 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  getDeliveryPriceThisMonth,
+  getDeliveryThisMonth,
+  getOrderPending,
+  getOrderPendingPrice,
+} from "@/lib/data/order";
 
 const Overview = async () => {
+  const orderPending = await getOrderPending();
+  const orderPendingPrice = await getOrderPendingPrice();
+  const delivered = await getDeliveryThisMonth();
+  const deliveredPrice = await getDeliveryPriceThisMonth();
+
   return (
     <section className="grid lg:grid-cols-4 grid-cols-2 gap-5">
       <Card>
         <CardHeader>
           {/* Amount of pending order */}
           <CardDescription>Order Pending</CardDescription>
-          <CardTitle>{12}</CardTitle>
+          <CardTitle>{orderPending}</CardTitle>
         </CardHeader>
       </Card>
 
       <Card>
         <CardHeader>
-          {/* Total amount pending order (money) */}
+          {/* Total price pending order (money) */}
           <CardDescription>Pending Amount</CardDescription>
-          <CardTitle>${12}</CardTitle>
+          <CardTitle>${orderPendingPrice}</CardTitle>
         </CardHeader>
       </Card>
 
@@ -28,15 +39,15 @@ const Overview = async () => {
         <CardHeader>
           {/* Number of product delivered in this month */}
           <CardDescription>Delivered this month</CardDescription>
-          <CardTitle>{12}</CardTitle>
+          <CardTitle>{delivered}</CardTitle>
         </CardHeader>
       </Card>
 
       <Card>
         <CardHeader>
-          {/* Total earning of this month (money) */}
+          {/* Total price delivery of this month (money) */}
           <CardDescription>Sales this month</CardDescription>
-          <CardTitle>${12}</CardTitle>
+          <CardTitle>${deliveredPrice}</CardTitle>
         </CardHeader>
       </Card>
     </section>
