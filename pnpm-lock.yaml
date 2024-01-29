@@ -9,7 +9,7 @@ dependencies:
     specifier: ^3.3.3
     version: 3.3.3(react-hook-form@7.49.2)
   '@prisma/client':
-    specifier: ^5.8.1
+    specifier: 5.8.1
     version: 5.8.1(prisma@5.8.1)
   '@radix-ui/react-accordion':
     specifier: ^1.1.2
