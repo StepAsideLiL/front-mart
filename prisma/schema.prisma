@@ -29,6 +29,10 @@ model Product {
   images        Json?
   isFeatured    Boolean? @default(false)
 
+  date  String @default("")
+  month String @default("")
+  year  String @default("")
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -53,6 +57,10 @@ model Order {
   products Json
 
   orderStatus OrderStatus @default(pending)
+
+  date  String @default("")
+  month String @default("")
+  year  String @default("")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
