@@ -17,11 +17,9 @@ const ShopPage = () => {
         <Title>Shop</Title>
       </section>
 
-      <section>
-        <Suspense fallback={"loading..."}>
-          <AllProduct />
-        </Suspense>
-      </section>
+      <Suspense fallback={"loading..."}>
+        <AllProduct />
+      </Suspense>
     </Main>
   );
 };
