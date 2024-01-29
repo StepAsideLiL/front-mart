@@ -58,6 +58,7 @@ model Order {
 
   orderStatus OrderStatus @default(pending)
 
+  price Float  @default(0)
   date  String @default("")
   month String @default("")
   year  String @default("")
