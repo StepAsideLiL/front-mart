@@ -15,10 +15,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { CloundinayImage, UpdateProductFormData } from "@/lib/types";
+import { UpdateProductFormData } from "@/lib/types";
 import { useState } from "react";
-import { CldUploadWidget, CldImage } from "next-cloudinary";
-import Image from "next/image";
 import { updateProduct } from "./actions";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -49,7 +47,6 @@ const EditProductForm = ({
     description: string | null;
     quickOverview: string | null;
     imageSrc: string | null;
-    imageId: string | null;
     isFeatured: boolean | null;
   } | null;
 }) => {
@@ -178,6 +175,29 @@ const EditProductForm = ({
             </p>
           </section>
         </section>
+
+        {/* Is Featured */}
+        <FormField
+          control={form.control}
+          name="isFeatured"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel>Feature Product</FormLabel>
+                <FormDescription>
+                  Check this box to set this product as a &#34;Featured
+                  Product&#34;
+                </FormDescription>
+              </div>
+            </FormItem>
+          )}
+        />
 
         {/* Product Quick Overview */}
         <FormField
