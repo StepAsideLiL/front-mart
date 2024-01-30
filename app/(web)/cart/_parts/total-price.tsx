@@ -28,7 +28,7 @@ const TotalPrice = async ({
         <Separator orientation="horizontal" />
       </div>
 
-      <div className="flex justify-between text-lg">
+      <div className="flex justify-between text-lg font-medium">
         <span>Total</span>
         <span>${(price + delivaryCharge).toFixed(2)}</span>
       </div>
