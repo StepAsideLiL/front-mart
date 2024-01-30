@@ -1,4 +1,3 @@
-import CloudinaryImage from "@/components/uis/cloudinary-image";
 import Title from "@/components/uis/title";
 import { getProductById } from "@/lib/data";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
@@ -19,15 +18,16 @@ const ProductDetails = async ({ id }: { id: string }) => {
     title: product!.title,
     price: product!.price,
     discount: product!.discount,
-    imageId: product!.imageId,
+    imageSrc: product!.imageSrc,
   };
 
   return (
     <section className="space-y-6">
       <section className="flex gap-2 w-full">
         <section className="w-full">
-          <CloudinaryImage
-            src={product?.imageId || ""}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={product?.imageSrc || ""}
             alt={`Photo of ${product?.title}`}
           />
         </section>
