@@ -72,6 +72,10 @@ export type PlaceOrder = {
   zipCode: string;
   city: string;
   country: string;
+  price: number;
+  date: number;
+  month: number;
+  year: number;
   products: {
     id: string;
   }[];
