@@ -6,7 +6,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import AddCartBtn from "@/components/uis/add-cart-btn";
-import CloudinaryImage from "@/components/uis/cloudinary-image";
 import Title from "@/components/uis/title";
 import { getProductById } from "@/lib/data";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
@@ -44,15 +43,19 @@ const Product = async ({ id }: { id: string }) => {
     title: product!.title,
     price: product!.price,
     discount: product!.discount,
-    imageId: product!.imageId,
+    imageSrc: product!.imageSrc,
   };
 
   return (
     <div className="p-6 space-y-3">
-      <CloudinaryImage
-        src={product?.imageId || ""}
-        alt={`Photo of ${product?.title}`}
-      />
+      <div className="w-full h-96">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={product?.imageSrc || ""}
+          alt={`Photo of ${product?.title}`}
+          className="w-full h-full object-cover"
+        />
+      </div>
 
       <Title variant={"xl2"}>
         <Link href={`/shop/${id}`} className="hover:underline">
