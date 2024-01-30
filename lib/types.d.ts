@@ -38,7 +38,6 @@ export type UpdateProductFormData = {
   productTitle: string;
   price: number;
   imageSrc: string;
-  imageId: string;
   discount?: number;
   quickOverview?: string;
   description?: string;
