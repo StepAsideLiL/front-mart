@@ -16,7 +16,7 @@ const AddCartBtn = ({
     title: string;
     price: number;
     discount: number | null;
-    imageId: string | null;
+    imageSrc: string | null;
   };
   className?: string;
 }) => {
