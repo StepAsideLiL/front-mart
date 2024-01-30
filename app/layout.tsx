@@ -5,7 +5,7 @@ import Providers from "@/components/providers/providers";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Front Mart",
+    template: "%s - Front Mart",
     default: "Front Mart",
   },
   description: "An e-commerce webservice",
