@@ -28,9 +28,9 @@ export type AddProductFormData = {
   discount?: number;
   quickOverview?: string;
   description?: string;
-  date?: string;
-  month?: string;
-  year?: string;
+  date?: number;
+  month?: number;
+  year?: number;
 };
 
 export type UpdateProductFormData = {
