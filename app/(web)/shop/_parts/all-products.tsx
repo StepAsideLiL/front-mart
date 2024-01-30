@@ -25,13 +25,14 @@ const AllProduct = async () => {
                   </Badge>
                 )}
                 <Link href={`/shop/${product.id}`}>
-                  <CloudinaryImage
-                    width="600"
-                    height="600"
-                    src={product.imageId || ""}
-                    sizes="100vw"
-                    alt={`Photo of ${product.title}`}
-                  />
+                  <div className="w-full h-80">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={product.imageSrc || ""}
+                      alt={`Photo of ${product.title}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </Link>
                 <QuickView id={product.id} />
               </div>
