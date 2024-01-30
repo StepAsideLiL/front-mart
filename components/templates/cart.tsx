@@ -11,7 +11,6 @@ import { ShoppingCart } from "lucide-react";
 import { parseJson, stringifyJson } from "@/lib/local-storage";
 import { Badge } from "@/components/ui/badge";
 import { CartData } from "@/lib/types";
-import CloudinaryImage from "@/components/uis/cloudinary-image";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
@@ -87,13 +86,15 @@ const Cart = () => {
             </h1>
           )}
           {localCart.map((product) => (
-            <Card key={product.id} className="grid grid-cols-12 gap-2">
-              <CloudinaryImage
-                src={product.imageId || ""}
-                alt={`Photo of ${product.title}`}
-                crop="fill"
-                className="col-span-4"
-              />
+            <Card key={product.id} className="flex items-center gap-3">
+              <div className="w-32 h-32">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={product.imageSrc || ""}
+                  alt={`Photo of ${product.title}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
               <CardHeader className="col-span-8 p-0">
                 <CardTitle className="text-lg">{product.title}</CardTitle>
@@ -136,10 +137,10 @@ const Cart = () => {
 
           {cartCount !== 0 && (
             <div className="border-t-2 p-3 space-y-3">
-              <div className="flex justify-between items-center gap-2">
-                <div>
+              <div className="flex justify-between items-center gap-2 font-medium">
+                <div className="">
                   Total{" "}
-                  <span className="text-muted-foreground text-sm">
+                  <span className="text-muted-foreground text-sm font-normal">
                     {localCart.length} Item
                   </span>
                 </div>
