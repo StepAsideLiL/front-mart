@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE "Order" ADD COLUMN     "price" FLOAT8 NOT NULL DEFAULT 0;

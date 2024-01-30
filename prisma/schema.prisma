@@ -19,12 +19,11 @@ model Product {
   description   String?  @default("")
   quickOverview String?  @default("")
   imageSrc      String?  @default("")
-  imageId       String?  @default("")
   isFeatured    Boolean? @default(false)
 
-  date  String @default("")
-  month String @default("")
-  year  String @default("")
+  date  Int @default(0)
+  month Int @default(0)
+  year  Int @default(0)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -48,13 +47,13 @@ model Order {
   city     String
   country  String
   products Json
+  price    Float
 
   orderStatus OrderStatus @default(pending)
 
-  price Float  @default(0)
-  date  String @default("")
-  month String @default("")
-  year  String @default("")
+  date  Int
+  month Int
+  year  Int
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
