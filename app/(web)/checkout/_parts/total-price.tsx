@@ -1,16 +1,6 @@
 import { Separator } from "@/components/ui/separator";
-import { calculateCartPrice } from "@/lib/data";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
-const TotalPrice = async ({
-  products,
-}: {
-  products: {
-    id: string;
-  }[];
-}) => {
-  const price = await calculateCartPrice(products);
+const TotalPrice = async ({ price }: { price: number }) => {
   const delivaryCharge = 25;
 
   return (
@@ -28,7 +18,7 @@ const TotalPrice = async ({
         <Separator orientation="horizontal" />
       </div>
 
-      <div className="flex justify-between text-lg">
+      <div className="flex justify-between text-lg font-medium">
         <span>Total</span>
         <span>${(price + delivaryCharge).toFixed(2)}</span>
       </div>

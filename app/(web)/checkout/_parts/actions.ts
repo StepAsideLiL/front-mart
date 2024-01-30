@@ -5,7 +5,19 @@ import { PlaceOrder } from "@/lib/types";
 import { redirect } from "next/navigation";
 
 export const placeOrder = async (data: PlaceOrder) => {
-  const { name, email, address, zipCode, city, country, products } = data;
+  const {
+    name,
+    email,
+    address,
+    zipCode,
+    city,
+    country,
+    products,
+    price,
+    date,
+    month,
+    year,
+  } = data;
 
   let orderId: string = "";
 
@@ -19,6 +31,10 @@ export const placeOrder = async (data: PlaceOrder) => {
         city: city,
         country: country,
         products: products,
+        price: price,
+        date: date,
+        month: month,
+        year: year,
       },
     });
 

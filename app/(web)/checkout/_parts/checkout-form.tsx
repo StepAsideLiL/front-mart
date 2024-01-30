@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { placeOrder } from "./place-order";
+import { placeOrder } from "./actions";
 import { useState } from "react";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useCartStore } from "@/lib/store/cart-store";
@@ -29,10 +29,12 @@ const formSchema = z.object({
 
 const CheckoutForm = ({
   products,
+  price,
 }: {
   products: {
     id: string;
   }[];
+  price: number;
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const setCartCount = useCartStore((s) => s.setCartCount);
@@ -50,9 +52,14 @@ const CheckoutForm = ({
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
+    const fullDate = new Date();
     const formData = {
       ...values,
       products: products,
+      price: price,
+      date: fullDate.getUTCDate(),
+      month: fullDate.getUTCMonth(),
+      year: fullDate.getUTCFullYear(),
     };
 
     setIsLoading(true);
