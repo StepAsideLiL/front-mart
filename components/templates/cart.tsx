@@ -96,7 +96,7 @@ const Cart = () => {
                 />
               </div>
 
-              <CardHeader className="col-span-8 p-0">
+              <CardHeader className="p-0">
                 <CardTitle className="text-lg">{product.title}</CardTitle>
                 <div>
                   <span
