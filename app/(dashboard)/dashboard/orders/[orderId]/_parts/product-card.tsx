@@ -1,5 +1,4 @@
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import CloudinaryImage from "@/components/uis/cloudinary-image";
 import { getProductById } from "@/lib/data";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 
@@ -7,13 +6,15 @@ const ProductCard = async ({ productId }: { productId: string }) => {
   const product = await getProductById(productId);
 
   return (
-    <Card className="flex">
-      <CloudinaryImage
-        src={product?.imageId || ""}
-        alt={`Photo of ${product?.title}`}
-        crop="fill"
-        className="w-20"
-      />
+    <Card className="flex items-center gap-3">
+      <div className="w-32 h-32">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={product!.imageSrc || ""}
+          alt={`Photo of ${product!.title}`}
+          className="w-full h-full object-cover"
+        />
+      </div>
 
       <CardHeader className="p-2">
         <CardTitle className="text-lg">{product?.title}</CardTitle>
