@@ -35,9 +35,11 @@ const AllProductsTabel = async () => {
           <TableRow key={product.id}>
             <TableCell className="w-14 p-1">
               <Link href={`/shop/${product!.id}`} className="hover:underline">
-                <CloudinaryImage
-                  src={product!.imageId || ""}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={product!.imageSrc || ""}
                   alt={`Photo of the ${product!.title}`}
+                  className="w-full h-full object-cover"
                 />
               </Link>
             </TableCell>
