@@ -21,6 +21,18 @@ export type AddNewFormData = {
   description?: string;
 };
 
+export type AddProductFormData = {
+  productTitle: string;
+  price: number;
+  imageSrc: string;
+  discount?: number;
+  quickOverview?: string;
+  description?: string;
+  date?: string;
+  month?: string;
+  year?: string;
+};
+
 export type UpdateProductFormData = {
   id: string;
   productTitle: string;
