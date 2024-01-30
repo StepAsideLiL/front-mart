@@ -7,7 +7,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import CloudinaryImage from "@/components/uis/cloudinary-image";
 import { getProducts } from "@/lib/data";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import { Check, Edit } from "lucide-react";
