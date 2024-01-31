@@ -66,20 +66,20 @@ const ProductDetails = async ({ id }: { id: string }) => {
             Add to Cart $
             {calculateDiscountedPrice(product!.price, product!.discount)}
           </AddCartBtn>
-        </section>
-      </section>
 
-      <section className="py-2">
-        {product?.description && (
-          <Accordion type="single" collapsible>
-            <AccordionItem value="item-1">
-              <AccordionTrigger>Product Description</AccordionTrigger>
-              <AccordionContent className="whitespace-pre">
-                {product?.description}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        )}
+          <section className="py-2">
+            {product?.description && (
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-1">
+                  <AccordionTrigger>Product Description</AccordionTrigger>
+                  <AccordionContent className="whitespace-pre text-wrap break-words">
+                    {product?.description}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            )}
+          </section>
+        </section>
       </section>
     </section>
   );
