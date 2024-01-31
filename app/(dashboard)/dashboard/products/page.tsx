@@ -19,7 +19,7 @@ const ProductsPage = () => {
         <Title variant={"xl"}>Products</Title>
 
         <Button asChild variant={"outline"} size={"icon"}>
-          <Link href={"/product/add-new"}>
+          <Link href={"/product/add"}>
             <span className="sr-only">Add Product</span>
             <Plus />
           </Link>
