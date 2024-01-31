@@ -4,6 +4,7 @@ import CheckoutForm from "./checkout-form";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import TotalPrice from "./total-price";
+import { delivaryCharge } from "@/lib/config";
 
 const PageSections = async ({
   products,
@@ -17,7 +18,7 @@ const PageSections = async ({
   return (
     <section className="w-full flex flex-col-reverse md:flex-row gap-5 justify-between">
       <section className="w-full">
-        <CheckoutForm products={products} price={Number(price.toFixed())} />
+        <CheckoutForm products={products} price={price} />
       </section>
 
       <section className="w-full">

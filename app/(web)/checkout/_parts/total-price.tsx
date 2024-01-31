@@ -1,8 +1,7 @@
 import { Separator } from "@/components/ui/separator";
+import { delivaryCharge } from "@/lib/config";
 
 const TotalPrice = async ({ price }: { price: number }) => {
-  const delivaryCharge = 25;
-
   return (
     <div className="p-10 pt-2">
       <div className="flex justify-between">

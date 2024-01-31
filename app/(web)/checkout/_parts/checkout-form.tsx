@@ -17,6 +17,7 @@ import { placeOrder } from "./actions";
 import { useState } from "react";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useCartStore } from "@/lib/store/cart-store";
+import { delivaryCharge } from "@/lib/config";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name can not be empty" }),
@@ -57,11 +58,13 @@ const CheckoutForm = ({
       ...values,
       products: products,
       price: price,
+      delivaryCharge: delivaryCharge,
       date: fullDate.getUTCDate(),
       month: fullDate.getUTCMonth(),
       year: fullDate.getUTCFullYear(),
     };
 
+    console.log(formData);
     setIsLoading(true);
     placeOrder(formData);
 
