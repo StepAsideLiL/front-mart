@@ -12,10 +12,18 @@ import {
 } from "@/lib/data/order";
 
 const Overview = async () => {
+  const date = new Date();
+
   const orderPending = await getOrderPending();
   const orderPendingPrice = await getOrderPendingPrice();
-  const delivered = await getDeliveryThisMonth();
-  const deliveredPrice = await getDeliveryPriceThisMonth();
+  const delivered = await getDeliveryThisMonth(
+    date.getUTCMonth(),
+    date.getUTCFullYear()
+  );
+  const deliveredPrice = await getDeliveryPriceThisMonth(
+    date.getUTCMonth(),
+    date.getUTCFullYear()
+  );
 
   return (
     <section className="grid lg:grid-cols-4 grid-cols-2 gap-5">
@@ -31,7 +39,7 @@ const Overview = async () => {
         <CardHeader>
           {/* Total price pending order (money) */}
           <CardDescription>Pending Amount</CardDescription>
-          <CardTitle>${orderPendingPrice}</CardTitle>
+          <CardTitle>${orderPendingPrice.toFixed(2)}</CardTitle>
         </CardHeader>
       </Card>
 
