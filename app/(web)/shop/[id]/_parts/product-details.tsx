@@ -74,7 +74,9 @@ const ProductDetails = async ({ id }: { id: string }) => {
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
               <AccordionTrigger>Product Description</AccordionTrigger>
-              <AccordionContent>{product?.description}</AccordionContent>
+              <AccordionContent className="whitespace-pre">
+                {product?.description}
+              </AccordionContent>
             </AccordionItem>
           </Accordion>
         )}
