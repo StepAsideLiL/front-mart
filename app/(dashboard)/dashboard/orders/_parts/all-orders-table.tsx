@@ -29,20 +29,24 @@ const AllOrdersTable = async () => {
       </TableHeader>
 
       <TableBody>
-        {orders.map(async (order) => {
-          const totalPrice = await calculateCartPrice(
-            order!.products as ProductCart
-          );
+        {orders.map((order) => {
+          // const totalPrice = await calculateCartPrice(
+          //   order!.products as ProductCart
+          // );
 
           return (
             <TableRow key={order.id}>
               <TableCell>
                 {format(order!.createdAt.toISOString(), "dd MMMM, yyyy")}
               </TableCell>
-              <TableCell>{order!.orderStatus.toUpperCase()}</TableCell>
+              <TableCell>
+                <Badge variant={"secondary"}>
+                  {order!.orderStatus.toUpperCase()}
+                </Badge>
+              </TableCell>
               <TableCell>
                 <span className="font-medium">
-                  ${(totalPrice + 25).toFixed(2)}
+                  ${(order.price + 25).toFixed(2)}
                 </span>
               </TableCell>
               <TableCell className="text-right">
