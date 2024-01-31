@@ -72,6 +72,7 @@ export type PlaceOrder = {
   city: string;
   country: string;
   price: number;
+  delivaryCharge: number;
   date: number;
   month: number;
   year: number;
