@@ -1,6 +1,9 @@
 import prisma from "@/lib/prismadb";
+import { unstable_noStore } from "next/cache";
 
 export const getOrderPending = async () => {
+  unstable_noStore();
+
   try {
     const pendingOrderCount = await prisma.order.count({
       where: {
@@ -16,6 +19,8 @@ export const getOrderPending = async () => {
 };
 
 export const getOrderPendingPrice = async () => {
+  unstable_noStore();
+
   try {
     let price = 0;
 
@@ -38,6 +43,8 @@ export const getOrderPendingPrice = async () => {
 };
 
 export const getDeliveryThisMonth = async (month: number, year: number) => {
+  unstable_noStore();
+
   try {
     const deliverd = await prisma.order.count({
       where: {
@@ -58,6 +65,8 @@ export const getDeliveryPriceThisMonth = async (
   month: number,
   year: number
 ) => {
+  unstable_noStore();
+
   try {
     let price = 0;
 
@@ -82,6 +91,8 @@ export const getDeliveryPriceThisMonth = async (
 };
 
 export const getOrderChart = async () => {
+  unstable_noStore();
+
   try {
     return [
       {
