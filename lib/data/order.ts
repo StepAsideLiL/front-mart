@@ -101,47 +101,168 @@ export const getOrderChart = async () => {
       },
       {
         month: "Feb",
-        price: Math.floor(Math.random() * 100) + 1,
+        price: await prisma.order
+          .aggregate({
+            _sum: {
+              price: true,
+            },
+            where: {
+              month: 1,
+              year: 2024,
+              orderStatus: "delivered",
+            },
+          })
+          .then((r) => (r._sum.price ? r._sum.price : 0)),
       },
       {
         month: "Mar",
-        price: Math.floor(Math.random() * 100) + 1,
+        price: await prisma.order
+          .aggregate({
+            _sum: {
+              price: true,
+            },
+            where: {
+              month: 2,
+              year: 2024,
+              orderStatus: "delivered",
+            },
+          })
+          .then((r) => (r._sum.price ? r._sum.price : 0)),
       },
       {
         month: "Apr",
-        price: Math.floor(Math.random() * 100) + 1,
+        price: await prisma.order
+          .aggregate({
+            _sum: {
+              price: true,
+            },
+            where: {
+              month: 3,
+              year: 2024,
+              orderStatus: "delivered",
+            },
+          })
+          .then((r) => (r._sum.price ? r._sum.price : 0)),
       },
       {
         month: "May",
-        price: Math.floor(Math.random() * 100) + 1,
+        price: await prisma.order
+          .aggregate({
+            _sum: {
+              price: true,
+            },
+            where: {
+              month: 4,
+              year: 2024,
+              orderStatus: "delivered",
+            },
+          })
+          .then((r) => (r._sum.price ? r._sum.price : 0)),
       },
       {
         month: "Jun",
-        price: Math.floor(Math.random() * 100) + 1,
+        price: await prisma.order
+          .aggregate({
+            _sum: {
+              price: true,
+            },
+            where: {
+              month: 5,
+              year: 2024,
+              orderStatus: "delivered",
+            },
+          })
+          .then((r) => (r._sum.price ? r._sum.price : 0)),
       },
       {
         month: "Jul",
-        price: Math.floor(Math.random() * 100) + 1,
+        price: await prisma.order
+          .aggregate({
+            _sum: {
+              price: true,
+            },
+            where: {
+              month: 6,
+              year: 2024,
+              orderStatus: "delivered",
+            },
+          })
+          .then((r) => (r._sum.price ? r._sum.price : 0)),
       },
       {
         month: "Aug",
-        price: Math.floor(Math.random() * 100) + 1,
+        price: await prisma.order
+          .aggregate({
+            _sum: {
+              price: true,
+            },
+            where: {
+              month: 7,
+              year: 2024,
+              orderStatus: "delivered",
+            },
+          })
+          .then((r) => (r._sum.price ? r._sum.price : 0)),
       },
       {
         month: "Sep",
-        price: Math.floor(Math.random() * 100) + 1,
+        price: await prisma.order
+          .aggregate({
+            _sum: {
+              price: true,
+            },
+            where: {
+              month: 8,
+              year: 2024,
+              orderStatus: "delivered",
+            },
+          })
+          .then((r) => (r._sum.price ? r._sum.price : 0)),
       },
       {
         month: "Oct",
-        price: Math.floor(Math.random() * 100) + 1,
+        price: await prisma.order
+          .aggregate({
+            _sum: {
+              price: true,
+            },
+            where: {
+              month: 9,
+              year: 2024,
+              orderStatus: "delivered",
+            },
+          })
+          .then((r) => (r._sum.price ? r._sum.price : 0)),
       },
       {
         month: "Nov",
-        price: Math.floor(Math.random() * 100) + 1,
+        price: await prisma.order
+          .aggregate({
+            _sum: {
+              price: true,
+            },
+            where: {
+              month: 10,
+              year: 2024,
+              orderStatus: "delivered",
+            },
+          })
+          .then((r) => (r._sum.price ? r._sum.price : 0)),
       },
       {
         month: "Dec",
-        price: Math.floor(Math.random() * 100) + 1,
+        price: await prisma.order
+          .aggregate({
+            _sum: {
+              price: true,
+            },
+            where: {
+              month: 11,
+              year: 2024,
+              orderStatus: "delivered",
+            },
+          })
+          .then((r) => (r._sum.price ? r._sum.price : 0)),
       },
     ];
   } catch (err) {
