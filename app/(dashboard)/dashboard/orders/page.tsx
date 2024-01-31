@@ -16,11 +16,9 @@ const OrdersPage = () => {
         <Title variant={"xl"}>Order</Title>
       </section>
 
-      <section>
-        <Suspense fallback={"loading..."}>
-          <AllOrdersTable />
-        </Suspense>
-      </section>
+      <Suspense fallback={"loading..."}>
+        <AllOrdersTable />
+      </Suspense>
     </>
   );
 };
