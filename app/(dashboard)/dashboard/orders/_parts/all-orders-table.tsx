@@ -39,11 +39,7 @@ const AllOrdersTable = async () => {
               <TableCell>
                 {format(order!.createdAt.toISOString(), "dd MMMM, yyyy")}
               </TableCell>
-              <TableCell>
-                <Badge variant={"secondary"}>
-                  {order!.orderStatus.toUpperCase()}
-                </Badge>
-              </TableCell>
+              <TableCell>{order!.orderStatus.toUpperCase()}</TableCell>
               <TableCell>
                 <span className="font-medium">
                   ${(totalPrice + 25).toFixed(2)}
