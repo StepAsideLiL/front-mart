@@ -5,8 +5,8 @@ import QuickView from "./quick-view";
 import { Badge } from "@/components/ui/badge";
 import { getProductsForShopPage } from "@/lib/data/product";
 
-const AllProduct = async () => {
-  const products = await getProductsForShopPage();
+const AllProduct = async ({ currentPage }: { currentPage: number }) => {
+  const products = await getProductsForShopPage(currentPage);
 
   return (
     <section>
@@ -79,7 +79,7 @@ const AllProduct = async () => {
         </div>
       ) : (
         <div className="p-10 text-center">
-          <h1 className="text-muted text-xl">Shop Is Empty Current</h1>
+          <h1 className="text-muted-foreground text-xl">Not Found</h1>
         </div>
       )}
     </section>
