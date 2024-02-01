@@ -10,11 +10,9 @@ const OrderIdPage = ({ params }: { params: { orderId: string } }) => {
         <Title variant={"xl2"}>Order Id: {params.orderId}</Title>
       </section>
 
-      <section>
-        <Suspense>
-          <OrderInfo orderId={params.orderId} />
-        </Suspense>
-      </section>
+      <Suspense>
+        <OrderInfo orderId={params.orderId} />
+      </Suspense>
     </Main>
   );
 };
