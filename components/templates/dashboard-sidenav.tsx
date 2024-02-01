@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import {
+  ChevronRightSquare,
   Gift,
   LayoutDashboard,
   ListOrdered,
@@ -42,6 +43,11 @@ const menus1 = [
     title: "Users",
     href: "/dashboard/users",
     icon: <User strokeWidth={"1px"} width={"20px"} />,
+  },
+  {
+    title: "Dev",
+    href: "/dashboard/dev",
+    icon: <ChevronRightSquare strokeWidth={"1px"} width={"20px"} />,
   },
 ];
 
