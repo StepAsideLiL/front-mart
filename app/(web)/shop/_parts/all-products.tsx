@@ -1,10 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import CloudinaryImage from "@/components/uis/cloudinary-image";
-import { getProductsForShopPage } from "@/lib/data";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import Link from "next/link";
 import QuickView from "./quick-view";
 import { Badge } from "@/components/ui/badge";
+import { getProductsForShopPage } from "@/lib/data/product";
 
 const AllProduct = async () => {
   const products = await getProductsForShopPage();

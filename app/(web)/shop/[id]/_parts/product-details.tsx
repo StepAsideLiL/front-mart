@@ -1,5 +1,4 @@
 import Title from "@/components/uis/title";
-import { getProductById } from "@/lib/data";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import {
   Accordion,
@@ -9,6 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import AddCartBtn from "@/components/uis/add-cart-btn";
 import { Badge } from "@/components/ui/badge";
+import { getProductById } from "@/lib/data/product";
 
 const ProductDetails = async ({ id }: { id: string }) => {
   const product = await getProductById(id);
