@@ -1,11 +1,17 @@
-import { getOrderById } from "@/lib/data";
 import { format } from "date-fns";
 import { Suspense } from "react";
 import ProductsInfo from "./products-info";
 import { ProductCart } from "@/lib/types";
+import { getOrderById } from "@/lib/data/order";
+import { redirect } from "next/navigation";
 
 const OrderInfo = async ({ orderId }: { orderId: string }) => {
   const order = await getOrderById(orderId);
+
+  if (!order) {
+    redirect("/shop");
+  }
+
   const placedDate = format(order!.createdAt.toISOString(), "dd MMMM, yyyy");
 
   return (
