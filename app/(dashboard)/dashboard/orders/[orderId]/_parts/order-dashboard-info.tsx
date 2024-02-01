@@ -1,13 +1,14 @@
-import { getOrderById } from "@/lib/data";
 import { format } from "date-fns";
 import { Suspense } from "react";
 import ProductsInfo from "./products-Info";
 import { ProductCart } from "@/lib/types";
 import EditOrderStatusForm from "./edit-order-status-form";
 import { redirect } from "next/navigation";
+import { getOrderById } from "@/lib/data/order";
 
 const OrderDeshboardInfo = async ({ orderId }: { orderId: string }) => {
   const order = await getOrderById(orderId);
+
   if (!order) {
     redirect("/dashboard/orders");
   }

@@ -81,37 +81,3 @@ export const calculateCartPrice = async (products: { id: string }[]) => {
     throw new Error("Could not calculate total price.");
   }
 };
-
-// Get all orders
-export const getOrders = async () => {
-  unstable_noStore();
-
-  try {
-    const orders = await prisma.order.findMany({
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
-
-    return orders;
-  } catch (err) {
-    console.log(err);
-    throw new Error("Could not fetch all orders.");
-  }
-};
-
-// Get order by id.
-export const getOrderById = async (orderId: string) => {
-  try {
-    const order = await prisma.order.findUnique({
-      where: {
-        id: orderId,
-      },
-    });
-
-    return order;
-  } catch (err) {
-    console.log(err);
-    throw new Error("Could not fetch the order by id.");
-  }
-};

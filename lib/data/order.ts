@@ -1,6 +1,7 @@
 import prisma from "@/lib/prismadb";
 import { unstable_noStore } from "next/cache";
 
+// Get number of pending orders.
 export const getOrderPending = async () => {
   unstable_noStore();
 
@@ -18,6 +19,7 @@ export const getOrderPending = async () => {
   }
 };
 
+// Get the total price of pending orders
 export const getOrderPendingPrice = async () => {
   unstable_noStore();
 
@@ -29,11 +31,10 @@ export const getOrderPendingPrice = async () => {
         orderStatus: "pending",
       },
     });
-    Promise.all(
-      pendingOrders.map((order) => {
-        price = price + order.price + order.delivaryCharge;
-      })
-    );
+
+    pendingOrders.map((order) => {
+      price = price + order.price + order.delivaryCharge;
+    });
 
     return price;
   } catch (err) {
@@ -42,6 +43,7 @@ export const getOrderPendingPrice = async () => {
   }
 };
 
+// Get the number of deliverd orders in current month.
 export const getDeliveryThisMonth = async (month: number, year: number) => {
   unstable_noStore();
 
@@ -61,6 +63,7 @@ export const getDeliveryThisMonth = async (month: number, year: number) => {
   }
 };
 
+// Get the total price of deliverd orders in current month.
 export const getDeliveryPriceThisMonth = async (
   month: number,
   year: number
@@ -77,11 +80,10 @@ export const getDeliveryPriceThisMonth = async (
         year: year,
       },
     });
-    Promise.all(
-      deliverd.map((order) => {
-        price = price + order.price + order.delivaryCharge;
-      })
-    );
+
+    deliverd.map((order) => {
+      price = price + order.price + order.delivaryCharge;
+    });
 
     return price;
   } catch (err) {
@@ -90,6 +92,7 @@ export const getDeliveryPriceThisMonth = async (
   }
 };
 
+// Get dashboard sales chart data.
 export const getOrderChart = async () => {
   unstable_noStore();
 
@@ -279,5 +282,39 @@ export const getOrderChart = async () => {
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch order chart data.");
+  }
+};
+
+// Get all orders
+export const getOrders = async () => {
+  unstable_noStore();
+
+  try {
+    const orders = await prisma.order.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    return orders;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Could not fetch all orders.");
+  }
+};
+
+// Get order by id.
+export const getOrderById = async (orderId: string) => {
+  try {
+    const order = await prisma.order.findUnique({
+      where: {
+        id: orderId,
+      },
+    });
+
+    return order;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Could not fetch the order by id.");
   }
 };

@@ -55,7 +55,7 @@ const Overview = async () => {
         <CardHeader>
           {/* Total price delivery of this month (money) */}
           <CardDescription>Sales this month</CardDescription>
-          <CardTitle>${deliveredPrice}</CardTitle>
+          <CardTitle>${deliveredPrice.toFixed(2)}</CardTitle>
         </CardHeader>
       </Card>
     </section>

@@ -1,4 +1,3 @@
-import { getOrders } from "@/lib/data";
 import {
   Table,
   TableBody,
@@ -12,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Edit } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { getOrders } from "@/lib/data/order";
 
 const AllOrdersTable = async () => {
   const orders = await getOrders();
