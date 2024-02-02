@@ -1,9 +1,12 @@
 import prisma from "@/lib/prismadb";
+import { unstable_noStore } from "next/cache";
 
 const productsPerPage = 10;
 
 // Get products for shop page
 export const getProductsForShopPage = async (page: number = 1) => {
+  unstable_noStore();
+
   try {
     const products = await prisma.product.findMany({
       skip: productsPerPage * (page - 1),
@@ -21,6 +24,8 @@ export const getProductsForShopPage = async (page: number = 1) => {
 };
 
 export const totalPage = async () => {
+  unstable_noStore();
+
   try {
     const numberOfProducts = await prisma.product.count();
 
