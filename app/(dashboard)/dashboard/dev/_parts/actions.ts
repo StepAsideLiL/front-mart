@@ -2,6 +2,8 @@
 
 import prisma from "@/lib/prismadb";
 import { faker } from "@faker-js/faker";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 const imageSrcList = [
   "https://images2.imgbox.com/d5/9e/MHm4vg0n_o.jpg",
@@ -44,4 +46,7 @@ export const createDummyProduct = async (numberOfProducts: number = 1) => {
     console.log(err);
     throw new Error("Failed to create dummy product.");
   }
+
+  revalidatePath("/", "layout");
+  redirect("/shop");
 };
