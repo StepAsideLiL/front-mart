@@ -3,8 +3,8 @@ import Title from "@/components/uis/title";
 import { Suspense } from "react";
 import AllProduct from "./_parts/all-products";
 import { Metadata } from "next";
-import ShopPagination from "./_parts/shop-pagination";
 import { totalPage } from "@/lib/data/product";
+import PaginationUi from "@/components/uis/pagination-ui";
 
 export const revalidate = 600;
 
@@ -30,7 +30,7 @@ const ShopPage = async ({
         <AllProduct currentPage={currentPage} />
       </Suspense>
 
-      <ShopPagination pages={pages} currentPage={currentPage} />
+      {pages > 1 && <PaginationUi pages={pages} currentPage={currentPage} />}
     </Main>
   );
 };
