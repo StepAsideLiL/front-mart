@@ -12,8 +12,8 @@ import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import { Check, Edit } from "lucide-react";
 import Link from "next/link";
 
-const AllProductsTabel = async () => {
-  const products = await getProducts();
+const AllProductsTabel = async ({ currentPage }: { currentPage: number }) => {
+  const products = await getProducts(currentPage);
 
   return (
     <Table>

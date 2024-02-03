@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Suspense } from "react";
 import Title from "@/components/uis/title";
 import AllProductsTabel from "./_parts/all-products-table";
+import PaginationUi from "@/components/uis/pagination-ui";
+import { totalPage } from "@/lib/data/product";
 
 export const revalidate = 600;
 
@@ -12,7 +14,14 @@ export const metadata: Metadata = {
   title: "Dashboard: Products",
 };
 
-const ProductsPage = () => {
+const ProductsPage = async ({
+  searchParams,
+}: {
+  searchParams: { page: number };
+}) => {
+  const currentPage = Number(searchParams.page) || 1;
+  const pages = await totalPage();
+
   return (
     <>
       <section className="flex items-center gap-10">
@@ -26,11 +35,11 @@ const ProductsPage = () => {
         </Button>
       </section>
 
-      <section>
-        <Suspense fallback={"loading..."}>
-          <AllProductsTabel />
-        </Suspense>
-      </section>
+      <Suspense fallback={"loading..."}>
+        <AllProductsTabel currentPage={currentPage} />
+      </Suspense>
+
+      {pages > 1 && <PaginationUi pages={pages} currentPage={currentPage} />}
     </>
   );
 };
