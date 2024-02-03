@@ -40,6 +40,7 @@ export const createDummyProducts = async (numberOfProducts: number = 1) => {
             date: date.getUTCDate(),
             month: date.getUTCMonth(),
             year: date.getUTCFullYear(),
+            createdAt: date,
             isDummy: true,
           },
         });
@@ -82,13 +83,25 @@ export const createDummyOrder = async (numberOfOrders: number = 1) => {
         const date = faker.date.soon({
           days: Math.ceil(Math.random() * 69) + 4,
         });
+        const rd = Math.floor(Math.random() * 5);
 
         await prisma.order.create({
           data: {
             price: faker.number.float({ min: 10, max: 100, multipleOf: 0.02 }),
+            orderStatus:
+              rd === 0
+                ? "pending"
+                : rd === 1
+                ? "processing"
+                : rd === 2
+                ? "shipped"
+                : rd === 3
+                ? "delivered"
+                : "canceled",
             date: date.getUTCDate(),
             month: date.getUTCMonth(),
             year: date.getUTCFullYear(),
+            createdAt: date,
             isDummy: true,
           },
         });
