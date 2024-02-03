@@ -1,4 +1,4 @@
-import { getProductById } from "@/lib/data";
+import { getProductById } from "@/lib/data/shop";
 import EditProductForm from "./edit-product-form";
 
 const ProductInfo = async ({ productId }: { productId: string }) => {
