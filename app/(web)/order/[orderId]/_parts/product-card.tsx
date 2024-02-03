@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { getProductById } from "@/lib/data";
+import { getProductById } from "@/lib/data/shop";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 
 const ProductCard = async ({ productId }: { productId: string }) => {
