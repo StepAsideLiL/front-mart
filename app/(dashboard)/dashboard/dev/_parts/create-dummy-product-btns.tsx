@@ -14,7 +14,7 @@ const CreateDummyProductBtns = () => {
 
       <Button onClick={() => handleClick(10)}>Create Ten Products</Button>
 
-      <Button variant={"destructive"} onClick={deleteDummyProducts}>
+      <Button variant={"destructive"} onClick={() => deleteDummyProducts()}>
         Delete All Dummy Products
       </Button>
     </div>
