@@ -285,7 +285,7 @@ export const getOrderChart = async () => {
   }
 };
 
-const productsPerPage = 4;
+const ordersPerPage = 10;
 
 // Get all orders
 export const getOrders = async (page: number = 1) => {
@@ -293,8 +293,8 @@ export const getOrders = async (page: number = 1) => {
 
   try {
     const orders = await prisma.order.findMany({
-      skip: productsPerPage * (page - 1),
-      take: productsPerPage,
+      skip: ordersPerPage * (page - 1),
+      take: ordersPerPage,
       orderBy: {
         createdAt: "desc",
       },
@@ -314,7 +314,7 @@ export const totalPageForOrder = async () => {
   try {
     const numberOfProducts = await prisma.order.count();
 
-    return Math.ceil(numberOfProducts / productsPerPage);
+    return Math.ceil(numberOfProducts / ordersPerPage);
   } catch (err) {
     console.log(err);
     throw new Error("Failed to calculate total page count.");
