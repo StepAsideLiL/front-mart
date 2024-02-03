@@ -4,7 +4,7 @@ import AllOrdersTable from "./_parts/all-orders-table";
 import { Metadata } from "next";
 import { totalPageForOrder } from "@/lib/data/order";
 import PaginationUi from "@/components/uis/pagination-ui";
-import FilterOrder from "./_parts/filter-order";
+import OrderStatusFilter from "./_parts/order-filters";
 
 export const revalidate = 600;
 
@@ -26,11 +26,19 @@ const OrdersPage = async ({
         <Title variant={"xl"}>Order</Title>
       </section>
 
-      <FilterOrder />
+      <section className="space-y-3">
+        <h1>Filters</h1>
 
-      <Suspense fallback={"loading..."}>
-        <AllOrdersTable currentPage={currentPage} />
-      </Suspense>
+        <OrderStatusFilter />
+      </section>
+
+      <section>
+        <h1>Orders Table</h1>
+
+        <Suspense fallback={"loading..."}>
+          <AllOrdersTable currentPage={currentPage} />
+        </Suspense>
+      </section>
 
       {pages > 1 && <PaginationUi pages={pages} currentPage={currentPage} />}
     </>
