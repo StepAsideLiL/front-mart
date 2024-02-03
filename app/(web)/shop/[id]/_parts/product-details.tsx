@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import AddCartBtn from "@/components/uis/add-cart-btn";
 import { Badge } from "@/components/ui/badge";
-import { getProductById } from "@/lib/data/product";
+import { getProductById } from "@/lib/data/shop";
 
 const ProductDetails = async ({ id }: { id: string }) => {
   const product = await getProductById(id);

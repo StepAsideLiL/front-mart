@@ -3,7 +3,7 @@ import Title from "@/components/uis/title";
 import { Suspense } from "react";
 import AllProduct from "./_parts/all-products";
 import { Metadata } from "next";
-import { totalPage } from "@/lib/data/product";
+import { totalPage } from "@/lib/data/shop";
 import PaginationUi from "@/components/uis/pagination-ui";
 
 export const revalidate = 600;
