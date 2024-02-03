@@ -19,7 +19,9 @@ const imageSrcList = [
   "https://images2.imgbox.com/5e/54/hxLSPReo_o.jpg",
 ];
 
-export const createDummyProduct = async (numberOfProducts: number = 1) => {
+// Products
+// Create dummy products.
+export const createDummyProducts = async (numberOfProducts: number = 1) => {
   const arrayList = new Array(numberOfProducts).fill(0).map((_, i) => i + 1);
 
   try {
@@ -38,6 +40,7 @@ export const createDummyProduct = async (numberOfProducts: number = 1) => {
             date: date.getUTCDate(),
             month: date.getUTCMonth(),
             year: date.getUTCFullYear(),
+            isDummy: true,
           },
         });
       })
@@ -49,4 +52,64 @@ export const createDummyProduct = async (numberOfProducts: number = 1) => {
 
   revalidatePath("/", "layout");
   redirect("/shop");
+};
+
+// Delete all dummy products.
+export const deleteDummyProducts = async () => {
+  try {
+    await prisma.product.deleteMany({
+      where: {
+        isDummy: true,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to delete dummy products.");
+  }
+};
+
+// Orders
+// Create dummy orders.
+export const createDummyOrder = async (numberOfOrders: number = 1) => {
+  const arrayList = new Array(numberOfOrders).fill(0).map((_, i) => i + 1);
+
+  try {
+    Promise.all(
+      arrayList.map(async () => {
+        const date = faker.date.soon({
+          days: Math.ceil(Math.random() * 69) + 4,
+        });
+
+        await prisma.order.create({
+          data: {
+            price: faker.number.float({ min: 10, max: 100, multipleOf: 0.02 }),
+            date: date.getUTCDate(),
+            month: date.getUTCMonth(),
+            year: date.getUTCFullYear(),
+            isDummy: true,
+          },
+        });
+      })
+    );
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to create dummy product.");
+  }
+
+  revalidatePath("/", "layout");
+  redirect("/shop");
+};
+
+// Delete all dummy orders.
+export const deleteDummyOrders = async () => {
+  try {
+    await prisma.order.deleteMany({
+      where: {
+        isDummy: true,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to delete dummy orders.");
+  }
 };
