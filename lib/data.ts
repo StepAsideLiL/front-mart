@@ -2,56 +2,6 @@ import prisma from "@/lib/prismadb";
 import { calculateDiscountedPrice } from "@/lib/utils";
 import { unstable_noStore } from "next/cache";
 
-// Get all the products
-export const getProducts = async () => {
-  unstable_noStore();
-
-  try {
-    const products = await prisma.product.findMany({
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
-
-    return products;
-  } catch (err) {
-    console.log(err);
-    throw new Error("Could not fetch the products.");
-  }
-};
-
-// Get the products for shop page.
-export const getProductsForShopPage = async () => {
-  try {
-    const products = await prisma.product.findMany({
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
-
-    return products;
-  } catch (err) {
-    console.log(err);
-    throw new Error("Could not fetch the products.");
-  }
-};
-
-// Get product info by id
-export const getProductById = async (id: string) => {
-  try {
-    const product = await prisma.product.findUnique({
-      where: {
-        id: id,
-      },
-    });
-
-    return product;
-  } catch (err) {
-    console.log(err);
-    throw new Error("Could not fetch the product by id.");
-  }
-};
-
 // Calacute the total price of the cart products on the chcckout page.
 export const calculateCartPrice = async (products: { id: string }[]) => {
   unstable_noStore();
