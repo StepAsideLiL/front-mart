@@ -285,12 +285,16 @@ export const getOrderChart = async () => {
   }
 };
 
+const productsPerPage = 4;
+
 // Get all orders
-export const getOrders = async () => {
+export const getOrders = async (page: number = 1) => {
   unstable_noStore();
 
   try {
     const orders = await prisma.order.findMany({
+      skip: productsPerPage * (page - 1),
+      take: productsPerPage,
       orderBy: {
         createdAt: "desc",
       },
@@ -300,6 +304,20 @@ export const getOrders = async () => {
   } catch (err) {
     console.log(err);
     throw new Error("Could not fetch all orders.");
+  }
+};
+
+// Get total total page count of orders.
+export const totalPageForOrder = async () => {
+  unstable_noStore();
+
+  try {
+    const numberOfProducts = await prisma.order.count();
+
+    return Math.ceil(numberOfProducts / productsPerPage);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to calculate total page count.");
   }
 };
 
