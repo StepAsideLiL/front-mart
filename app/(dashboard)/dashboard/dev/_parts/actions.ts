@@ -51,7 +51,7 @@ export const createDummyProducts = async (numberOfProducts: number = 1) => {
   }
 
   revalidatePath("/", "layout");
-  redirect("/shop");
+  redirect("/dashboard/dev");
 };
 
 // Delete all dummy products.
@@ -66,6 +66,9 @@ export const deleteDummyProducts = async () => {
     console.log(err);
     throw new Error("Failed to delete dummy products.");
   }
+
+  revalidatePath("/", "layout");
+  redirect("/dashboard/dev");
 };
 
 // Orders
@@ -97,7 +100,7 @@ export const createDummyOrder = async (numberOfOrders: number = 1) => {
   }
 
   revalidatePath("/", "layout");
-  redirect("/shop");
+  redirect("/dashboard/dev");
 };
 
 // Delete all dummy orders.
@@ -112,4 +115,7 @@ export const deleteDummyOrders = async () => {
     console.log(err);
     throw new Error("Failed to delete dummy orders.");
   }
+
+  revalidatePath("/", "layout");
+  redirect("/dashboard/dev");
 };
