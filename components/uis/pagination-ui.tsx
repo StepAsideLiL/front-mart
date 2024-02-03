@@ -38,12 +38,10 @@ const PaginationUi = ({
           {pages <= 5 &&
             pagesArr.map((list) => (
               <PaginationItem key={list}>
-                <PaginationLink
-                  href={`/shop?page=${list}`}
+                <PaginationPage
+                  page={list}
                   isActive={list === currentPage ? true : false}
-                >
-                  {list}
-                </PaginationLink>
+                />
               </PaginationItem>
             ))}
 
