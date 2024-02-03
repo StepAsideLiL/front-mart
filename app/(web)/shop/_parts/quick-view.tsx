@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/sheet";
 import AddCartBtn from "@/components/uis/add-cart-btn";
 import Title from "@/components/uis/title";
-import { getProductById } from "@/lib/data";
+import { getProductById } from "@/lib/data/shop";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import Link from "next/link";
 import { Suspense } from "react";
