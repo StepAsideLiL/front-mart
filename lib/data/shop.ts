@@ -23,8 +23,8 @@ export const getProductsForShopPage = async (page: number = 1) => {
   }
 };
 
-// Get total total page count
-export const totalPage = async () => {
+// Get total total page count of products
+export const totalPageForProduct = async () => {
   unstable_noStore();
 
   try {
