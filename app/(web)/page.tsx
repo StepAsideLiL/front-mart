@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import Main from "@/components/uis/main";
 import { Metadata } from "next";
 import Link from "next/link";
+import Carousel from "./_parts/carousel";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -18,7 +19,7 @@ const HomePage = () => {
         </Button>
       </section>
 
-      <section>add a carousal</section>
+      <Carousel />
     </Main>
   );
 };
