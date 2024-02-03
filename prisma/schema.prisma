@@ -40,21 +40,21 @@ enum OrderStatus {
 model Order {
   id String @id @unique @default(uuid())
 
-  name           String
-  email          String
-  address        String
-  zipCode        String
-  city           String
-  country        String
-  products       Json
-  price          Float
-  delivaryCharge Float
+  name           String @default("")
+  email          String @default("")
+  address        String @default("")
+  zipCode        String @default("")
+  city           String @default("")
+  country        String @default("")
+  products       Json   @default("[]")
+  price          Float  @default(0)
+  delivaryCharge Float  @default(0)
 
   orderStatus OrderStatus @default(pending)
 
-  date  Int
-  month Int
-  year  Int
+  date  Int @default(0)
+  month Int @default(0)
+  year  Int @default(0)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
