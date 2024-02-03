@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { getProducts } from "@/lib/data";
+import { getProducts } from "@/lib/data/product";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import { Check, Edit } from "lucide-react";
 import Link from "next/link";
