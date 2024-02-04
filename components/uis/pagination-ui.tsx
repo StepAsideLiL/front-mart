@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
   Pagination,
   PaginationContent,
@@ -18,20 +18,36 @@ const PaginationUi = ({
   pages: number;
   currentPage: number;
 }) => {
+  const searchParams = useSearchParams();
   const pathname = usePathname();
+  const { replace } = useRouter();
 
   const pagesArr = Array.from({ length: pages }, (_, i) => i + 1);
+
+  const handlePervious = (page: string | number) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (currentPage !== 1) {
+      params.set("page", page.toString());
+      replace(`${pathname}?${params.toString()}`);
+    }
+  };
+
+  const handleNext = (page: string | number) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (currentPage !== pages) {
+      params.set("page", page.toString());
+      replace(`${pathname}?${params.toString()}`);
+    }
+  };
 
   return (
     <section className="py-10">
       <Pagination>
         <PaginationContent>
-          <PaginationItem className="hover:border hover:border-muted">
-            <PaginationPrevious
-              href={`${pathname}?page=${
-                currentPage !== 1 ? currentPage - 1 : 1
-              }`}
-            />
+          <PaginationItem onClick={() => handlePervious(currentPage - 1)}>
+            <PaginationPrevious href={``} />
           </PaginationItem>
 
           {/* When number of page is equal or less than 5 (page <= 5) */}
@@ -145,12 +161,8 @@ const PaginationUi = ({
             </>
           )}
 
-          <PaginationItem>
-            <PaginationNext
-              href={`${pathname}?page=${
-                currentPage !== pages ? currentPage + 1 : pages
-              }`}
-            />
+          <PaginationItem onClick={() => handleNext(currentPage + 1)}>
+            <PaginationNext href={``} />
           </PaginationItem>
         </PaginationContent>
       </Pagination>
@@ -165,11 +177,21 @@ const PaginationPage = ({
   page: string | number;
   isActive?: boolean;
 }) => {
+  const searchParams = useSearchParams();
   const pathname = usePathname();
+  const { replace } = useRouter();
+
+  const handleClick = (page: string | number) => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set("page", page.toString());
+
+    replace(`${pathname}?${params.toString()}`);
+  };
 
   return (
-    <PaginationItem>
-      <PaginationLink href={`${pathname}?page=${page}`} isActive={isActive}>
+    <PaginationItem onClick={() => handleClick(page)}>
+      <PaginationLink href={``} isActive={isActive}>
         {page}
       </PaginationLink>
     </PaginationItem>
