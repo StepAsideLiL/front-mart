@@ -288,19 +288,43 @@ export const getOrderChart = async () => {
 const ordersPerPage = 10;
 
 // Get all orders
-export const getOrders = async (page: number = 1) => {
+export const getOrders = async (page: number = 1, status: string = "") => {
   unstable_noStore();
 
   try {
-    const orders = await prisma.order.findMany({
-      skip: ordersPerPage * (page - 1),
-      take: ordersPerPage,
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
+    if (status === "") {
+      const orders = await prisma.order.findMany({
+        skip: ordersPerPage * (page - 1),
+        take: ordersPerPage,
+        orderBy: {
+          createdAt: "desc",
+        },
+      });
 
-    return orders;
+      return orders;
+    } else {
+      const orders = await prisma.order.findMany({
+        where: {
+          orderStatus:
+            status === "pending"
+              ? "pending"
+              : status === "processing"
+              ? "processing"
+              : status === "shipped"
+              ? "shipped"
+              : status === "delivered"
+              ? "delivered"
+              : "canceled",
+        },
+        skip: ordersPerPage * (page - 1),
+        take: ordersPerPage,
+        orderBy: {
+          createdAt: "desc",
+        },
+      });
+
+      return orders;
+    }
   } catch (err) {
     console.log(err);
     throw new Error("Could not fetch all orders.");
@@ -308,11 +332,30 @@ export const getOrders = async (page: number = 1) => {
 };
 
 // Get total total page count of orders.
-export const totalPageForOrder = async () => {
+export const totalPageForOrder = async (status: string = "") => {
   unstable_noStore();
 
   try {
-    const numberOfProducts = await prisma.order.count();
+    let numberOfProducts = 0;
+
+    if (status === "") {
+      numberOfProducts = await prisma.order.count();
+    } else {
+      numberOfProducts = await prisma.order.count({
+        where: {
+          orderStatus:
+            status === "pending"
+              ? "pending"
+              : status === "processing"
+              ? "processing"
+              : status === "shipped"
+              ? "shipped"
+              : status === "delivered"
+              ? "delivered"
+              : "canceled",
+        },
+      });
+    }
 
     return Math.ceil(numberOfProducts / ordersPerPage);
   } catch (err) {
