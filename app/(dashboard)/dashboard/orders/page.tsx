@@ -15,10 +15,10 @@ export const metadata: Metadata = {
 const OrdersPage = async ({
   searchParams,
 }: {
-  searchParams: { page: number };
+  searchParams: { page: number; status: string };
 }) => {
   const currentPage = Number(searchParams.page) || 1;
-  const pages = await totalPageForOrder();
+  const pages = await totalPageForOrder(searchParams.status);
 
   return (
     <>
@@ -36,7 +36,10 @@ const OrdersPage = async ({
         <h1>Orders Table</h1>
 
         <Suspense fallback={"loading..."}>
-          <AllOrdersTable currentPage={currentPage} />
+          <AllOrdersTable
+            currentPage={currentPage}
+            status={searchParams.status}
+          />
         </Suspense>
       </section>
 

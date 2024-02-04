@@ -13,8 +13,14 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { getOrders } from "@/lib/data/order";
 
-const AllOrdersTable = async ({ currentPage }: { currentPage: number }) => {
-  const orders = await getOrders(currentPage);
+const AllOrdersTable = async ({
+  currentPage,
+  status,
+}: {
+  currentPage: number;
+  status: string;
+}) => {
+  const orders = await getOrders(currentPage, status);
 
   return (
     <section>
