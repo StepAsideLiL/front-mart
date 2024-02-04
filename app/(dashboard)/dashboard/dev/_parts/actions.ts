@@ -76,6 +76,7 @@ export const deleteDummyProducts = async () => {
 // Create dummy orders.
 export const createDummyOrder = async (numberOfOrders: number = 1) => {
   const arrayList = new Array(numberOfOrders).fill(0).map((_, i) => i + 1);
+  let i = 0;
 
   try {
     Promise.all(
@@ -105,6 +106,8 @@ export const createDummyOrder = async (numberOfOrders: number = 1) => {
             isDummy: true,
           },
         });
+
+        i++;
       })
     );
   } catch (err) {
@@ -113,7 +116,9 @@ export const createDummyOrder = async (numberOfOrders: number = 1) => {
   }
 
   revalidatePath("/", "layout");
-  redirect("/dashboard/dev");
+  if (i === numberOfOrders) {
+    redirect("/dashboard/dev");
+  }
 };
 
 // Delete all dummy orders.
