@@ -37,7 +37,7 @@ const OrderFilters = ({ status }: { status?: string }) => {
 
     if (data.orderStatus) {
       params.set("status", data.orderStatus);
-      params.set("page", "0");
+      params.set("page", "1");
     } else {
       params.delete("status");
     }
