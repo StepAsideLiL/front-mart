@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const FormSchema = z.object({
   orderStatus: z.string({
@@ -19,16 +20,34 @@ const FormSchema = z.object({
   }),
 });
 
-const OrderFilter = () => {
+const OrderFilters = ({ status }: { status?: string }) => {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      orderStatus: "",
+      orderStatus: status ? status : "",
     },
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data.orderStatus);
+    const params = new URLSearchParams(searchParams);
+
+    if (data.orderStatus) {
+      params.set("status", data.orderStatus);
+      params.set("page", "0");
+    } else {
+      params.delete("status");
+    }
+
+    replace(`${pathname}?${params.toString()}`);
+  }
+
+  function handleReset() {
+    form.getValues().orderStatus = "";
+    replace(`${pathname}`);
   }
 
   return (
@@ -68,8 +87,13 @@ const OrderFilter = () => {
             Apply Filter
           </Button>
 
-          <Button size={"sm"} type="button">
-            Remove Filter
+          <Button
+            variant={"destructive"}
+            size={"sm"}
+            type="button"
+            onClick={() => handleReset()}
+          >
+            Reset
           </Button>
         </section>
       </form>
@@ -77,4 +101,4 @@ const OrderFilter = () => {
   );
 };
 
-export default OrderFilter;
+export default OrderFilters;
