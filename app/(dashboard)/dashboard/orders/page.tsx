@@ -4,7 +4,7 @@ import AllOrdersTable from "./_parts/all-orders-table";
 import { Metadata } from "next";
 import { totalPageForOrder } from "@/lib/data/order";
 import PaginationUi from "@/components/uis/pagination-ui";
-import OrderStatusFilter from "./_parts/order-filters";
+import OrderFilters from "./_parts/order-filters";
 
 export const revalidate = 600;
 
@@ -29,7 +29,7 @@ const OrdersPage = async ({
       <section className="space-y-3">
         <h1>Filters</h1>
 
-        <OrderStatusFilter />
+        <OrderFilters status={searchParams.status} />
       </section>
 
       <section>
