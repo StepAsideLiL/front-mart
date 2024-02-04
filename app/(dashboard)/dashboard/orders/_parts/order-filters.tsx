@@ -46,7 +46,7 @@ const OrderFilters = ({ status }: { status?: string }) => {
   }
 
   function handleReset() {
-    form.getValues().orderStatus = "";
+    form.reset();
     replace(`${pathname}`);
   }
 
