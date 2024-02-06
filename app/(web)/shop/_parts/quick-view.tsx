@@ -1,10 +1,5 @@
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import AddCartBtn from "@/components/uis/add-cart-btn";
 import Title from "@/components/uis/title";
 import { getProductById } from "@/lib/data/shop";
