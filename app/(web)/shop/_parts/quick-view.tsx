@@ -23,10 +23,6 @@ const QuickView = ({ id }: { id: string }) => {
       </SheetTrigger>
 
       <SheetContent className="p-0 space-y-2 lg:max-w-xl lg:w-[576px] w-full overflow-auto">
-        <SheetHeader>
-          <div className="h-4"></div>
-        </SheetHeader>
-
         <Suspense>
           <Product id={id} />
         </Suspense>
