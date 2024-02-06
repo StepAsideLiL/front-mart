@@ -36,9 +36,9 @@ const AllProductsTabel = async ({ currentPage }: { currentPage: number }) => {
               <Link href={`/shop/${product!.id}`} className="hover:underline">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={product!.imageSrc || ""}
-                  alt={`Photo of the ${product!.title}`}
-                  className="w-full h-full object-cover"
+                  src={product.imageSrc || ""}
+                  alt={`Photo of ${product.title}`}
+                  className="aspect-square object-cover"
                 />
               </Link>
             </TableCell>

@@ -24,12 +24,12 @@ const AllProduct = async ({ currentPage }: { currentPage: number }) => {
                   </Badge>
                 )}
                 <Link href={`/shop/${product.id}`}>
-                  <div className="w-full h-80">
+                  <div>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={product.imageSrc || ""}
                       alt={`Photo of ${product.title}`}
-                      className="w-full h-full object-cover"
+                      className="aspect-square object-cover"
                     />
                   </div>
                 </Link>
