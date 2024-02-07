@@ -15,10 +15,10 @@ const SigninMenu = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
-          <Link href={""}>Sing In</Link>
+          <Link href={`/auth/sign-in`}>Sing In</Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link href={""}>Create an account</Link>
+          <Link href={"/auth/sign-up"}>Create an account</Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
