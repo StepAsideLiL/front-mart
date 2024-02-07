@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function SignUpPage() {
   return (
     <main className="min-h-screen flex justify-center items-center">
-      <UserProfile path="/user/profile" routing="path" />
+      <UserProfile path="/user/edit" routing="path" />
     </main>
   );
 }
