@@ -3,7 +3,6 @@
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
@@ -20,7 +19,8 @@ import {
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
-import { UserInfo } from "@/lib/user";
+import { useUser, SignOutButton } from "@clerk/nextjs";
+import { Button } from "../ui/button";
 
 const dashboardMenu1 = [
   {
@@ -51,56 +51,69 @@ const dashboardMenu2 = [
 const userMenu1 = [
   {
     title: "Profile",
-    href: "/user",
+    href: "/profile",
     icon: <CircleUser strokeWidth={"1px"} width={"20px"} />,
   },
   {
     title: "Orders",
-    href: "/user/orders",
+    href: "/profile/orders",
     icon: <ListOrdered strokeWidth={"1px"} width={"20px"} />,
   },
   {
     title: "Wishlist",
-    href: "/user/wishlist",
+    href: "/profile/wishlist",
     icon: <BookHeart strokeWidth={"1px"} width={"20px"} />,
   },
 ];
 
-const AvatarMenu = ({ user }: { user: UserInfo }) => {
+const AvatarMenu = () => {
   const [open, setOpen] = useState(false);
+  const { user } = useUser();
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger>
-        <UserAvatar src={user?.imageUrl || ""} name={user!.name} />
+        <UserAvatar src={user?.imageUrl || ""} name={user?.fullName || "U"} />
       </SheetTrigger>
 
       <SheetContent className="space-y-2">
         <SheetHeader>
           <div className="flex gap-1">
-            <UserAvatar src={user?.imageUrl || ""} name={user!.name} />
+            <UserAvatar
+              src={user?.imageUrl || ""}
+              name={user?.fullName || "U"}
+            />
 
             <div className="text-sm">
-              <h1 className="font-semibold">{user?.name}</h1>
+              <h1 className="font-semibold">
+                {user?.firstName && user?.lastName
+                  ? `${user?.firstName} ${user?.lastName}`
+                  : "(No Name)"}
+              </h1>
               <p className="text-foreground">{user?.username}</p>
             </div>
           </div>
-
-          <SheetDescription>{user?.bio}</SheetDescription>
         </SheetHeader>
 
         <div>
           {/* Admin Menu */}
-          {user?.role === "admin" && (
+          {user?.publicMetadata?.role === "admin" && (
             <div className="p-1">
               <h1 className="p-2 text-lg font-semibold">Dashboard Menu</h1>
 
               <nav className="flex-col gap-1 flex">
                 {dashboardMenu1.map((menu) => (
-                  <ActiveLink key={menu.href} href={menu.href}>
+                  <Link
+                    key={menu.href}
+                    href={menu.href}
+                    className={cn(
+                      "flex gap-2 p-2 hover:bg-accent rounded items-center"
+                    )}
+                    onClick={() => setOpen(false)}
+                  >
                     <span>{menu.icon}</span>
                     <span>{menu.title}</span>
-                  </ActiveLink>
+                  </Link>
                 ))}
               </nav>
 
@@ -110,10 +123,17 @@ const AvatarMenu = ({ user }: { user: UserInfo }) => {
 
               <nav className="flex-col gap-1 flex">
                 {dashboardMenu2.map((menu) => (
-                  <ActiveLink key={menu.href} href={menu.href}>
+                  <Link
+                    key={menu.href}
+                    href={menu.href}
+                    className={cn(
+                      "flex gap-2 p-2 hover:bg-accent rounded items-center"
+                    )}
+                    onClick={() => setOpen(false)}
+                  >
                     <span>{menu.icon}</span>
                     <span>{menu.title}</span>
-                  </ActiveLink>
+                  </Link>
                 ))}
               </nav>
             </div>
@@ -125,14 +145,27 @@ const AvatarMenu = ({ user }: { user: UserInfo }) => {
 
             <nav className="flex-col gap-1 flex">
               {userMenu1.map((menu) => (
-                <ActiveLink key={menu.href} href={menu.href}>
+                <Link
+                  key={menu.href}
+                  href={menu.href}
+                  className={cn(
+                    "flex gap-2 p-2 hover:bg-accent rounded items-center"
+                  )}
+                  onClick={() => setOpen(false)}
+                >
                   <span>{menu.icon}</span>
                   <span>{menu.title}</span>
-                </ActiveLink>
+                </Link>
               ))}
             </nav>
           </div>
         </div>
+
+        <SignOutButton>
+          <Button className="w-full" onClick={() => setOpen(false)}>
+            Sign Out
+          </Button>
+        </SignOutButton>
       </SheetContent>
     </Sheet>
   );
