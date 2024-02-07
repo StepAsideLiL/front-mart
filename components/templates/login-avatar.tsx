@@ -1,19 +1,11 @@
-import { userInfo } from "@/lib/user";
 import AvatarMenu from "./avatar-menu";
 import SigninMenu from "./signin-menu";
+import { currentUser } from "@clerk/nextjs";
 
-const LoginAndUserAvatar = async () => {
-  const user = await userInfo();
+const LoginAndUserAvatar = () => {
+  const user = currentUser();
 
-  return (
-    <>
-      {user?.username !== "" && user !== null ? (
-        <AvatarMenu user={user} />
-      ) : (
-        <SigninMenu />
-      )}
-    </>
-  );
+  return <>{user !== null ? <AvatarMenu /> : <SigninMenu />}</>;
 };
 
 export default LoginAndUserAvatar;
