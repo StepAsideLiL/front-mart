@@ -7,7 +7,11 @@ const UserAddress = async () => {
 
   return (
     <section className="space-y-2">
-      {address ? (
+      {address &&
+      address.address !== "" &&
+      address.zipCode !== "" &&
+      address.city !== "" &&
+      address.country !== "" ? (
         <>
           <div>
             <OrderInfoField
