@@ -8,7 +8,7 @@ const UserWishlist = async () => {
 
   return (
     <section className="space-y-2">
-      {wishlist?.length !== 0 ? (
+      {wishlist?.length !== 0 && wishlist !== undefined && wishlist !== null ? (
         <>
           <h1>
             Total wish list products:{" "}

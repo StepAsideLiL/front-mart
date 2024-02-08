@@ -8,7 +8,7 @@ const UserOrder = async () => {
 
   return (
     <section className="space-y-2">
-      {orders?.length !== 0 ? (
+      {orders?.length !== 0 && orders !== undefined && orders !== null ? (
         <>
           <h1>
             Total orders: <Badge variant={"secondary"}>{orders?.length}</Badge>
