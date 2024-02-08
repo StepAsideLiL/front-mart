@@ -53,6 +53,8 @@ export async function getUsersOrders() {
 
       return orders?.orders;
     }
+
+    return null;
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch order placed by user.");
@@ -77,6 +79,8 @@ export async function getUserWishlist() {
 
       return wishlist?.wishList;
     }
+
+    return null;
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch user wishlist.");
