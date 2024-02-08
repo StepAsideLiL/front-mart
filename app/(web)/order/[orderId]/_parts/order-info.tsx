@@ -35,6 +35,10 @@ const OrderInfo = async ({ orderId }: { orderId: string }) => {
             <span className="text-foreground col-span-8">{order?.address}</span>
           </p>
           <p className="grid grid-cols-12 gap-1 p-1 px-2">
+            <span className="col-span-4">Zip code</span>{" "}
+            <span className="text-foreground col-span-8">{order?.zipCode}</span>
+          </p>
+          <p className="grid grid-cols-12 gap-1 p-1 px-2">
             <span className="col-span-4">City</span>{" "}
             <span className="text-foreground col-span-8">{order?.city}</span>
           </p>

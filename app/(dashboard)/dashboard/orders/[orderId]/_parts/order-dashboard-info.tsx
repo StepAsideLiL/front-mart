@@ -35,6 +35,7 @@ const OrderDeshboardInfo = async ({ orderId }: { orderId: string }) => {
             value={order?.orderStatus.toUpperCase()}
           />
           <OrderInfoField field={"Delivary address"} value={order?.address} />
+          <OrderInfoField field={"Zip code"} value={order?.zipCode} />
           <OrderInfoField field={"City"} value={order?.city} />
           <OrderInfoField field={"State or Country"} value={order?.country} />
         </section>
