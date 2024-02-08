@@ -64,7 +64,7 @@ const UpdateUserAddressFrom = ({
           name="address"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Address</FormLabel>
+              <FormLabel>Delivary Address</FormLabel>
               <FormControl>
                 <Input placeholder="123 street" {...field} />
               </FormControl>
