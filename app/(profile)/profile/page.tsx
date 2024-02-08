@@ -5,6 +5,11 @@ import { currentUser } from "@clerk/nextjs";
 import { Edit } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
+import UserAddress from "./_parts/user-address";
+import { Separator } from "@/components/ui/separator";
+import UserOrder from "./_parts/user-order";
+import UserWishlist from "./_parts/user-wishlist";
 
 export const metadata: Metadata = {
   title: "User Profile",
@@ -40,6 +45,36 @@ const UserProfilePage = async () => {
             </Link>
           </Button>
         </section>
+      </section>
+
+      <Separator orientation="horizontal" />
+
+      <section className="space-y-4">
+        <h1 className="font-semibold">Your Address</h1>
+
+        <Suspense>
+          <UserAddress />
+        </Suspense>
+      </section>
+
+      <Separator orientation="horizontal" />
+
+      <section className="space-y-4">
+        <h1 className="font-semibold">Your Orders</h1>
+
+        <Suspense>
+          <UserOrder />
+        </Suspense>
+      </section>
+
+      <Separator orientation="horizontal" />
+
+      <section className="space-y-4">
+        <h1 className="font-semibold">Your Wish List</h1>
+
+        <Suspense>
+          <UserWishlist />
+        </Suspense>
       </section>
     </Main>
   );
