@@ -85,3 +85,10 @@ export type UpdateOrderStatusFormData = {
   orderId: string;
   orderStatus: string;
 };
+
+export type AddressData = {
+  address: string;
+  zipCode: string;
+  city: string;
+  country: string;
+};
