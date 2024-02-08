@@ -7,7 +7,7 @@ const UserOrder = async () => {
   const orders = await getUsersOrders();
 
   return (
-    <section>
+    <section className="space-y-2">
       {orders?.length !== 0 ? (
         <>
           <h1>
@@ -19,14 +19,12 @@ const UserOrder = async () => {
         </>
       ) : (
         <>
-          <div className="space-y-2">
-            <h1 className="text-muted-foreground">
-              You have not placed any orders yet
-            </h1>
-            <Button variant={"secondary"} asChild>
-              <Link href={`/shop`}>Buy something</Link>
-            </Button>
-          </div>
+          <h1 className="text-muted-foreground">
+            You have not placed any orders yet
+          </h1>
+          <Button variant={"secondary"} asChild>
+            <Link href={`/shop`}>Buy something</Link>
+          </Button>
         </>
       )}
     </section>

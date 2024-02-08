@@ -7,7 +7,7 @@ const UserWishlist = async () => {
   const wishlist = await getUserWishlist();
 
   return (
-    <section>
+    <section className="space-y-2">
       {wishlist?.length !== 0 ? (
         <>
           <h1>
@@ -20,14 +20,12 @@ const UserWishlist = async () => {
         </>
       ) : (
         <>
-          <div className="space-y-2">
-            <h1 className="text-muted-foreground">
-              You have not saved any wish list yet
-            </h1>
-            <Button variant={"secondary"} asChild>
-              <Link href={`/shop`}>add to your wish list</Link>
-            </Button>
-          </div>
+          <h1 className="text-muted-foreground">
+            You have not saved any wish list yet
+          </h1>
+          <Button variant={"secondary"} asChild>
+            <Link href={`/shop`}>add to your wish list</Link>
+          </Button>
         </>
       )}
     </section>
