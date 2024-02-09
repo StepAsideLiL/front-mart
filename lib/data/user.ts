@@ -1,5 +1,5 @@
 import prisma from "@/lib/prismadb";
-import { auth } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs";
 import { unstable_noStore } from "next/cache";
 
 // Get user address.
@@ -84,5 +84,42 @@ export async function getUserWishlist() {
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch user wishlist.");
+  }
+}
+
+// Get address and email of the user during checkout.
+export async function getSigninCheckoutInfo() {
+  unstable_noStore();
+
+  try {
+    const user = await currentUser();
+
+    if (user?.id) {
+      const address = await prisma.user.findUnique({
+        where: {
+          id: user?.id,
+        },
+        select: {
+          address: true,
+          zipCode: true,
+          city: true,
+          country: true,
+        },
+      });
+
+      return {
+        address: address!.address,
+        zipCode: address!.zipCode,
+        city: address!.city,
+        country: address!.country,
+        name: `${user.firstName} ${user.lastName}`,
+        email: user.emailAddresses[0].emailAddress,
+      };
+    }
+  } catch (err) {
+    console.log(err);
+    throw new Error(
+      "Failed to fetch user name, email and address during checkout."
+    );
   }
 }
