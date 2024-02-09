@@ -63,6 +63,7 @@ enum OrderStatus {
 model Order {
   id String @id @unique @default(uuid())
 
+  userId         String @default("")
   name           String @default("")
   email          String @default("")
   address        String @default("")
