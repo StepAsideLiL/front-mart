@@ -28,10 +28,10 @@ const PageSections = async ({
             <SigninCheckoutForm
               name={checkoutInfo!.name}
               email={checkoutInfo!.email}
-              address={checkoutInfo!.address}
-              zipCode={checkoutInfo!.zipCode}
-              city={checkoutInfo!.city}
-              country={checkoutInfo!.country}
+              address={checkoutInfo!.address || ""}
+              zipCode={checkoutInfo!.zipCode || ""}
+              city={checkoutInfo!.city || ""}
+              country={checkoutInfo!.country || ""}
               products={products}
               price={price}
             />
