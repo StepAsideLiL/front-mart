@@ -4,7 +4,10 @@ import CheckoutForm from "./checkout-form";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import TotalPrice from "./total-price";
-import { delivaryCharge } from "@/lib/config";
+import SignInSignUpButton from "./signin-signup-button";
+import { auth } from "@clerk/nextjs";
+import SigninCheckoutForm from "./signin-checkout-form";
+import { getSigninCheckoutInfo } from "@/lib/data/user";
 
 const PageSections = async ({
   products,
@@ -14,11 +17,28 @@ const PageSections = async ({
   }[];
 }) => {
   const price = await calculateCartPrice(products);
+  const checkoutInfo = await getSigninCheckoutInfo();
+  const { userId } = auth();
 
   return (
     <section className="w-full flex flex-col-reverse md:flex-row gap-5 justify-between">
       <section className="w-full">
-        <CheckoutForm products={products} price={price} />
+        {userId ? (
+          <Suspense fallback={"loading..."}>
+            <SigninCheckoutForm
+              name={checkoutInfo!.name}
+              email={checkoutInfo!.email}
+              address={checkoutInfo!.address}
+              zipCode={checkoutInfo!.zipCode}
+              city={checkoutInfo!.city}
+              country={checkoutInfo!.country}
+              products={products}
+              price={price}
+            />
+          </Suspense>
+        ) : (
+          <CheckoutForm products={products} price={price} />
+        )}
       </section>
 
       <section className="w-full">
@@ -34,6 +54,8 @@ const PageSections = async ({
         <Suspense fallback={"loading..."}>
           <TotalPrice price={price} />
         </Suspense>
+
+        <SignInSignUpButton />
       </section>
     </section>
   );
