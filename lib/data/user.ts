@@ -108,10 +108,10 @@ export async function getSigninCheckoutInfo() {
       });
 
       return {
-        address: address!.address,
-        zipCode: address!.zipCode,
-        city: address!.city,
-        country: address!.country,
+        address: address?.address,
+        zipCode: address?.zipCode,
+        city: address?.city,
+        country: address?.country,
         name: `${user.firstName} ${user.lastName}`,
         email: user.emailAddresses[0].emailAddress,
       };
