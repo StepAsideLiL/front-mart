@@ -117,3 +117,32 @@ export async function getSigninCheckoutInfo() {
     );
   }
 }
+
+// Get if the product is wishlisted
+export async function isProductWishlishted(productId: string) {
+  try {
+    const user = await currentUser();
+    if (user) {
+      const userFromDB = await prisma.user.findUnique({
+        where: {
+          id: user.id,
+        },
+        select: {
+          wishList: true,
+        },
+      });
+
+      if (userFromDB) {
+        const isWishlisted = userFromDB.wishList.includes(productId);
+        return isWishlisted;
+      }
+
+      return false;
+    }
+
+    return false;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to determine if the product is wishlisted.");
+  }
+}
