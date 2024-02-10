@@ -15,7 +15,7 @@ const SigninMenu = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
-          <Link href={`/auth/sign-in`}>Sing In</Link>
+          <Link href={`/auth/sign-in`}>Sign In</Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Link href={"/auth/sign-up"}>Create an account</Link>
