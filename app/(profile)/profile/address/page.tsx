@@ -13,7 +13,7 @@ const UserAddressPage = async () => {
 
   return (
     <Main variant={"container"} className="max-w-2xl mx-auto">
-      <Title variant={"xl2"}>Edit Address</Title>
+      <Title variant={"xl2"}>Add & Edit Address</Title>
 
       <UpdateUserAddressFrom
         address={addressInfo?.address || ""}

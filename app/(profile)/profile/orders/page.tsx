@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const UserOrdersPage = () => {
   return (
     <Main variant={"profile"}>
-      <Title variant={"xl2"}>User&apos;s Orders</Title>
+      <Title variant={"xl2"}>Your Orders</Title>
 
       <Suspense fallback={"loading..."}>
         <UserOrderList />
