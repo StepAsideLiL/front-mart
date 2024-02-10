@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { placeOrder } from "./actions";
+import { placeOrder, placeOrderForCurrentUser } from "./actions";
 import { useState } from "react";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useCartStore } from "@/lib/store/cart-store";
@@ -78,7 +78,7 @@ export default function SigninCheckoutForm({
 
     console.log(formData);
     setIsLoading(true);
-    placeOrder(formData);
+    placeOrderForCurrentUser(formData);
 
     if (typeof window !== "undefined" && window.localStorage) {
       localStorage.removeItem("cart");
