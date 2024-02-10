@@ -17,7 +17,7 @@ const QuickView = ({ id }: { id: string }) => {
         <Button className="rounded-3xl">Quick View</Button>
       </SheetTrigger>
 
-      <SheetContent className="p-0 space-y-2 lg:max-w-xl lg:w-[576px] w-full overflow-auto">
+      <SheetContent className="p-0 pt-5 space-y-2 lg:max-w-xl lg:w-[576px] w-full overflow-auto">
         <Suspense>
           <Product id={id} />
         </Suspense>
