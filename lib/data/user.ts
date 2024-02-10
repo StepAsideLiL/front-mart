@@ -39,19 +39,13 @@ export async function getUsersOrders() {
   try {
     const { userId } = auth();
     if (userId) {
-      const orders = await prisma.user.findUnique({
+      const orders = await prisma.order.findMany({
         where: {
-          id: userId,
-          // orders: {
-          //   isEmpty: false,
-          // },
-        },
-        select: {
-          orders: true,
+          userId: userId,
         },
       });
 
-      return orders?.orders;
+      return orders;
     }
 
     return null;
