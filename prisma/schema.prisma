@@ -18,7 +18,6 @@ model User {
   city    String @default("")
   country String @default("")
 
-  orders   String[]
   wishList String[]
 
   date  Int @default(0)
