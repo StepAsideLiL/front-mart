@@ -3,8 +3,6 @@
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 
 const Chart = ({ data }: { data: { month: string; price: number }[] }) => {
-  console.log(data);
-
   return (
     <ResponsiveContainer width="100%" height={350}>
       <BarChart data={data}>
