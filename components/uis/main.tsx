@@ -9,6 +9,7 @@ const mainVariants = cva("min-h-screen space-y-5", {
       md: "container max-w-3xl mx-auto",
       xl: "container max-w-7xl mx-auto",
       dashboard: "md:py-5 p-0",
+      profile: "container max-w-2xl mx-auto",
     },
   },
   defaultVariants: {
