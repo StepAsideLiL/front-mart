@@ -9,9 +9,12 @@ import {
 import AddCartBtn from "@/components/uis/add-cart-btn";
 import { Badge } from "@/components/ui/badge";
 import { getProductById } from "@/lib/data/shop";
+import WishList from "./wishlist";
+import { auth } from "@clerk/nextjs";
 
 const ProductDetails = async ({ id }: { id: string }) => {
   const product = await getProductById(id);
+  const { userId } = auth();
 
   const cartInfo = {
     id: product!.id,
@@ -33,11 +36,15 @@ const ProductDetails = async ({ id }: { id: string }) => {
         </section>
 
         <section className="w-full space-y-3">
-          <div className="flex items-center gap-2">
-            <Title variant={"xl2"}>{product?.title}</Title>
-            {product?.isFeatured && (
-              <Badge variant={"secondary"}>Featured</Badge>
-            )}
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-2">
+              <Title variant={"xl2"}>{product?.title}</Title>
+              {product?.isFeatured && (
+                <Badge variant={"secondary"}>Featured</Badge>
+              )}
+            </div>
+
+            {userId && <WishList productId={product!.id} />}
           </div>
 
           <p className="text-sm">
