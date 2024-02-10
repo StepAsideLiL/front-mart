@@ -55,7 +55,7 @@ export async function getUsersOrders() {
   }
 }
 
-// Get saved product as wish list by the user.
+// Get saved product id as wish list by the user.
 export async function getUserWishlist() {
   unstable_noStore();
 
