@@ -19,7 +19,7 @@ const UserProfilePage = async () => {
   const user = await currentUser();
 
   return (
-    <Main variant={"container"} className="max-w-2xl mx-auto">
+    <Main variant={"profile"}>
       <section className="flex justify-between items-center gap-2">
         <section className="flex items-center gap-2">
           <Avatar>
@@ -52,7 +52,7 @@ const UserProfilePage = async () => {
       <section className="space-y-4">
         <h1 className="font-semibold">Your Address</h1>
 
-        <Suspense>
+        <Suspense fallback={"loading..."}>
           <UserAddress />
         </Suspense>
       </section>
@@ -62,7 +62,7 @@ const UserProfilePage = async () => {
       <section className="space-y-4">
         <h1 className="font-semibold">Your Orders</h1>
 
-        <Suspense>
+        <Suspense fallback={"loading..."}>
           <UserOrder />
         </Suspense>
       </section>
@@ -72,7 +72,7 @@ const UserProfilePage = async () => {
       <section className="space-y-4">
         <h1 className="font-semibold">Your Wish List</h1>
 
-        <Suspense>
+        <Suspense fallback={"loading..."}>
           <UserWishlist />
         </Suspense>
       </section>
