@@ -14,7 +14,7 @@ const UserOrder = async () => {
             Total orders: <Badge variant={"secondary"}>{orders?.length}</Badge>
           </h1>
           <Button variant={"secondary"} asChild>
-            <Link href={`/profile/wishlist`}>View wish list</Link>
+            <Link href={`/profile/wishlist`}>View orders</Link>
           </Button>
         </>
       ) : (
