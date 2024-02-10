@@ -24,7 +24,7 @@ const UserWishlist = async () => {
             You have not saved any wish list yet
           </h1>
           <Button variant={"secondary"} asChild>
-            <Link href={`/shop`}>add to your wish list</Link>
+            <Link href={`/shop`}>Add to wish list</Link>
           </Button>
         </>
       )}
