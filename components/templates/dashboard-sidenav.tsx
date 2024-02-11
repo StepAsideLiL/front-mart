@@ -9,6 +9,7 @@ import {
   Menu,
   Store,
   User,
+  UsersRound,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -42,7 +43,7 @@ const menus1 = [
   {
     title: "Users",
     href: "/dashboard/users",
-    icon: <User strokeWidth={"1px"} width={"20px"} />,
+    icon: <UsersRound strokeWidth={"1px"} width={"20px"} />,
   },
   {
     title: "Dev",
@@ -56,6 +57,11 @@ const menus2 = [
     title: "Shop",
     href: "/shop",
     icon: <Store strokeWidth={"1px"} width={"20px"} />,
+  },
+  {
+    title: "Profile",
+    href: "/profile",
+    icon: <User strokeWidth={"1px"} width={"20px"} />,
   },
 ];
 
