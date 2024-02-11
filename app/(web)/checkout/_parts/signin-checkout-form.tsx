@@ -76,7 +76,6 @@ export default function SigninCheckoutForm({
       year: fullDate.getUTCFullYear(),
     };
 
-    console.log(formData);
     setIsLoading(true);
     placeOrderForCurrentUser(formData);
 

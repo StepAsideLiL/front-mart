@@ -64,7 +64,6 @@ const CheckoutForm = ({
       year: fullDate.getUTCFullYear(),
     };
 
-    console.log(formData);
     setIsLoading(true);
     placeOrder(formData);
 
