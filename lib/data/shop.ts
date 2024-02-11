@@ -1,7 +1,7 @@
 import prisma from "@/lib/prismadb";
 import { unstable_noStore } from "next/cache";
 
-const productsPerPage = 10;
+const productsPerPage = 12;
 
 // Get products for shop page
 export const getProductsForShopPage = async (page: number = 1) => {
