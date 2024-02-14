@@ -1,10 +1,4 @@
 import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
   ClerkIcon,
   CockroachDBIcon,
   NextjsIcon,
@@ -92,7 +86,7 @@ const TechnologiesUsed = () => {
         ))}
       </div> */}
 
-      <div className="flex justify-center items-center gap-10">
+      <div className="flex flex-wrap justify-center items-center gap-10">
         {technologies.map((list, i) => (
           <Link
             key={i}
@@ -100,7 +94,9 @@ const TechnologiesUsed = () => {
             className="flex flex-col items-center gap-2"
           >
             <div>{list.icon}</div>
-            <h1 className="text-2xl font-medium text-center">{list.title}</h1>
+            <h1 className="text-lg md:text-2xl font-medium text-center">
+              {list.title}
+            </h1>
           </Link>
         ))}
       </div>
