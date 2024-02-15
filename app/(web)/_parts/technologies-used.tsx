@@ -57,35 +57,6 @@ const TechnologiesUsed = () => {
     <section className="space-y-10">
       <h1 className="text-4xl font-semibold text-center">Technologies</h1>
 
-      {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-        {technologies.map((list, i) => (
-          <Card key={i}>
-            <Link
-              href={list.href}
-              className="flex justify-center items-center aspect-video"
-              target="_blank"
-            >
-              {list.icon}
-            </Link>
-
-            <CardHeader>
-              <CardTitle className="text-center text-lg md:text-2xl">
-                <Link
-                  href={list.href}
-                  className="hover:underline"
-                  target="_blank"
-                >
-                  {list.title}
-                </Link>
-              </CardTitle>
-              <CardDescription className="text-justify">
-                {list.description}
-              </CardDescription>
-            </CardHeader>
-          </Card>
-        ))}
-      </div> */}
-
       <div className="flex flex-wrap justify-center items-center gap-10">
         {technologies.map((list, i) => (
           <Link
