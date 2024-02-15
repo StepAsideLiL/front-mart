@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import WebAppFeatures from "./_parts/web-app-features";
 import TechnologiesUsed from "./_parts/technologies-used";
+import UpComingFeatures from "./_parts/up-coming-features";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -30,6 +31,9 @@ const HomePage = () => {
 
         {/* Features */}
         <WebAppFeatures />
+
+        {/* Up coming features */}
+        <UpComingFeatures />
       </section>
     </Main>
   );
