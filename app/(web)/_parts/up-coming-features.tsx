@@ -14,8 +14,15 @@ const UpComingFeatures = () => {
             Lucia Auth
           </Link>
         </FeatureText>
-        <FeatureText>Add Stripe Payment</FeatureText>
+        <FeatureText>
+          Add{" "}
+          <Link href={`https://stripe.com/`} className="underline">
+            Stripe
+          </Link>{" "}
+          Payment
+        </FeatureText>
         <FeatureText>Product variant</FeatureText>
+        <FeatureText>Add Shopify</FeatureText>
       </div>
     </section>
   );
