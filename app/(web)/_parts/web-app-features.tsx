@@ -5,7 +5,7 @@ const WebAppFeatures = () => {
   return (
     <section className="space-y-10">
       <h1 className="text-4xl font-semibold text-center">
-        Features Of The E-Store
+        Features Of The Front Mart
       </h1>
 
       <div className="w-60 mx-auto space-y-2 font-mono">
