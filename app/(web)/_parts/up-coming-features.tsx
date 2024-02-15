@@ -25,6 +25,9 @@ const UpComingFeatures = () => {
         <FeatureText>Product variant</FeatureText>
         <FeatureText>Add Shopify</FeatureText>
         <FeatureText>Implement CMS like functionality</FeatureText>
+        <FeatureText>Generate product barcode and order QR code</FeatureText>
+        <FeatureText>Generate order PDF</FeatureText>
+        <FeatureText>Mobile app with react native</FeatureText>
       </div>
     </section>
   );
