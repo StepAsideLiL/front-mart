@@ -21,8 +21,10 @@ const UpComingFeatures = () => {
           </Link>{" "}
           Payment
         </FeatureText>
+        <FeatureText>Product categories and tags</FeatureText>
         <FeatureText>Product variant</FeatureText>
         <FeatureText>Add Shopify</FeatureText>
+        <FeatureText>Implement CMS like functionality</FeatureText>
       </div>
     </section>
   );
