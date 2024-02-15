@@ -8,7 +8,7 @@ const WebAppFeatures = () => {
         Features Of The Front Mart
       </h1>
 
-      <div className="w-60 mx-auto space-y-2 font-mono">
+      <div className="max-w-96 w-96 mx-auto space-y-2 font-mono">
         <FeatureText>Light and Dark Mode</FeatureText>
         <FeatureText>
           Product cart and cart is stored in the browser&apos;s local storage
