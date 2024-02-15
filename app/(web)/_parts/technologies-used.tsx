@@ -91,7 +91,7 @@ const TechnologiesUsed = () => {
           <Link
             key={i}
             href={list.href}
-            className="flex flex-col items-center gap-2"
+            className="flex flex-col items-center gap-5"
           >
             <div>{list.icon}</div>
             <h1 className="text-lg md:text-2xl font-medium text-center">
