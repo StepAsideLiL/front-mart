@@ -1,4 +1,4 @@
-import { clerkClient } from "@clerk/nextjs";
+import { clerkClient } from "@clerk/nextjs/server";
 import {
   Table,
   TableBody,
@@ -16,7 +16,7 @@ const UserList = async () => {
 
   return (
     <section>
-      {users && users.length !== 0 ? (
+      {users && users.data.length !== 0 ? (
         <Table>
           <TableHeader>
             <TableRow>
@@ -27,7 +27,7 @@ const UserList = async () => {
           </TableHeader>
 
           <TableBody>
-            {users.map((user) => (
+            {users.data.map((user) => (
               <TableRow key={user.id}>
                 <TableCell>
                   <Link href={``}>
