@@ -17,7 +17,22 @@ const CloudinaryImage = ({
   src: string;
   alt: string;
   sizes?: string;
-  crop?: string;
+  crop?:
+    | "crop"
+    | "thumb"
+    | "fill"
+    | "auto"
+    | "lfill"
+    | "fill_pad"
+    | "scale"
+    | "fit"
+    | "limit"
+    | "mfit"
+    | "pad"
+    | "lpad"
+    | "mpad"
+    | "imagga_scale"
+    | "imagga_crop";
   className?: string;
 }) => {
   return (
