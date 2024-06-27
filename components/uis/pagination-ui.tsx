@@ -53,12 +53,11 @@ const PaginationUi = ({
           {/* When number of page is equal or less than 5 (page <= 5) */}
           {pages <= 5 &&
             pagesArr.map((list) => (
-              <PaginationItem key={list}>
-                <PaginationPage
-                  page={list}
-                  isActive={list === currentPage ? true : false}
-                />
-              </PaginationItem>
+              <PaginationPage
+                key={list}
+                page={list}
+                isActive={list === currentPage ? true : false}
+              />
             ))}
 
           {/* When number of page are greater than 5 (page > 5) */}
@@ -179,19 +178,16 @@ const PaginationPage = ({
 }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const { replace } = useRouter();
 
-  const handleClick = (page: string | number) => {
-    const params = new URLSearchParams(searchParams);
-
-    params.set("page", page.toString());
-
-    replace(`${pathname}?${params.toString()}`);
-  };
+  const params = new URLSearchParams(searchParams);
+  params.set("page", page.toString());
 
   return (
-    <PaginationItem onClick={() => handleClick(page)}>
-      <PaginationLink href={``} isActive={isActive}>
+    <PaginationItem>
+      <PaginationLink
+        href={`${pathname}?${params.toString()}`}
+        isActive={isActive}
+      >
         {page}
       </PaginationLink>
     </PaginationItem>
