@@ -2,7 +2,7 @@
 
 import prisma from "@/lib/prismadb";
 import { AddressData } from "@/lib/types";
-import { auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 

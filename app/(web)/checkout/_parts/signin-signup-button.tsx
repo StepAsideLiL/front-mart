@@ -1,4 +1,5 @@
-import { SignInButton, auth } from "@clerk/nextjs";
+import { SignInButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import { Button } from "@/components/ui/button";
 
 const SignInSignUpButton = () => {
@@ -7,7 +8,7 @@ const SignInSignUpButton = () => {
   if (!userId) {
     return (
       <div className="px-10">
-        <SignInButton mode="modal" redirectUrl="">
+        <SignInButton mode="modal">
           <Button className="w-full">Sign In</Button>
         </SignInButton>
       </div>

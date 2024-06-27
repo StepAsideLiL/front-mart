@@ -2,7 +2,7 @@
 
 import prisma from "@/lib/prismadb";
 import { PlaceOrder } from "@/lib/types";
-import { currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 

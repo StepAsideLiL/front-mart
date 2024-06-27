@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import TotalPrice from "./total-price";
 import SignInSignUpButton from "./signin-signup-button";
-import { auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import SigninCheckoutForm from "./signin-checkout-form";
 import { getSigninCheckoutInfo } from "@/lib/data/user";
 
