@@ -1,4 +1,4 @@
-import { order } from "@/lib/data/order";
+import { order } from "@/lib/data";
 import Chart from "./chart";
 
 const SalesChart = async () => {

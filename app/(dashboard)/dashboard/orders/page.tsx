@@ -2,7 +2,7 @@ import Title from "@/components/uis/title";
 import { Suspense } from "react";
 import AllOrdersTable from "./_parts/all-orders-table";
 import { Metadata } from "next";
-import { order } from "@/lib/data/order";
+import { order } from "@/lib/data";
 import PaginationUi from "@/components/uis/pagination-ui";
 import OrderFilters from "./_parts/order-filters";
 

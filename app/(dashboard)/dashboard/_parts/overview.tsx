@@ -4,7 +4,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { order } from "@/lib/data/order";
+import { order } from "@/lib/data";
 
 const Overview = async () => {
   const date = new Date();

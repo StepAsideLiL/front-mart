@@ -1,7 +1,7 @@
 import Main from "@/components/uis/main";
 import { Metadata } from "next";
 import UpdateUserAddressFrom from "./_parts/update-user-address-form";
-import { user } from "@/lib/data/user";
+import { user } from "@/lib/data";
 import Title from "@/components/uis/title";
 
 export const metadata: Metadata = {

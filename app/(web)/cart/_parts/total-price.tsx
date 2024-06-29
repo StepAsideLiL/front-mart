@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator";
-import { product } from "@/lib/data/product";
+import { product } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 

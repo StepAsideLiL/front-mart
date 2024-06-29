@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import AddCartBtn from "@/components/uis/add-cart-btn";
 import Title from "@/components/uis/title";
-import { shop } from "@/lib/data/shop";
+import { shop } from "@/lib/data";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import Link from "next/link";
 import { Suspense } from "react";

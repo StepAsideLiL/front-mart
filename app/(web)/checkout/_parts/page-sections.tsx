@@ -1,4 +1,4 @@
-import { product } from "@/lib/data/product";
+import { product } from "@/lib/data";
 import React, { Suspense } from "react";
 import CheckoutForm from "./checkout-form";
 import { Badge } from "@/components/ui/badge";
@@ -7,7 +7,7 @@ import TotalPrice from "./total-price";
 import SignInSignUpButton from "./signin-signup-button";
 import { auth } from "@clerk/nextjs/server";
 import SigninCheckoutForm from "./signin-checkout-form";
-import { user } from "@/lib/data/user";
+import { user } from "@/lib/data";
 
 const PageSections = async ({
   products,

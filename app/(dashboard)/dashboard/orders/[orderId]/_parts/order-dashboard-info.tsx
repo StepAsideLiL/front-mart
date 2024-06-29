@@ -4,7 +4,7 @@ import ProductsInfo from "./products-Info";
 import { ProductCart } from "@/lib/types";
 import EditOrderStatusForm from "./edit-order-status-form";
 import { redirect } from "next/navigation";
-import { order as o } from "@/lib/data/order";
+import { order as o } from "@/lib/data";
 
 const OrderDeshboardInfo = async ({ orderId }: { orderId: string }) => {
   const order = await o.getOrderById(orderId);

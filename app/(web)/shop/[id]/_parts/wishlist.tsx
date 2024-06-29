@@ -1,4 +1,4 @@
-import { user } from "@/lib/data/user";
+import { user } from "@/lib/data";
 import WishListBtn from "./wishlist-btn";
 
 const WishList = async ({ productId }: { productId: string }) => {

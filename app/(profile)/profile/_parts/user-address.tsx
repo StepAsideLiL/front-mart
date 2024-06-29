@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { user } from "@/lib/data/user";
+import { user } from "@/lib/data";
 import Link from "next/link";
 
 const UserAddress = async () => {

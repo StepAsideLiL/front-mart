@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { user } from "@/lib/data/user";
+import { user } from "@/lib/data";
 import { format } from "date-fns";
 import { BookUser } from "lucide-react";
 import Link from "next/link";

@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import AddCartBtn from "@/components/uis/add-cart-btn";
 import { Badge } from "@/components/ui/badge";
-import { shop } from "@/lib/data/shop";
+import { shop } from "@/lib/data";
 import WishList from "./wishlist";
 import { auth } from "@clerk/nextjs/server";
 

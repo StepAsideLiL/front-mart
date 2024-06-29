@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { dummy } from "@/lib/data/dummy";
+import { dummy } from "@/lib/data";
 import React from "react";
 
 const DummyProductAmount = async () => {

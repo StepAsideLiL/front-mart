@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import Title from "@/components/uis/title";
 import AllProductsTabel from "./_parts/all-products-table";
 import PaginationUi from "@/components/uis/pagination-ui";
-import { product } from "@/lib/data/product";
+import { product } from "@/lib/data";
 
 export const revalidate = 600;
 

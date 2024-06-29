@@ -1,6 +1,6 @@
 "use server";
 
-import { user as u } from "@/lib/data/user";
+import { user as u } from "@/lib/data";
 import prisma from "@/lib/prismadb";
 import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";

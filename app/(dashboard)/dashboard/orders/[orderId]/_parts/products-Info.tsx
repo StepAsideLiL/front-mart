@@ -1,6 +1,6 @@
 import { ProductCart } from "@/lib/types";
 import ProductCard from "./product-card";
-import { product } from "@/lib/data/product";
+import { product } from "@/lib/data";
 import { Separator } from "@/components/ui/separator";
 
 const ProductsInfo = async ({ products }: { products: ProductCart }) => {

@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Edit } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { order } from "@/lib/data/order";
+import { order } from "@/lib/data";
 
 const AllOrdersTable = async ({
   currentPage,

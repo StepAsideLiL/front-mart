@@ -2,7 +2,7 @@ import { format } from "date-fns";
 import { Suspense } from "react";
 import ProductsInfo from "./products-info";
 import { ProductCart } from "@/lib/types";
-import { order as o } from "@/lib/data/order";
+import { order as o } from "@/lib/data";
 import { redirect } from "next/navigation";
 
 const OrderInfo = async ({ orderId }: { orderId: string }) => {

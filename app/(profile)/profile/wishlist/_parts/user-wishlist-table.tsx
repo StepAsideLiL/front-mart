@@ -1,4 +1,4 @@
-import { user } from "@/lib/data/user";
+import { user } from "@/lib/data";
 import {
   Table,
   TableBody,
@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { shop } from "@/lib/data/shop";
+import { shop } from "@/lib/data";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import Link from "next/link";
 import { Check } from "lucide-react";
