@@ -3,10 +3,10 @@ import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import Link from "next/link";
 import QuickView from "./quick-view";
 import { Badge } from "@/components/ui/badge";
-import { getProductsForShopPage } from "@/lib/data/shop";
+import { shop } from "@/lib/data/shop";
 
 const AllProduct = async ({ currentPage }: { currentPage: number }) => {
-  const products = await getProductsForShopPage(currentPage);
+  const products = await shop.getProductsForShopPage(currentPage);
 
   return (
     <section>

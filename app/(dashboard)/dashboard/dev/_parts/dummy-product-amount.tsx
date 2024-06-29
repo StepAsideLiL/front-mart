@@ -1,9 +1,9 @@
 import { Badge } from "@/components/ui/badge";
-import { getDummyProductAmount } from "@/lib/data/dummy";
+import { dummy } from "@/lib/data/dummy";
 import React from "react";
 
 const DummyProductAmount = async () => {
-  const amount = await getDummyProductAmount();
+  const amount = await dummy.getDummyProductAmount();
 
   return (
     <Badge variant={"outline"} className="text-muted-foreground">

@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import Title from "@/components/uis/title";
 import AllProductsTabel from "./_parts/all-products-table";
 import PaginationUi from "@/components/uis/pagination-ui";
-import { totalPageForProduct } from "@/lib/data/product";
+import { product } from "@/lib/data/product";
 
 export const revalidate = 600;
 
@@ -20,7 +20,7 @@ const ProductsPage = async ({
   searchParams: { page: number };
 }) => {
   const currentPage = Number(searchParams.page) || 1;
-  const pages = await totalPageForProduct();
+  const pages = await product.totalPageForProduct();
 
   return (
     <>

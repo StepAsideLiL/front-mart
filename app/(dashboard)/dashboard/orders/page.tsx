@@ -2,7 +2,7 @@ import Title from "@/components/uis/title";
 import { Suspense } from "react";
 import AllOrdersTable from "./_parts/all-orders-table";
 import { Metadata } from "next";
-import { totalPageForOrder } from "@/lib/data/order";
+import { order } from "@/lib/data/order";
 import PaginationUi from "@/components/uis/pagination-ui";
 import OrderFilters from "./_parts/order-filters";
 
@@ -18,7 +18,7 @@ const OrdersPage = async ({
   searchParams: { page: number; status: string };
 }) => {
   const currentPage = Number(searchParams.page) || 1;
-  const pages = await totalPageForOrder(searchParams.status);
+  const pages = await order.totalPageForOrder(searchParams.status);
 
   return (
     <>
