@@ -1,7 +1,7 @@
 import Main from "@/components/uis/main";
 import { Metadata } from "next";
 import UpdateUserAddressFrom from "./_parts/update-user-address-form";
-import { getUserAddress } from "@/lib/data/user";
+import { user } from "@/lib/data/user";
 import Title from "@/components/uis/title";
 
 export const metadata: Metadata = {
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const UserAddressPage = async () => {
-  const addressInfo = await getUserAddress();
+  const addressInfo = await user.getUserAddress();
 
   return (
     <Main variant={"container"} className="max-w-2xl mx-auto">

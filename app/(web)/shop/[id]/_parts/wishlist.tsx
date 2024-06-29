@@ -1,8 +1,8 @@
-import { isProductWishlishted } from "@/lib/data/user";
+import { user } from "@/lib/data/user";
 import WishListBtn from "./wishlist-btn";
 
 const WishList = async ({ productId }: { productId: string }) => {
-  const isWishlisted = await isProductWishlishted(productId);
+  const isWishlisted = await user.isProductWishlishted(productId);
 
   return <WishListBtn productId={productId} isWishlisted={isWishlisted} />;
 };

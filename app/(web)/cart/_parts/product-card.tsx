@@ -1,10 +1,10 @@
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import RemoveBtn from "./remove-btn";
-import { getProductById } from "@/lib/data/shop";
+import { shop } from "@/lib/data/shop";
 
 const ProductCard = async ({ id }: { id: string }) => {
-  const product = await getProductById(id);
+  const product = await shop.getProductById(id);
 
   return (
     <Card className="flex items-center gap-3">

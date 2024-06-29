@@ -2,11 +2,11 @@ import { format } from "date-fns";
 import { Suspense } from "react";
 import ProductsInfo from "./products-info";
 import { ProductCart } from "@/lib/types";
-import { getOrderById } from "@/lib/data/order";
+import { order as o } from "@/lib/data/order";
 import { redirect } from "next/navigation";
 
 const OrderInfo = async ({ orderId }: { orderId: string }) => {
-  const order = await getOrderById(orderId);
+  const order = await o.getOrderById(orderId);
 
   if (!order) {
     redirect("/shop");

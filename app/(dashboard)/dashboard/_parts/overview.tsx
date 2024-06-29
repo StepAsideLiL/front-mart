@@ -4,23 +4,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  getDeliveryPriceThisMonth,
-  getDeliveryThisMonth,
-  getOrderPending,
-  getOrderPendingPrice,
-} from "@/lib/data/order";
+import { order } from "@/lib/data/order";
 
 const Overview = async () => {
   const date = new Date();
 
-  const orderPending = await getOrderPending();
-  const orderPendingPrice = await getOrderPendingPrice();
-  const delivered = await getDeliveryThisMonth(
+  const orderPending = await order.getOrderPending();
+  const orderPendingPrice = await order.getOrderPendingPrice();
+  const delivered = await order.getDeliveryThisMonth(
     date.getUTCMonth(),
     date.getUTCFullYear()
   );
-  const deliveredPrice = await getDeliveryPriceThisMonth(
+  const deliveredPrice = await order.getDeliveryPriceThisMonth(
     date.getUTCMonth(),
     date.getUTCFullYear()
   );

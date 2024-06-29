@@ -1,4 +1,4 @@
-import { getUserWishlist } from "@/lib/data/user";
+import { user } from "@/lib/data/user";
 import {
   Table,
   TableBody,
@@ -7,13 +7,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { getProductById } from "@/lib/data/shop";
+import { shop } from "@/lib/data/shop";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import Link from "next/link";
 import { Check } from "lucide-react";
 
 const UserWishlistTable = async () => {
-  const wishlist = await getUserWishlist();
+  const wishlist = await user.getUserWishlist();
 
   return (
     <section>
@@ -47,7 +47,7 @@ const UserWishlistTable = async () => {
 };
 
 const Row = async ({ productId }: { productId: string }) => {
-  const product = await getProductById(productId);
+  const product = await shop.getProductById(productId);
 
   return (
     <TableRow key={product!.id}>

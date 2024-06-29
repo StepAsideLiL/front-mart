@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Edit } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { getOrders } from "@/lib/data/order";
+import { order } from "@/lib/data/order";
 
 const AllOrdersTable = async ({
   currentPage,
@@ -20,7 +20,7 @@ const AllOrdersTable = async ({
   currentPage: number;
   status: string;
 }) => {
-  const orders = await getOrders(currentPage, status);
+  const orders = await order.getOrders(currentPage, status);
 
   return (
     <section>

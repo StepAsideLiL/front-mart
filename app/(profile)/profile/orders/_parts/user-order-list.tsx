@@ -8,13 +8,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { getUsersOrders } from "@/lib/data/user";
+import { user } from "@/lib/data/user";
 import { format } from "date-fns";
 import { BookUser } from "lucide-react";
 import Link from "next/link";
 
 const UserOrderList = async () => {
-  const orders = await getUsersOrders();
+  const orders = await user.getUsersOrders();
 
   return (
     <section>

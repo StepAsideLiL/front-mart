@@ -1,10 +1,10 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { getUsersOrders } from "@/lib/data/user";
+import { user } from "@/lib/data/user";
 import Link from "next/link";
 
 const UserOrder = async () => {
-  const orders = await getUsersOrders();
+  const orders = await user.getUsersOrders();
 
   return (
     <section className="space-y-2">

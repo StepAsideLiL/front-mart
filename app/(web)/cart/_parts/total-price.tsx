@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator";
-import { calculateCartPrice } from "@/lib/data";
+import { product } from "@/lib/data/product";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -10,7 +10,7 @@ const TotalPrice = async ({
     id: string;
   }[];
 }) => {
-  const price = await calculateCartPrice(products);
+  const price = await product.calculateCartPrice(products);
   const delivaryCharge = 25;
 
   return (

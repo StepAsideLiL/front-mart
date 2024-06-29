@@ -1,6 +1,6 @@
 "use server";
 
-import { isProductWishlishted } from "@/lib/data/user";
+import { user as u } from "@/lib/data/user";
 import prisma from "@/lib/prismadb";
 import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
@@ -12,7 +12,7 @@ export async function addToWishlist(productId: string) {
 
   try {
     const user = await currentUser();
-    const isWishlisted = await isProductWishlishted(productId);
+    const isWishlisted = await u.isProductWishlishted(productId);
 
     if (user) {
       const userInDB = await prisma.user.findUnique({

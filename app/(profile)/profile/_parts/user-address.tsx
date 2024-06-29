@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { getUserAddress } from "@/lib/data/user";
+import { user } from "@/lib/data/user";
 import Link from "next/link";
 
 const UserAddress = async () => {
-  const address = await getUserAddress();
+  const address = await user.getUserAddress();
 
   return (
     <section className="space-y-2">

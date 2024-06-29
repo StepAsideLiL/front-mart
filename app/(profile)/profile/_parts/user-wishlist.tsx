@@ -1,10 +1,10 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { getUserWishlist } from "@/lib/data/user";
+import { user } from "@/lib/data/user";
 import Link from "next/link";
 
 const UserWishlist = async () => {
-  const wishlist = await getUserWishlist();
+  const wishlist = await user.getUserWishlist();
 
   return (
     <section className="space-y-2">

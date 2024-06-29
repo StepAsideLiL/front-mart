@@ -1,10 +1,10 @@
 import { ProductCart } from "@/lib/types";
 import ProductCard from "./product-card";
-import { calculateCartPrice } from "@/lib/data";
+import { product } from "@/lib/data/product";
 import { Separator } from "@/components/ui/separator";
 
 const ProductsInfo = async ({ products }: { products: ProductCart }) => {
-  const price = await calculateCartPrice(products);
+  const price = await product.calculateCartPrice(products);
   const delivaryCharge = 25;
 
   return (

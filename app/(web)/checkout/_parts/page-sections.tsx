@@ -1,4 +1,4 @@
-import { calculateCartPrice } from "@/lib/data";
+import { product } from "@/lib/data/product";
 import React, { Suspense } from "react";
 import CheckoutForm from "./checkout-form";
 import { Badge } from "@/components/ui/badge";
@@ -7,7 +7,7 @@ import TotalPrice from "./total-price";
 import SignInSignUpButton from "./signin-signup-button";
 import { auth } from "@clerk/nextjs/server";
 import SigninCheckoutForm from "./signin-checkout-form";
-import { getSigninCheckoutInfo } from "@/lib/data/user";
+import { user } from "@/lib/data/user";
 
 const PageSections = async ({
   products,
@@ -16,8 +16,8 @@ const PageSections = async ({
     id: string;
   }[];
 }) => {
-  const price = await calculateCartPrice(products);
-  const checkoutInfo = await getSigninCheckoutInfo();
+  const price = await product.calculateCartPrice(products);
+  const checkoutInfo = await user.getSigninCheckoutInfo();
   const { userId } = auth();
 
   return (

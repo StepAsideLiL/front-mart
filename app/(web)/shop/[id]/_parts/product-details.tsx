@@ -8,12 +8,12 @@ import {
 } from "@/components/ui/accordion";
 import AddCartBtn from "@/components/uis/add-cart-btn";
 import { Badge } from "@/components/ui/badge";
-import { getProductById } from "@/lib/data/shop";
+import { shop } from "@/lib/data/shop";
 import WishList from "./wishlist";
 import { auth } from "@clerk/nextjs/server";
 
 const ProductDetails = async ({ id }: { id: string }) => {
-  const product = await getProductById(id);
+  const product = await shop.getProductById(id);
   const { userId } = auth();
 
   const cartInfo = {

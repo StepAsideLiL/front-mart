@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import AddCartBtn from "@/components/uis/add-cart-btn";
 import Title from "@/components/uis/title";
-import { getProductById } from "@/lib/data/shop";
+import { shop } from "@/lib/data/shop";
 import { calculateDiscountedPrice, cn } from "@/lib/utils";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -27,7 +27,7 @@ const QuickView = ({ id }: { id: string }) => {
 };
 
 const Product = async ({ id }: { id: string }) => {
-  const product = await getProductById(id);
+  const product = await shop.getProductById(id);
 
   const cartInfo = {
     id: product!.id,
