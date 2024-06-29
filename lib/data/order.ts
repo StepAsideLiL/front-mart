@@ -2,7 +2,7 @@ import prisma from "@/lib/prismadb";
 import { unstable_noStore } from "next/cache";
 
 // Get number of pending orders.
-export const getOrderPending = async () => {
+const getOrderPending = async () => {
   unstable_noStore();
 
   try {
@@ -20,7 +20,7 @@ export const getOrderPending = async () => {
 };
 
 // Get the total price of pending orders
-export const getOrderPendingPrice = async () => {
+const getOrderPendingPrice = async () => {
   unstable_noStore();
 
   try {
@@ -44,7 +44,7 @@ export const getOrderPendingPrice = async () => {
 };
 
 // Get the number of deliverd orders in current month.
-export const getDeliveryThisMonth = async (month: number, year: number) => {
+const getDeliveryThisMonth = async (month: number, year: number) => {
   unstable_noStore();
 
   try {
@@ -64,10 +64,7 @@ export const getDeliveryThisMonth = async (month: number, year: number) => {
 };
 
 // Get the total price of deliverd orders in current month.
-export const getDeliveryPriceThisMonth = async (
-  month: number,
-  year: number
-) => {
+const getDeliveryPriceThisMonth = async (month: number, year: number) => {
   unstable_noStore();
 
   try {
@@ -93,7 +90,7 @@ export const getDeliveryPriceThisMonth = async (
 };
 
 // Get dashboard sales chart data.
-export const getOrderChart = async () => {
+const getOrderChart = async () => {
   unstable_noStore();
 
   try {
@@ -288,7 +285,7 @@ export const getOrderChart = async () => {
 const ordersPerPage = 10;
 
 // Get all orders
-export const getOrders = async (page: number = 1, status: string = "") => {
+const getOrders = async (page: number = 1, status: string = "") => {
   unstable_noStore();
 
   try {
@@ -332,7 +329,7 @@ export const getOrders = async (page: number = 1, status: string = "") => {
 };
 
 // Get total total page count of orders.
-export const totalPageForOrder = async (status: string = "") => {
+const totalPageForOrder = async (status: string = "") => {
   unstable_noStore();
 
   try {
@@ -365,7 +362,7 @@ export const totalPageForOrder = async (status: string = "") => {
 };
 
 // Get order by id.
-export const getOrderById = async (orderId: string) => {
+const getOrderById = async (orderId: string) => {
   try {
     const order = await prisma.order.findUnique({
       where: {
@@ -378,4 +375,15 @@ export const getOrderById = async (orderId: string) => {
     console.log(err);
     throw new Error("Could not fetch the order by id.");
   }
+};
+
+export const order = {
+  getOrderPending,
+  getOrderPendingPrice,
+  getDeliveryThisMonth,
+  getDeliveryPriceThisMonth,
+  getOrderChart,
+  getOrders,
+  totalPageForOrder,
+  getOrderById,
 };

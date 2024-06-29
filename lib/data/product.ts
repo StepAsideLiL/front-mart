@@ -4,7 +4,7 @@ import { unstable_noStore } from "next/cache";
 const productsPerPage = 10;
 
 // Get all the products
-export const getProducts = async (page: number = 1) => {
+const getProducts = async (page: number = 1) => {
   unstable_noStore();
 
   try {
@@ -24,7 +24,7 @@ export const getProducts = async (page: number = 1) => {
 };
 
 // Get total total page count of products
-export const totalPageForProduct = async () => {
+const totalPageForProduct = async () => {
   unstable_noStore();
 
   try {
@@ -35,4 +35,9 @@ export const totalPageForProduct = async () => {
     console.log(err);
     throw new Error("Failed to calculate total page count.");
   }
+};
+
+export const product = {
+  getProducts,
+  totalPageForProduct,
 };

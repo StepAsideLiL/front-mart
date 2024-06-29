@@ -4,7 +4,7 @@ import { unstable_noStore } from "next/cache";
 const productsPerPage = 12;
 
 // Get products for shop page
-export const getProductsForShopPage = async (page: number = 1) => {
+const getProductsForShopPage = async (page: number = 1) => {
   unstable_noStore();
 
   try {
@@ -24,7 +24,7 @@ export const getProductsForShopPage = async (page: number = 1) => {
 };
 
 // Get total total page count of products
-export const totalPageForProduct = async () => {
+const totalPageForProduct = async () => {
   unstable_noStore();
 
   try {
@@ -38,7 +38,7 @@ export const totalPageForProduct = async () => {
 };
 
 // Get product info by id
-export const getProductById = async (id: string) => {
+const getProductById = async (id: string) => {
   try {
     const product = await prisma.product.findUnique({
       where: {
@@ -51,4 +51,10 @@ export const getProductById = async (id: string) => {
     console.log(err);
     throw new Error("Could not fetch the product by id.");
   }
+};
+
+export const shop = {
+  getProductsForShopPage,
+  totalPageForProduct,
+  getProductById,
 };

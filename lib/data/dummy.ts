@@ -1,7 +1,7 @@
 import prisma from "@/lib/prismadb";
 import { unstable_noStore } from "next/cache";
 
-export const getDummyProductAmount = () => {
+const getDummyProductAmount = () => {
   unstable_noStore();
 
   try {
@@ -18,7 +18,7 @@ export const getDummyProductAmount = () => {
   }
 };
 
-export const getDummyOrderAmount = () => {
+const getDummyOrderAmount = () => {
   unstable_noStore();
 
   try {
@@ -33,4 +33,9 @@ export const getDummyOrderAmount = () => {
     console.log(err);
     throw new Error("Failed to calculate the orders amount");
   }
+};
+
+export const dummy = {
+  getDummyProductAmount: getDummyProductAmount,
+  getDummyOrderAmount: getDummyOrderAmount,
 };

@@ -3,7 +3,7 @@ import { auth, currentUser } from "@clerk/nextjs/server";
 import { unstable_noStore } from "next/cache";
 
 // Get user address.
-export async function getUserAddress() {
+async function getUserAddress() {
   unstable_noStore();
 
   try {
@@ -33,7 +33,7 @@ export async function getUserAddress() {
 }
 
 // Get user placed orders by the user.
-export async function getUsersOrders() {
+async function getUsersOrders() {
   unstable_noStore();
 
   try {
@@ -56,7 +56,7 @@ export async function getUsersOrders() {
 }
 
 // Get saved product id as wish list by the user.
-export async function getUserWishlist() {
+async function getUserWishlist() {
   unstable_noStore();
 
   try {
@@ -82,7 +82,7 @@ export async function getUserWishlist() {
 }
 
 // Get address and email of the user during checkout.
-export async function getSigninCheckoutInfo() {
+async function getSigninCheckoutInfo() {
   unstable_noStore();
 
   try {
@@ -119,7 +119,7 @@ export async function getSigninCheckoutInfo() {
 }
 
 // Get if the product is wishlisted
-export async function isProductWishlishted(productId: string) {
+async function isProductWishlishted(productId: string) {
   try {
     const user = await currentUser();
     if (user) {
@@ -146,3 +146,11 @@ export async function isProductWishlishted(productId: string) {
     throw new Error("Failed to determine if the product is wishlisted.");
   }
 }
+
+export const user = {
+  getUserAddress,
+  getUsersOrders,
+  getUserWishlist,
+  getSigninCheckoutInfo,
+  isProductWishlishted,
+};
