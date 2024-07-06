@@ -4,16 +4,10 @@ import Main from "@/components/uis/main";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex md:flex-row flex-col container md:gap-10 gap-1">
-      <div className="flex items-center gap-5 md:block">
-        <DashboardSidenav />
+    <div>
+      <DashboardSidenav />
 
-        <div className="block md:hidden">
-          <Breadcrumbs />
-        </div>
-      </div>
-
-      <Main variant={"dashboard"} className="flex-1 pb-10">
+      <Main variant={"dashboard"} className="px-10 ml-16">
         <div className="md:block hidden">
           <Breadcrumbs />
         </div>
