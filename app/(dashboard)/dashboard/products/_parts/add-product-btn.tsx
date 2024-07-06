@@ -4,10 +4,10 @@ import Link from "next/link";
 
 export default function AddProductBtn() {
   return (
-    <Button asChild variant={"outline"} size={"icon"}>
-      <Link href={"/product/add"}>
-        <span className="sr-only">Add Product</span>
-        <Plus />
+    <Button asChild variant={"outline"}>
+      <Link href={"/product/add"} className="flex items-center gap-1">
+        <Plus size={20} />
+        <span>Add Product</span>
       </Link>
     </Button>
   );
