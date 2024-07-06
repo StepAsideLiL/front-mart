@@ -15,40 +15,45 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import Logo from "@/components/uis/logo";
-import { Separator } from "../ui/separator";
+import { Separator } from "@/components/ui/separator";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Cn } from "@/lib/types";
+import {
+  Tooltip,
+  TooltipProvider,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
 
 const menus1 = [
   {
     title: "Dashboard",
     href: "/dashboard",
-    icon: <LayoutDashboard strokeWidth={"1px"} width={"20px"} />,
+    icon: LayoutDashboard,
   },
   {
     title: "Products",
     href: "/dashboard/products",
-    icon: <Gift strokeWidth={"1px"} width={"20px"} />,
+    icon: Gift,
   },
   {
     title: "Orders",
     href: "/dashboard/orders",
-    icon: <ListOrdered strokeWidth={"1px"} width={"20px"} />,
+    icon: ListOrdered,
   },
   {
     title: "Users",
     href: "/dashboard/users",
-    icon: <UsersRound strokeWidth={"1px"} width={"20px"} />,
+    icon: UsersRound,
   },
   {
     title: "Dev",
     href: "/dashboard/dev",
-    icon: <ChevronRightSquare strokeWidth={"1px"} width={"20px"} />,
+    icon: ChevronRightSquare,
   },
 ];
 
@@ -56,62 +61,82 @@ const menus2 = [
   {
     title: "Shop",
     href: "/shop",
-    icon: <Store strokeWidth={"1px"} width={"20px"} />,
+    icon: Store,
   },
   {
     title: "Profile",
     href: "/profile",
-    icon: <User strokeWidth={"1px"} width={"20px"} />,
+    icon: User,
   },
 ];
 
 const DashboardSidenav = () => {
   return (
-    <aside className="py-5">
-      <div className="h-14 hidden md:flex items-center justify-start">
-        <Logo variant="name-link" />
-      </div>
-
-      <div className="md:hidden flex items-center gap-1 h-5">
-        <SidenavSheet />
-        <Separator orientation="vertical" />
+    <aside className="p-2 h-full fixed top-0 left-0 bottom-0 right-auto w-16 border-r">
+      <nav className="p-1 flex-col gap-1 flex h-full">
         <Logo variant="link" />
-      </div>
 
-      <SideMenus className="hidden md:flex" />
+        <div className="md:hidden flex items-center gap-1 h-5">
+          <SidenavSheet />
+          <Separator orientation="vertical" />
+          <Logo variant="link" />
+        </div>
+
+        <SideMenus />
+      </nav>
     </aside>
   );
 };
 
-const SideMenus = ({ className }: Cn) => {
+const SideMenus = () => {
   const pathname = usePathname();
 
   return (
-    <nav className={cn("p-1 flex-col gap-1 flex", className)}>
-      {menus1.map((menu) => (
-        <ActiveLink
-          key={menu.href}
-          href={menu.href}
-          active={pathname === menu.href ? true : false}
-        >
-          <span>{menu.icon}</span>
-          <span>{menu.title}</span>
-        </ActiveLink>
-      ))}
+    <>
+      <ul>
+        {menus1.map((menu) => (
+          <TooltipProvider key={menu.href}>
+            <Tooltip>
+              <TooltipTrigger>
+                <ActiveLink
+                  href={menu.href}
+                  active={pathname === menu.href ? true : false}
+                >
+                  <menu.icon strokeWidth={"1px"} width={"20px"} />
+                  <span className="sr-only">{menu.title}</span>
+                </ActiveLink>
+              </TooltipTrigger>
+              <TooltipContent side="right" className="text-sm">
+                {menu.title}
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        ))}
+      </ul>
 
       <Separator orientation="horizontal" />
 
-      {menus2.map((menu) => (
-        <ActiveLink
-          key={menu.href}
-          href={menu.href}
-          active={pathname === menu.href ? true : false}
-        >
-          <span>{menu.icon}</span>
-          <span>{menu.title}</span>
-        </ActiveLink>
-      ))}
-    </nav>
+      <ul>
+        {menus2.map((menu) => (
+          <TooltipProvider key={menu.href}>
+            <Tooltip>
+              <TooltipTrigger>
+                <ActiveLink
+                  href={menu.href}
+                  active={pathname === menu.href ? true : false}
+                >
+                  <menu.icon strokeWidth={"1px"} width={"20px"} />
+                  <span className="sr-only">{menu.title}</span>
+                </ActiveLink>
+              </TooltipTrigger>
+              <TooltipContent side="right" className="text-sm">
+                {menu.title}
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        ))}
+      </ul>
+    </>
   );
 };
 
@@ -125,15 +150,17 @@ const ActiveLink = ({
   active?: boolean;
 }) => {
   return (
-    <Link
-      href={href}
-      className={cn(
-        "flex gap-2 p-2 hover:bg-accent rounded text-sm",
-        active && "bg-accent"
-      )}
-    >
-      {children}
-    </Link>
+    <li>
+      <Link
+        href={href}
+        className={cn(
+          "min-w-10 min-h-10 flex gap-2 p-2 hover:bg-accent rounded text-sm items-center justify-center flex-row",
+          active && "bg-accent"
+        )}
+      >
+        {children}
+      </Link>
+    </li>
   );
 };
 
