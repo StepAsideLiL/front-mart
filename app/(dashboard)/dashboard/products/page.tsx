@@ -1,12 +1,10 @@
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
 import { Metadata } from "next";
-import Link from "next/link";
 import { Suspense } from "react";
 import Title from "@/components/uis/title";
 import AllProductsTabel from "./_parts/all-products-table";
 import PaginationUi from "@/components/uis/pagination-ui";
 import { product } from "@/lib/data";
+import AddProductBtn from "./_parts/add-product-btn";
 
 export const revalidate = 600;
 
@@ -27,12 +25,7 @@ const ProductsPage = async ({
       <section className="flex items-center gap-10">
         <Title variant={"xl"}>Products</Title>
 
-        <Button asChild variant={"outline"} size={"icon"}>
-          <Link href={"/product/add"}>
-            <span className="sr-only">Add Product</span>
-            <Plus />
-          </Link>
-        </Button>
+        <AddProductBtn />
       </section>
 
       <Suspense fallback={"loading..."}>
