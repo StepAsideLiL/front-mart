@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { createProductOnDatabase } from "@/lib/data/actions";
-import { Plus } from "lucide-react";
 
 export default function AddProductBtn() {
   async function handleAddProduct() {
