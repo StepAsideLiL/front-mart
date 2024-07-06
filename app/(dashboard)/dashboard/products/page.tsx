@@ -22,7 +22,7 @@ const ProductsPage = async ({
 
   return (
     <>
-      <section className="flex items-center gap-10">
+      <section className="flex items-center gap-10 justify-between">
         <Title variant={"xl"}>Products</Title>
 
         <AddProductBtn />
