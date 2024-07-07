@@ -6,8 +6,6 @@ import PaginationUi from "@/components/uis/pagination-ui";
 import { product } from "@/lib/data";
 import AddProductBtn from "./_parts/add-product-btn";
 
-export const revalidate = 600;
-
 export const metadata: Metadata = {
   title: "Dashboard: Products",
 };
@@ -22,7 +20,7 @@ const ProductsPage = async ({
 
   return (
     <>
-      <section className="flex items-center gap-10 justify-between">
+      <section className="flex items-center gap-10 justify-between border-b pb-1">
         <Title variant={"xl"}>Products</Title>
 
         <AddProductBtn />
