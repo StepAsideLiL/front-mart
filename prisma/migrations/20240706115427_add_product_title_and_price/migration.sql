@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Product" ADD COLUMN     "price" STRING NOT NULL DEFAULT '';
+ALTER TABLE "Product" ADD COLUMN     "title" STRING NOT NULL DEFAULT '';

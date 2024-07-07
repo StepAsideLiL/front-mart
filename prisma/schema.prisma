@@ -33,19 +33,19 @@ model User {
 model Product {
   id String @id @unique @default(uuid())
 
-  title         String
-  price         Float
-  discount      Float?   @default(0)
-  description   String?  @default("")
-  quickOverview String?  @default("")
-  imageSrc      String?  @default("")
-  isFeatured    Boolean? @default(false)
+  title            String  @default("")
+  price            String  @default("")
+  discount         Float   @default(0)
+  description      String  @default("")
+  quickDescription String  @default("")
+  imageSrc         String  @default("")
+  isFeatured       Boolean @default(false)
 
   date  Int @default(0)
   month Int @default(0)
   year  Int @default(0)
 
-  isDummy Boolean? @default(false)
+  isDummy Boolean @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
