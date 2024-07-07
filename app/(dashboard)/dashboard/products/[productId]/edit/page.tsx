@@ -1,6 +1,6 @@
 import StripeProductEditApp from "@/components/app-components/stripe-product-edit/app";
 import FormSavedState from "@/components/app-components/stripe-product-edit/ui-components/form-saved-state";
-import Loading from "@/components/uis/skeletons";
+import DashboardLoading from "@/components/uis/skeletons";
 import Title from "@/components/uis/title";
 import { product } from "@/lib/data";
 import { Suspense } from "react";
@@ -16,7 +16,7 @@ export default function Page({ params }: { params: { productId: string } }) {
         <FormSavedState />
       </section>
 
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<DashboardLoading />}>
         <EditProduct productId={params.productId} />
       </Suspense>
     </>
