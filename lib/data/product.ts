@@ -44,22 +44,22 @@ const calculateCartPrice = async (products: { id: string }[]) => {
 
   try {
     let price = 0;
-    await Promise.all(
-      products.map(async (item) => {
-        const product = await prisma.product.findUnique({
-          where: {
-            id: item.id,
-          },
-        });
+    // await Promise.all(
+    //   products.map(async (item) => {
+    //     const product = await prisma.product.findUnique({
+    //       where: {
+    //         id: item.id,
+    //       },
+    //     });
 
-        if (product!.discount === 0) {
-          price = price + product!.price;
-        } else {
-          price =
-            price + calculateDiscountedPrice(product!.price, product!.discount);
-        }
-      })
-    );
+    //     if (product!.discount === 0) {
+    //       price = price + product!.price;
+    //     } else {
+    //       price =
+    //         price + calculateDiscountedPrice(product!.price, product!.discount);
+    //     }
+    //   })
+    // );
 
     return price;
   } catch (err) {
@@ -68,8 +68,32 @@ const calculateCartPrice = async (products: { id: string }[]) => {
   }
 };
 
+async function getProductsInfoForEdit(productId: string) {
+  try {
+    const productInfo = await prisma.product.findUnique({
+      where: {
+        id: productId,
+      },
+    });
+
+    if (productInfo) {
+      return {
+        productTitle: productInfo.title,
+        quickDescription: productInfo.quickDescription,
+        description: productInfo.description,
+      };
+    } else {
+      return null;
+    }
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to perform getProductsInfoForEdit function");
+  }
+}
+
 export const product = {
   getProducts,
+  getProductsInfoForEdit,
   totalPageForProduct,
   calculateCartPrice,
 };
