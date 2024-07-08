@@ -1,9 +1,9 @@
-import { SignIn } from "@clerk/nextjs";
+import SignInForm from "@/components/app-components/lucia-authentication/forms/sign-in-form";
 
-export default function SignInPage() {
+export default function Page() {
   return (
-    <main className="min-h-screen flex justify-center items-center">
-      <SignIn />
+    <main className="min-h-screen">
+      <SignInForm />
     </main>
   );
 }

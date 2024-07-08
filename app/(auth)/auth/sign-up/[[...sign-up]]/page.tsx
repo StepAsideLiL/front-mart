@@ -1,9 +1,9 @@
-import { SignUp } from "@clerk/nextjs";
+import SignUpForm from "@/components/app-components/lucia-authentication/forms/sign-up-form";
 
-export default function SignUpPage() {
+export default function Page() {
   return (
-    <main className="min-h-screen flex justify-center items-center">
-      <SignUp />
+    <main className="min-h-screen">
+      <SignUpForm />
     </main>
   );
 }
