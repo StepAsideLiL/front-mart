@@ -4,6 +4,7 @@ import { inter } from "@/lib/fonts";
 import Providers from "@/components/providers/providers";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: {
@@ -26,7 +27,11 @@ export default function RootLayout({
     >
       <html lang="en">
         <body className={inter.className}>
-          <Providers>{children}</Providers>
+          <Providers>
+            {children}
+
+            <Toaster />
+          </Providers>
         </body>
       </html>
     </ClerkProvider>
