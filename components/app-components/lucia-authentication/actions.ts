@@ -4,7 +4,6 @@ import prisma from "@/lib/prismadb";
 import bcrypt from "bcrypt";
 import { getUser, lucia } from "./auth";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 /**
  * Validate username, email and password to create and login a user.
@@ -141,21 +140,31 @@ export async function loginUser(data: {
 /**
  * Logout the user and invalidate the session.
  */
-export async function logout() {
-  const user = await getUser();
-  if (!user?.session) {
+export async function logoutUser() {
+  try {
+    const user = await getUser();
+
+    if (!user?.session) {
+      return {
+        error: "Unauthorized",
+      };
+    }
+
+    await lucia.invalidateSession(user.session.id);
+
+    const sessionCookie = lucia.createBlankSessionCookie();
+    cookies().set(
+      sessionCookie.name,
+      sessionCookie.value,
+      sessionCookie.attributes
+    );
+
     return {
-      error: "Unauthorized",
+      success: true,
+      message: "You are now logged out!",
     };
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to perform logoutUser server action");
   }
-
-  await lucia.invalidateSession(user.session.id);
-
-  const sessionCookie = lucia.createBlankSessionCookie();
-  cookies().set(
-    sessionCookie.name,
-    sessionCookie.value,
-    sessionCookie.attributes
-  );
-  return redirect("/auth/sign-in");
 }
