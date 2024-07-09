@@ -1,3 +1,4 @@
+import AuthMenu from "@/components/app-components/lucia-authentication/ui-components/auth-menu";
 import Cart from "@/components/templates/cart";
 import { ModeToggle } from "@/components/templates/mode-toggle";
 import Navlink from "@/components/templates/navlink";
@@ -26,6 +27,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <Separator orientation="vertical" />
 
           <Cart />
+
+          <AuthMenu />
         </div>
       </header>
 
