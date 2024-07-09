@@ -1,5 +1,5 @@
-import Footer from "@/components/templates/footer";
-import Navbar from "@/components/templates/navbar";
+import Footer from "@/components/common-layout/footer";
+import Navbar from "@/components/common-layout/navbar";
 
 const ProfileLayout = ({ children }: { children: React.ReactNode }) => {
   return (
