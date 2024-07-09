@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import { logoutUser } from "../actions";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
-export default function LogoutBtn() {
+export default function LogoutBtn({ className }: { className?: string }) {
   const router = useRouter();
 
   async function handleLogout() {
@@ -17,7 +18,11 @@ export default function LogoutBtn() {
   }
 
   return (
-    <Button variant={"outline"} onClick={handleLogout}>
+    <Button
+      variant={"outline"}
+      onClick={handleLogout}
+      className={cn(className)}
+    >
       Logout
     </Button>
   );
