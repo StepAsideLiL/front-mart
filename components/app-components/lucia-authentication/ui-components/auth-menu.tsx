@@ -13,6 +13,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
 
 export default async function AuthMenu() {
   const user = await getUser();
@@ -58,8 +59,12 @@ function ProfileMenu() {
         <Pen />
       </PopoverTrigger>
 
-      <PopoverContent>
-        <LogoutBtn />
+      <PopoverContent className="space-y-4">
+        <Button variant={"outline"} className="w-full" asChild>
+          <Link href={"/profile/edit"}>Edit Profile</Link>
+        </Button>
+
+        <LogoutBtn className="w-full" />
       </PopoverContent>
     </Popover>
   );
