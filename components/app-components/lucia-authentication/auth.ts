@@ -64,7 +64,7 @@ export const getUser = cache(async () => {
   return { user, session };
 });
 
-export async function getCurrentUser() {
+export const getCurrentUser = cache(async () => {
   const currentUser = await getUser();
 
   if (!currentUser?.user) {
@@ -72,9 +72,9 @@ export async function getCurrentUser() {
   }
 
   return currentUser.user;
-}
+});
 
-export async function getCurrentUserSession() {
+export const getCurrentUserSession = cache(async () => {
   const currentUser = await getUser();
 
   if (!currentUser?.session) {
@@ -82,4 +82,4 @@ export async function getCurrentUserSession() {
   }
 
   return currentUser.session;
-}
+});
