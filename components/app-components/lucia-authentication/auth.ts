@@ -63,3 +63,23 @@ export const getUser = cache(async () => {
 
   return { user, session };
 });
+
+export async function getCurrentUser() {
+  const currentUser = await getUser();
+
+  if (!currentUser?.user) {
+    return null;
+  }
+
+  return currentUser.user;
+}
+
+export async function getCurrentUserSession() {
+  const currentUser = await getUser();
+
+  if (!currentUser?.session) {
+    return null;
+  }
+
+  return currentUser.session;
+}
