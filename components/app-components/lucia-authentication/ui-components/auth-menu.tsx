@@ -60,9 +60,15 @@ function ProfileMenu() {
       </PopoverTrigger>
 
       <PopoverContent className="space-y-4">
-        <Button variant={"outline"} className="w-full" asChild>
-          <Link href={"/profile/edit"}>Edit Profile</Link>
-        </Button>
+        <div className="flex w-full gap-1">
+          <Button className="w-full" asChild>
+            <Link href={"/profile"}>View Profile</Link>
+          </Button>
+
+          <Button variant={"outline"} className="w-full" asChild>
+            <Link href={"/profile/edit"}>Edit Profile</Link>
+          </Button>
+        </div>
 
         <LogoutBtn className="w-full" />
       </PopoverContent>
