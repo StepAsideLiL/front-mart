@@ -4,7 +4,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { getUser } from "../auth";
+import { getCurrentUser } from "../auth";
 import { Pen, User } from "lucide-react";
 import Link from "next/link";
 import LogoutBtn from "./logout-btn";
@@ -14,11 +14,12 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
+import UserAvatar from "./user-avatar";
 
 export default async function AuthMenu() {
-  const user = await getUser();
+  const currentUser = await getCurrentUser();
 
-  if (!user) {
+  if (!currentUser) {
     return (
       <div>
         <Menu />
@@ -56,7 +57,7 @@ function ProfileMenu() {
   return (
     <Popover>
       <PopoverTrigger>
-        <Pen />
+        <UserAvatar />
       </PopoverTrigger>
 
       <PopoverContent className="space-y-4">
