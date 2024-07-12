@@ -1,7 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import Main from "@/components/uis/main";
-import { currentUser } from "@clerk/nextjs/server";
 import { Edit } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -10,30 +9,29 @@ import UserAddress from "./_parts/user-address";
 import { Separator } from "@/components/ui/separator";
 import UserOrder from "./_parts/user-order";
 import UserWishlist from "./_parts/user-wishlist";
+import { getCurrentUser } from "@/components/app-components/lucia-authentication/auth";
+import UserAvatar from "@/components/app-components/lucia-authentication/ui-components/user-avatar";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "User Profile",
 };
 
-const UserProfilePage = async () => {
-  const user = await currentUser();
+const Page = async () => {
+  const currentUser = await getCurrentUser();
+
+  if (!currentUser) {
+    redirect("/");
+  }
 
   return (
     <Main variant={"profile"}>
       <section className="flex justify-between items-center gap-2">
         <section className="flex items-center gap-2">
-          <Avatar>
-            <AvatarImage src={user?.imageUrl} />
-            <AvatarFallback>{user?.firstName || "U"}</AvatarFallback>
-          </Avatar>
+          <UserAvatar />
 
           <div>
-            <h1 className="font-medium">
-              {user?.firstName && user?.lastName
-                ? `${user?.firstName} ${user?.lastName}`
-                : "(No Name)"}
-            </h1>
-            <p className="text-muted-foreground">{user?.username}</p>
+            <h1 className="font-medium">{currentUser.username}</h1>
           </div>
         </section>
 
@@ -80,4 +78,4 @@ const UserProfilePage = async () => {
   );
 };
 
-export default UserProfilePage;
+export default Page;
