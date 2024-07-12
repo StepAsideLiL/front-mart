@@ -1,5 +1,5 @@
+import { getCurrentUser } from "@/components/app-components/lucia-authentication/auth";
 import prisma from "@/lib/prismadb";
-import { auth, currentUser } from "@clerk/nextjs/server";
 import { unstable_noStore } from "next/cache";
 
 // Get user address.
@@ -7,25 +7,25 @@ async function getUserAddress() {
   unstable_noStore();
 
   try {
-    const { userId } = auth();
+    const currentUser = await getCurrentUser();
 
-    if (userId) {
-      const address = await prisma.user.findUnique({
-        where: {
-          id: userId,
-        },
-        select: {
-          address: true,
-          zipCode: true,
-          city: true,
-          country: true,
-        },
-      });
-
-      return address;
+    if (!currentUser) {
+      return null;
     }
 
-    return null;
+    const address = await prisma.user.findUnique({
+      where: {
+        id: currentUser.id,
+      },
+      select: {
+        address: true,
+        zipCode: true,
+        city: true,
+        country: true,
+      },
+    });
+
+    return address;
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch user address.");
@@ -37,18 +37,19 @@ async function getUsersOrders() {
   unstable_noStore();
 
   try {
-    const { userId } = auth();
-    if (userId) {
-      const orders = await prisma.order.findMany({
-        where: {
-          userId: userId,
-        },
-      });
+    const currentUser = await getCurrentUser();
 
-      return orders;
+    if (!currentUser) {
+      return null;
     }
 
-    return null;
+    const orders = await prisma.order.findMany({
+      where: {
+        userId: currentUser.id,
+      },
+    });
+
+    return orders;
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch order placed by user.");
@@ -60,21 +61,22 @@ async function getUserWishlist() {
   unstable_noStore();
 
   try {
-    const { userId } = auth();
-    if (userId) {
-      const wishlist = await prisma.user.findUnique({
-        where: {
-          id: userId,
-        },
-        select: {
-          wishList: true,
-        },
-      });
+    const currentUser = await getCurrentUser();
 
-      return wishlist?.wishList;
+    if (!currentUser) {
+      return null;
     }
 
-    return null;
+    const userWishlists = await prisma.user.findUnique({
+      where: {
+        id: currentUser.id,
+      },
+      select: {
+        wishList: true,
+      },
+    });
+
+    return userWishlists?.wishList;
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch user wishlist.");
@@ -86,30 +88,34 @@ async function getSigninCheckoutInfo() {
   unstable_noStore();
 
   try {
-    const user = await currentUser();
+    const currentUser = await getCurrentUser();
 
-    if (user?.id) {
-      const address = await prisma.user.findUnique({
-        where: {
-          id: user?.id,
-        },
-        select: {
-          address: true,
-          zipCode: true,
-          city: true,
-          country: true,
-        },
-      });
-
-      return {
-        address: address?.address,
-        zipCode: address?.zipCode,
-        city: address?.city,
-        country: address?.country,
-        name: `${user.firstName} ${user.lastName}`,
-        email: user.emailAddresses[0].emailAddress,
-      };
+    if (!currentUser) {
+      return null;
     }
+
+    const address = await prisma.user.findUnique({
+      where: {
+        id: currentUser.id,
+      },
+      select: {
+        name: true,
+        email: true,
+        address: true,
+        zipCode: true,
+        city: true,
+        country: true,
+      },
+    });
+
+    return {
+      address: address?.address,
+      zipCode: address?.zipCode,
+      city: address?.city,
+      country: address?.country,
+      name: address?.name,
+      email: address?.email,
+    };
   } catch (err) {
     console.log(err);
     throw new Error(
@@ -121,11 +127,16 @@ async function getSigninCheckoutInfo() {
 // Get if the product is wishlisted
 async function isProductWishlishted(productId: string) {
   try {
-    const user = await currentUser();
+    const currentUser = await getCurrentUser();
+
+    if (!currentUser) {
+      return null;
+    }
+
     if (user) {
       const userFromDB = await prisma.user.findUnique({
         where: {
-          id: user.id,
+          id: currentUser.id,
         },
         select: {
           wishList: true,
