@@ -7,7 +7,7 @@ import prisma from "@/lib/prismadb";
  * @param data Object containing the product information to be updated.
  * @returns Object Success message if the product is updated successfully, error message otherwise.
  */
-export async function updateProductInfo(data: {
+export async function updateGeneralProductInfo(data: {
   productId: string;
   productTitle: string;
   productDescription: string;

@@ -1,10 +1,12 @@
 "use client";
 
 import { CheckCheck, LoaderCircle } from "lucide-react";
-import { useProductEditStore } from "../store";
+import { useStripeStore } from "../store";
 
 export default function FormSavedState() {
-  const [updateProductInfo] = useProductEditStore((s) => [s.updateProductInfo]);
+  const [updateProductInfo] = useStripeStore((s) => [
+    s.isPerformingUpdateGeneralInfoAction,
+  ]);
 
   const isSaving = orCondition(updateProductInfo);
 

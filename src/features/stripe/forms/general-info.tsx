@@ -16,8 +16,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useDebounce } from "react-use";
 import { useState } from "react";
-import { useProductEditStore } from "../store";
-import { updateProductInfo } from "../actions";
+import { useStripeStore } from "../store";
+import { updateGeneralProductInfo } from "../actions";
 
 const formSchema = z.object({
   productTitle: z.string().trim().min(1, {
@@ -54,9 +54,9 @@ export default function GeneralInfoForm({
     quickDescription
   );
 
-  const [processingStarted, processingStoped] = useProductEditStore((s) => [
-    s.runingUpdateProductInfo,
-    s.stopUpdateProductInfo,
+  const [processingStarted, processingStoped] = useStripeStore((s) => [
+    s.startPerformingUpdateGeneralInfoAction,
+    s.stopPerformingUpdateGeneralInfoAction,
   ]);
 
   useDebounce(
@@ -68,7 +68,7 @@ export default function GeneralInfoForm({
         productQuickDescription: quickDes ? quickDes : "",
       };
 
-      const res = await updateProductInfo(formData);
+      const res = await updateGeneralProductInfo(formData);
 
       if (res.success) {
         processingStoped();
