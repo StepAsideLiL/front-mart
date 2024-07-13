@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { inter } from "@/lib/fonts";
-import Providers from "@/components/providers/providers";
-import { ClerkProvider } from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "../features/dark-mode/theme-provider";
 
 export const metadata: Metadata = {
   title: {
@@ -20,20 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider
-      appearance={{
-        baseTheme: dark,
-      }}
-    >
-      <html lang="en">
-        <body className={inter.className}>
-          <Providers>
-            {children}
+    <html lang="en">
+      <body className={inter.className}>
+        <ThemeProvider>
+          {children}
 
-            <Toaster />
-          </Providers>
-        </body>
-      </html>
-    </ClerkProvider>
+          <Toaster />
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }
