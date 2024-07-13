@@ -1,9 +1,9 @@
-import AuthMenu from "../app-components/lucia-authentication/ui-components/auth-menu";
-import Cart from "../templates/cart";
-import { ModeToggle } from "../templates/mode-toggle";
-import Navlink from "../templates/navlink";
-import { Separator } from "../ui/separator";
-import Logo from "../uis/logo";
+import Cart from "@/components/templates/cart";
+import Navlink from "@/components/templates/navlink";
+import { Separator } from "@/components/ui/separator";
+import Logo from "@/components/uis/logo";
+import { ModeToggle } from "@/src/features/dark-mode/ui/mode-toggle";
+import AuthMenu from "@/src/features/lucia-auth/ui/auth-menu";
 
 export default function Navbar() {
   return (
