@@ -1,4 +1,4 @@
-import SignInForm from "@/components/app-components/lucia-authentication/forms/sign-in-form";
+import SignInForm from "@/src/features/lucia-auth/forms/sign-in";
 
 export default function Page() {
   return (

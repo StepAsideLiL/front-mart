@@ -1,5 +1,5 @@
-import { getCurrentUser } from "@/components/app-components/lucia-authentication/auth";
 import prisma from "@/lib/prismadb";
+import { getCurrentUser } from "@/src/features/lucia-auth/auth";
 import { unstable_noStore } from "next/cache";
 
 // Get user address.

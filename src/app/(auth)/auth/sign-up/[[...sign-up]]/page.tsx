@@ -1,4 +1,4 @@
-import SignUpForm from "@/components/app-components/lucia-authentication/forms/sign-up-form";
+import SignUpForm from "@/src/features/lucia-auth/forms/sign-up";
 
 export default function Page() {
   return (

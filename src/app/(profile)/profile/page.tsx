@@ -8,9 +8,9 @@ import UserAddress from "./_parts/user-address";
 import { Separator } from "@/components/ui/separator";
 import UserOrder from "./_parts/user-order";
 import UserWishlist from "./_parts/user-wishlist";
-import { getCurrentUser } from "@/components/app-components/lucia-authentication/auth";
-import UserAvatar from "@/components/app-components/lucia-authentication/ui-components/user-avatar";
 import { redirect } from "next/navigation";
+import { getCurrentUser } from "@/src/features/lucia-auth/auth";
+import UserAvatar from "@/src/features/lucia-auth/ui/user-avatar";
 
 export const metadata: Metadata = {
   title: "User Profile",
