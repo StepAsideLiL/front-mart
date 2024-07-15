@@ -1,6 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import GeneralInfoForm from "./forms/general-info";
 import { product } from "@/lib/data";
+import { ProductVariantSchema } from "./forms/product-variant-schema";
 
 export default async function EditProduct({
   productId,
@@ -27,6 +28,11 @@ export default async function EditProduct({
       />
 
       <Separator />
+
+      <ProductVariantSchema
+        productId={productId}
+        variantSchema={JSON.parse(productInfo.variantSchema)}
+      />
     </section>
   );
 }
