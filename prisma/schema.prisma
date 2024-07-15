@@ -55,6 +55,7 @@ model Product {
   quickDescription String  @default("")
   imageSrc         String  @default("")
   isFeatured       Boolean @default(false)
+  variantSchema    String  @default("")
 
   date  Int @default(0)
   month Int @default(0)
