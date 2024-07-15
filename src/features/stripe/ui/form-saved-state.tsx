@@ -10,7 +10,6 @@ export default function FormSavedState() {
   ]);
 
   const isSaving = orCondition(updateProductInfo, updateProductVariant);
-  console.log(isSaving);
 
   return (
     <div className="text-muted-foreground flex items-center gap-1">
