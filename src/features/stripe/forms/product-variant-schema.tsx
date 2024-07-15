@@ -88,9 +88,6 @@ export function ProductVariantSchema({
     [variants]
   );
 
-  console.log(variants);
-  console.log(variantSchema);
-
   return (
     <section className="space-y-4">
       <div>
