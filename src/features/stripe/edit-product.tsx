@@ -1,7 +1,12 @@
-import { Separator } from "@/components/ui/separator";
 import GeneralInfoForm from "./forms/general-info";
 import { product } from "@/lib/data";
 import { ProductVariantSchema } from "./forms/product-variant-schema";
+import {
+  EditProductTabs,
+  EditProductTabsContent,
+  EditProductTabsList,
+  EditProductTabsTrigger,
+} from "./ui/edit-product-tabs";
 
 export default async function EditProduct({
   productId,
@@ -20,19 +25,32 @@ export default async function EditProduct({
 
   return (
     <section className="space-y-8">
-      <GeneralInfoForm
-        productId={productId}
-        productTitle={productInfo.productTitle}
-        description={productInfo.description}
-        quickDescription={productInfo.quickDescription}
-      />
+      <EditProductTabs defaultValue="general-info" className="space-y-2">
+        <EditProductTabsList>
+          <EditProductTabsTrigger value="general-info">
+            General Info
+          </EditProductTabsTrigger>
+          <EditProductTabsTrigger value="variant-schema">
+            Variant Schema
+          </EditProductTabsTrigger>
+        </EditProductTabsList>
 
-      <Separator />
+        <EditProductTabsContent value="general-info">
+          <GeneralInfoForm
+            productId={productId}
+            productTitle={productInfo.productTitle}
+            description={productInfo.description}
+            quickDescription={productInfo.quickDescription}
+          />
+        </EditProductTabsContent>
 
-      <ProductVariantSchema
-        productId={productId}
-        variantSchema={JSON.parse(productInfo.variantSchema)}
-      />
+        <EditProductTabsContent value="variant-schema">
+          <ProductVariantSchema
+            productId={productId}
+            variantSchema={JSON.parse(productInfo.variantSchema)}
+          />
+        </EditProductTabsContent>
+      </EditProductTabs>
     </section>
   );
 }
