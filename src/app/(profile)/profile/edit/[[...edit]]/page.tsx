@@ -1,5 +1,5 @@
-import EditProfileForm from "@/components/app-components/profile/forms/edit-profile";
 import Title from "@/components/uis/title";
+import EditProfileForm from "@/src/features/lucia-auth/forms/edit-profile";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
