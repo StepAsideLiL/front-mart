@@ -81,6 +81,7 @@ async function getProductsInfoForEdit(productId: string) {
         productTitle: productInfo.title,
         quickDescription: productInfo.quickDescription,
         description: productInfo.description,
+        variantSchema: productInfo.variantSchema,
       };
     } else {
       return null;
