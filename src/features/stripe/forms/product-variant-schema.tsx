@@ -26,14 +26,7 @@ import { Trash } from "lucide-react";
 import { generateProductVariantId } from "@/lib/nanoid";
 import { updateProductVariantSchema } from "../actions";
 import { useStripeStore } from "../store";
-
-type SingleVariantSchemaType = {
-  id: string;
-  title: string;
-  type: string;
-};
-
-type VariantSchemaType = SingleVariantSchemaType[];
+import { SingleVariantSchemaType, VariantSchemaType } from "../types";
 
 const formSchema = z.object({
   variantTitle: z.string().trim().min(1, {
