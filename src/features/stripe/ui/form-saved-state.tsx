@@ -4,11 +4,13 @@ import { CheckCheck, LoaderCircle } from "lucide-react";
 import { useStripeStore } from "../store";
 
 export default function FormSavedState() {
-  const [updateProductInfo] = useStripeStore((s) => [
+  const [updateProductInfo, updateProductVariant] = useStripeStore((s) => [
     s.isPerformingUpdateGeneralInfoAction,
+    s.isPerformingUpdateProductVariantSchemaAction,
   ]);
 
-  const isSaving = orCondition(updateProductInfo);
+  const isSaving = orCondition(updateProductInfo, updateProductVariant);
+  console.log(isSaving);
 
   return (
     <div className="text-muted-foreground flex items-center gap-1">
