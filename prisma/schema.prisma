@@ -48,20 +48,35 @@ model Session {
 model Product {
   id String @id @unique @default(uuid())
 
-  title            String  @default("")
-  price            String  @default("")
-  discount         Float   @default(0)
-  description      String  @default("")
-  quickDescription String  @default("")
-  imageSrc         String  @default("")
-  isFeatured       Boolean @default(false)
-  variantSchema    String  @default("[]")
+  title                String                 @default("")
+  price                String                 @default("")
+  discount             Float                  @default(0)
+  description          String                 @default("")
+  quickDescription     String                 @default("")
+  imageSrc             String                 @default("")
+  isFeatured           Boolean                @default(false)
+  variantSchema        String                 @default("[]")
+  stripeProductVariant StripeProductVariant[]
 
   date  Int @default(0)
   month Int @default(0)
   year  Int @default(0)
 
   isDummy Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model StripeProductVariant {
+  id String @id @unique @default(uuid())
+
+  variant         String @default("")
+  stripeProductId String @default("")
+  stripePriceId   String @default("")
+
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
