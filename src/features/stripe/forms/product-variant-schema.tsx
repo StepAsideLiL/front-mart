@@ -23,10 +23,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { Dispatch, SetStateAction, useState } from "react";
 import { Trash } from "lucide-react";
-import { generateProductVariantId } from "@/lib/nanoid";
 import { updateProductVariantSchema } from "../actions";
 import { useStripeStore } from "../store";
 import { SingleVariantSchemaType, VariantSchemaType } from "../types";
+import { generateProductVariantId } from "../utils";
 
 const formSchema = z.object({
   variantTitle: z.string().trim().min(1, {
