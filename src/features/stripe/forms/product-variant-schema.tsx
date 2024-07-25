@@ -30,9 +30,14 @@ import { SingleVariantSchemaType, VariantSchemaType } from "../types";
 
 const formSchema = z.object({
   variantTitle: z.string().trim().min(1, {
-    message: "Product Title can be empty.",
+    message: "Product Title can not be empty.",
   }),
-  variantType: z.string(),
+  variantSlug: z.string().trim().min(1, {
+    message: "Product Slug can not be empty.",
+  }),
+  variantType: z.enum(["normal", "color"], {
+    message: "Please select a variant type",
+  }),
 });
 
 export function ProductVariantSchema({
@@ -50,10 +55,11 @@ export function ProductVariantSchema({
 
   function handleAddVariant() {
     processingStarted();
-    const newVriant = {
+    const newVriant: SingleVariantSchemaType = {
       id: generateProductVariantId(),
       title: "",
-      type: "",
+      slug: "",
+      type: "normal",
     };
 
     setVariants([...variants, newVriant]);
@@ -96,7 +102,8 @@ export function ProductVariantSchema({
             <ProductVariantSchemaForm
               id={variant.id}
               title={variant.title}
-              type={variant.type}
+              slug={variant.slug}
+              type={variant.type || ""}
               variants={variants}
               setVariants={setVariants}
             />
@@ -124,6 +131,7 @@ export function ProductVariantSchema({
 function ProductVariantSchemaForm({
   id,
   title,
+  slug,
   type,
   variants,
   setVariants,
@@ -135,6 +143,7 @@ function ProductVariantSchemaForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       variantTitle: title,
+      variantSlug: slug,
       variantType: type,
     },
   });
@@ -148,7 +157,12 @@ function ProductVariantSchemaForm({
     setVariants(
       variants.map((variant) =>
         variant.id === id
-          ? { ...variant, title: values.variantTitle, type: values.variantType }
+          ? {
+              ...variant,
+              title: values.variantTitle,
+              slug: values.variantSlug,
+              type: values.variantType,
+            }
           : variant
       )
     );
@@ -168,6 +182,20 @@ function ProductVariantSchemaForm({
               <FormLabel>Variant Title</FormLabel>
               <FormControl>
                 <Input placeholder="Size or Color" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="variantSlug"
+          render={({ field }) => (
+            <FormItem className="w-full">
+              <FormLabel>Variant Slug</FormLabel>
+              <FormControl>
+                <Input placeholder="Slug of variant" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
