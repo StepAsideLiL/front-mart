@@ -4,7 +4,7 @@ import Title from "@/components/uis/title";
 import AllProductsTabel from "./_parts/all-products-table";
 import PaginationUi from "@/components/uis/pagination-ui";
 import { product } from "@/lib/data";
-import AddProductBtn from "./_parts/add-product-btn";
+import AddProductDialog from "@/src/features/stripe/ui/add-product-dialog";
 
 export const metadata: Metadata = {
   title: "Dashboard: Products",
@@ -23,7 +23,7 @@ const ProductsPage = async ({
       <section className="flex items-center gap-10 justify-between border-b pb-1">
         <Title variant={"xl"}>Products</Title>
 
-        <AddProductBtn />
+        <AddProductDialog />
       </section>
 
       <Suspense fallback={"loading..."}>
