@@ -14,10 +14,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useDebounce } from "react-use";
 import { useState } from "react";
-import { useStripeStore } from "../store";
 import { updateGeneralProductInfo } from "../actions";
+import { Button } from "@/components/ui/button";
 
 const formSchema = z.object({
   productTitle: z.string().trim().min(1, {
@@ -47,47 +46,27 @@ export default function GeneralInfoForm({
     },
   });
 
-  // State of the input field values
-  const [title, setTitle] = useState(productTitle);
-  const [des, setDes] = useState<string | undefined>(productTitle);
-  const [quickDes, setQuickDes] = useState<string | undefined>(
-    quickDescription
-  );
+  const [saving, setSaving] = useState(false);
 
-  const [processingStarted, processingStoped] = useStripeStore((s) => [
-    s.startPerformingUpdateGeneralInfoAction,
-    s.stopPerformingUpdateGeneralInfoAction,
-  ]);
-
-  useDebounce(
-    async () => {
-      const formData = {
-        productId,
-        productTitle: title,
-        productDescription: des ? des : "",
-        productQuickDescription: quickDes ? quickDes : "",
-      };
-
-      const res = await updateGeneralProductInfo(formData);
-
-      if (res.success) {
-        processingStoped();
-      } else {
-        processingStoped();
-      }
-    },
-    3000,
-    [title, des, quickDes]
-  );
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    processingStarted();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setSaving(true);
 
     const { productTitle, description, quickDescription } = values;
 
-    setTitle(productTitle);
-    setDes(description);
-    setQuickDes(quickDescription);
+    const formData = {
+      productId,
+      productTitle: productTitle,
+      productDescription: description ? description : "",
+      productQuickDescription: quickDescription ? quickDescription : "",
+    };
+
+    const res = await updateGeneralProductInfo(formData);
+
+    if (res.success) {
+      setSaving(false);
+    } else {
+      setSaving(false);
+    }
   }
 
   return (
@@ -101,7 +80,7 @@ export default function GeneralInfoForm({
       </div>
 
       <Form {...form}>
-        <form onChange={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
             control={form.control}
             name="productTitle"
@@ -160,6 +139,12 @@ export default function GeneralInfoForm({
               </FormItem>
             )}
           />
+
+          {saving ? (
+            <Button disabled>Saving</Button>
+          ) : (
+            <Button type="submit">Save</Button>
+          )}
         </form>
       </Form>
     </section>
