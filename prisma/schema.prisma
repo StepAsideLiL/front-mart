@@ -49,13 +49,9 @@ model Product {
   id String @id @unique @default(uuid())
 
   title                String                 @default("")
-  price                String                 @default("")
-  discount             Float                  @default(0)
   description          String                 @default("")
   quickDescription     String                 @default("")
-  imageSrc             String                 @default("")
-  isFeatured           Boolean                @default(false)
-  variantSchema        String                 @default("[]")
+  variantType          String                 @default("")
   stripeProductVariant StripeProductVariant[]
 
   date  Int @default(0)
@@ -71,12 +67,14 @@ model Product {
 model StripeProductVariant {
   id String @id @unique @default(uuid())
 
-  variant         String @default("")
-  stripeProductId String @default("")
-  stripePriceId   String @default("")
+  variantSchema       String @default("[]")
+  variantValues       String @default("{}")
+  variantSearchParams String @default("")
+  stripeProductId     String @default("")
+  stripePriceId       String @default("")
 
   productId String
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
